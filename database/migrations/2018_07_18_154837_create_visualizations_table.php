@@ -17,7 +17,7 @@ class CreateVisualizationsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('apartament_id')->nullable();
             $table->date('date');
-            $table->foreing('apartament_id')->references('id')->on('apartaments');
+            $table->foreign('apartament_id')->references('id')->on('apartaments');
             $table->timestamps();
         });
     }

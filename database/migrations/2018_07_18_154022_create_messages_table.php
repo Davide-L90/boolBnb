@@ -19,8 +19,8 @@ class CreateMessagesTable extends Migration
             $table->unsignedInteger('guest_user_id')->nullable();
             $table->text('content');
             $table->dateTime('sanding_date');
-            $table->foreing('apartament_id')->references('id')->on('apartaments');
-            $table->foreing('guest_user_id')->references('id')->on('guest_users');
+            $table->foreign('apartament_id')->references('id')->on('apartaments');
+            $table->foreign('guest_user_id')->references('id')->on('guestusers');
 
             $table->timestamps();
         });
