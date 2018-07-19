@@ -25,6 +25,7 @@ class checkPermission
         if (Auth::guest()) {
             return redirect('/login');
         }
+        
         return $next($request);
     }
 }
