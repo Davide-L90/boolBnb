@@ -5,21 +5,26 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class RedirectIfAuthenticated
+
+class checkPermission
 {
     /**
      * Handle an incoming request.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next
-     * @param  string|null  $guard
      * @return mixed
      */
-    public function handle($request, Closure $next, $guard = null)
+
+    /*
+        If the user that requested a route is not logged, will be redirect to
+        login view
+    */ 
+    public function handle($request, Closure $next)
     {
-        if (Auth::guard($guard)->check()) {
-            return redirect('/');
-        } 
+        if (Auth::guest()) {
+            return redirect('/login');
+        }
         return $next($request);
     }
 }
