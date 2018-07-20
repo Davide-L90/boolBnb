@@ -48861,7 +48861,7 @@ $(document).ready(function () {
         $('#apartment_register_form').submit(function (e) {
 
             /* Value from input field */
-            var rooms_number = $('#rooms_number').val();
+            var beds_number = $('#beds_number').val();
             var bathrooms_number = $('#bathrooms_number').val();
             var area = $('#area').val();
             var price = $('#price').val();
@@ -48872,14 +48872,14 @@ $(document).ready(function () {
             var canSubmit = true;
 
             /* If statment for check the number of apartment rooms */
-            if (isNaN(rooms_number)) {
+            if (isNaN(beds_number)) {
                 alert('Devi inserire un numero');
                 canSubmit = false;
-            } else if (rooms_number - Math.floor(rooms_number) != 0) {
+            } else if (beds_number - Math.floor(beds_number) != 0) {
                 alert('Devi inserire un numero intero');
                 canSubmit = false;
             }
-            if (rooms_number <= 0) {
+            if (beds_number <= 0) {
                 alert('Devi inserire un numero positivo');
                 canSubmit = false;
             }
@@ -48896,7 +48896,7 @@ $(document).ready(function () {
                 alert('Devi inserire un numero positivo');
                 canSubmit = false;
             }
-            if (bathrooms_number >= rooms_number) {
+            if (bathrooms_number >= beds_number) {
                 alert('Non puoi avere un numero di bagni maggiore o uguale delle stanze totali');
                 canSubmit = false;
             }
@@ -48928,10 +48928,12 @@ $(document).ready(function () {
             }
 
             var lat = $('#lat').val();
+            $('#lat').val(lat.toFixed(8));
             var lng = $('#lng').val();
+            $('#lng').val(lng.toFixed(8));
             console.log('lat: ' + lat + ', ' + 'lng: ' + lng);
 
-            return false;
+            return canSubmit;
         });
     }
 });

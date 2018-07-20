@@ -46,7 +46,7 @@
                 <div class="panel-heading">Add Apartments detail</div>
                     
                 <div class="panel-body">                        
-                    <form id="apartment_register_form" class="form-horizontal" method="POST" action=" {{ route('test') }} ">
+                    <form id="apartment_register_form" class="form-horizontal" method="POST" action=" {{ route('apartaments.store') }} ">
                         {{ csrf_field() }}
                         <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                             <label for="title" class="col-md-2 control-label">Title</label>
@@ -61,14 +61,14 @@
                             </div>
                         </div> 
 
-                        <div class="form-group{{ $errors->has('rooms_number') ? ' has-error' : '' }}">
-                            <label for="rooms_number" class="col-md-2 control-label">Numero stanze</label>
+                        <div class="form-group{{ $errors->has('beds_number') ? ' has-error' : '' }}">
+                            <label for="beds_number" class="col-md-2 control-label">Numero stanze</label>
 
                             <div class="col-md-9">
-                                <input id="rooms_number" type="text" class="form-control" name="rooms_number" value="{{ old('rooms_number') }}" required autofocus>
-                                @if ($errors->has('rooms_number'))
+                                <input id="beds_number" type="text" class="form-control" name="beds_number" value="{{ old('beds_number') }}" required autofocus>
+                                @if ($errors->has('beds_number'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('rooms_number') }}</strong>
+                                        <strong>{{ $errors->first('beds_number') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -128,28 +128,20 @@
                         </div>
 
                         <div class="hidden form-group{{ $errors->has('lat') ? ' has-error' : '' }}">
-                            <label for="lat" class="col-md-2 control-label">Latitudine</label>
+                            
 
                             <div class="col-md-9">
-                                <input id="lat" type="text" class="form-control" name="lat" value="{{ old('lat') }}" required autofocus>
-                                @if ($errors->has('lat'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('lat') }}</strong>
-                                    </span>
-                                @endif
+                                <input id="lat" type="text" class="form-control" name="lat" value="{{ old('lat') }}" >
+                               
                             </div>
                         </div>
 
                         <div class="hidden form-group{{ $errors->has('lng') ? ' has-error' : '' }}">
-                            <label for="lng" class="col-md-2 control-label">Longitudine</label>
+                            
 
                             <div class="col-md-9">
-                                <input id="lng" type="text" class="form-control" name="lng" value="{{ old('lng') }}" required autofocus>
-                                @if ($errors->has('lng'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('lng') }}</strong>
-                                    </span>
-                                @endif
+                                <input id="lng" type="text" class="form-control" name="lng" value="{{ old('lng') }}" >
+                               
                             </div>
                         </div>
 
@@ -171,21 +163,13 @@
                             </div>
                         </div>
                         
-        
-
-    
-
-
-
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
                                     Add
                                 </button>
                             </div>
-                        </div>
-                        
-                        
+                        </div>                        
 
                     </form>
                 </div>
