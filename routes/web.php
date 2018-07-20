@@ -22,3 +22,5 @@ Route::middleware('isLogged')->group(function (){
     Route::get('/home', 'HomeController@index')->name('home');
     
 });
+
+Route::post('/test', 'TestController@index')->name('test');

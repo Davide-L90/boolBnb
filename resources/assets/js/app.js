@@ -6,6 +6,7 @@
  */
 
 require('./bootstrap');
+require('../../../node_modules/geocomplete/jquery.geocomplete'); 
 require('./main');
 
 window.Vue = require('vue');

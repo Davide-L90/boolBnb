@@ -19,6 +19,8 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
+        "bootstrap": "^4.1.2",
+        "geocomplete": "^1.7.0",
         "moment": "^2.22.2"
     }
 }
