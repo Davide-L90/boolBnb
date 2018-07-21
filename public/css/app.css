@@ -8359,3 +8359,7 @@ button.close {
   }
 }
 
+.apartments-add-form {
+  display: none;
+}
+

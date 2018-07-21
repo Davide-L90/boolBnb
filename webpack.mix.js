@@ -12,4 +12,11 @@ let mix = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
+   .sass('resources/assets/sass/app.scss', 'public/css')
+   .scripts([  
+    'resources/assets/js/lib/geocomplete/jquery.geocomplete.js',
+    'resources/assets/js/lib/moment.js',
+   ], 'public/js/libraries.js')
+   .scripts([
+       'resources/assets/js/main.js'
+   ], 'public/js/main.js');

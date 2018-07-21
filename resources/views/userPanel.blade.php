@@ -1,37 +1,32 @@
 @extends('layouts.app')
-<script src=" {{ config('external_api.google_maps.base_path').'&key='.config('external_api.google_maps.api_key') }} "></script>
-<script src="{{ asset('js/app.js') }}"></script>
+<script src=" {{ config('external_api.google_maps.base_path') }}&key={{ config('external_api.google_maps.api_key') }}"></script>
 
 @section('content')
-<!-- <div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
-
-                <div class="panel-body">
-                  {{--   @if (session('status')) --}}
-                        <div class="alert alert-success">
-                            {{-- {{ session('status') }} --}}
-                        </div>
-                    {{-- @endif --}}
-
-                    You are logged in!
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
 
 
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">                
-                <div class="panel-heading">Your Apartments</div>
-                    <div class="panel-body">
-                        <button>Inserisci nuovo appartamento</button>
-                    </div>
+                <div class="panel-heading">
+                    Your Apartments
+                </div>
+                {{-- Apartments list --}}
+                @if(!empty($apartments))
+                    @foreach($apartments as $apartment)
+                        <div class="card" style="width: 18rem;">
+                            <img class="img-responsive" src="https://www.orogel.it/media/immagini/190_z_carote_e_vitaminaA.jpg" alt="Card image cap">
+                            <div class="card-body">
+                            <h5 class="card-title">{{ $apartment['title'] }}</h5>
+                            <a href="#" class="btn btn-primary">Visualizza dettagli</a>
+                            </div>
+                        </div>
+                    
+                    @endforeach
+                @endif
+                <div class="panel-body">
+                    <button id="addApartment">Inserisci nuovo appartamento</button>
+                </div>
             </div>                
         </div>    
     </div>    
@@ -181,19 +176,17 @@
 
 
 
-
-
-
-    
-
-    
     
 @endsection
+
+@section('additional-scripts')
+
 <script>
-    $(document).ready(function() {
-        $("#address").geocomplete({ 
-            details: "#apartment_register_form" 
-        });
-    })
+        $(document).ready(function() {
+            $("#address").geocomplete({ 
+                details: "#apartment_register_form" 
+            });
+        })
 </script>
 
+@endsection

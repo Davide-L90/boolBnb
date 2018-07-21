@@ -8,6 +8,10 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    {{-- libraries --}}
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/libraries.js') }}"></script>
+
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
@@ -54,7 +58,7 @@
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
-                                <ul class="dropdown-menu">
+                              <ul class="dropdown-menu"> 
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
@@ -78,6 +82,9 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+   {{--  <script src="{{ asset('js/libraries.js') }}"></script> --}}
+   {{--  <script src="{{ asset('js/app.js') }}"></script> --}}
+    <script src="{{ asset('js/main.js') }}"></script>
+    @yield('additional-scripts')
 </body>
 </html>

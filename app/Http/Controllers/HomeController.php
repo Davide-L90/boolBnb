@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Model\Feature;
+use App\Model\Apartament;
 
 class HomeController extends Controller
 {
@@ -25,6 +26,8 @@ class HomeController extends Controller
     public function index()
     {
         $features = Feature::all();
-        return view('home', ['features' => $features]);
+        $apartments = Apartament::all();
+
+        return view('userPanel', ['features' => $features, 'apartments' => $apartments]);
     }
 }
