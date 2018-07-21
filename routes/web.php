@@ -19,7 +19,7 @@ Auth::routes();
 
 
 Route::middleware('isLogged')->group(function (){
-    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/home', 'UserPanelController@index')->name('home');
      
     
 });

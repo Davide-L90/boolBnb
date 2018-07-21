@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Model\Feature;
 use App\Model\Apartament;
+use Illuminate\Support\Facades\Auth;
 
-class HomeController extends Controller
+class UserPanelController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -25,9 +26,9 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $userId = Auth::user()->id;
         $features = Feature::all();
-        $apartments = Apartament::all();
-
+        $apartments = Apartament::where('user_id', $userId)->get();
         return view('userPanel', ['features' => $features, 'apartments' => $apartments]);
     }
 }

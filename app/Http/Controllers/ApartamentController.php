@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Model\Apartament;
+use Illuminate\Support\Facades\Auth;
 
 class ApartamentController extends Controller
 {
@@ -35,7 +36,7 @@ class ApartamentController extends Controller
      */
     public function store(Request $request)
     {
-        /* dd($request); */
+        $userId = Auth::user()->id;
         
         $request->validate([
             'title' => 'required|string|max:255',
@@ -52,7 +53,8 @@ class ApartamentController extends Controller
         $new_apartment->is_advertised = 0;
         $new_apartment->latitude = $request->lat;
         $new_apartment->longitude = $request->lng;
-
+        $new_apartment->user_id = $userId;
+        
         $new_apartment->save();
 
         return redirect()->route('home');

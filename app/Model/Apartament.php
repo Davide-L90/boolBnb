@@ -14,4 +14,8 @@ class Apartament extends Model
         'address', 
         'price'
     ];
+
+    public function user(){
+        return $this->belongsTo('App\User');
+    }
 }
