@@ -57,14 +57,20 @@ $(document).ready(function() {
     */
     var hasApartmentsAddForm = $('#app').children().hasClass('apartments-add-form');
     if (hasApartmentsAddForm) {
-       
+        
+
         $('#apartment_register_form').submit(function(e) {
             
             /* Value from input field */
-            var beds_number = $('#beds_number').val();
-            var bathrooms_number = $('#bathrooms_number').val();
+            var beds_number = parseInt($('#beds_number').val());
+            var bathrooms_number = parseInt($('#bathrooms_number').val());
             var area = $('#area').val();
             var price = $('#price').val();
+
+            console.log(beds_number);
+            console.log(bathrooms_number);
+            console.log(area);
+            console.log(price);
 
             /*
                 if true, the post will submit else return an error message
@@ -142,12 +148,11 @@ $(document).ready(function() {
 
             }
 
-            var lat = $('#lat').val();
+            var lat = parseFloat($('#lat').val());
             $('#lat').val(lat.toFixed(8));
-            var lng = $('#lng').val();
-            $('#lng').val(lng.toFixed(8));
-            console.log('lat: ' + lat + ', ' + 'lng: ' + lng);  
-                       
+            var lng = parseFloat($('#lng').val());
+            $('#lng').val(lng.toFixed(8));                     
+        
             return canSubmit;
         });
     }
