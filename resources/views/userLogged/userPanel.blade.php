@@ -9,17 +9,15 @@
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">                
                 <div class="panel-heading">
-                    Your Apartments
-                </div>
-                <div class="apartment-list-cnt" >
+                    Your Apartme,              <div class="apartment-list-cnt" >
                     {{-- Apartments list --}}
                     @if(!empty($apartments))
                         @foreach($apartments as $apartment)
                             <div class="card" style="width: 18rem;">
                                 <img class="img-responsive" src="https://www.orogel.it/media/immagini/190_z_carote_e_vitaminaA.jpg" alt="Card image cap">
                                 <div class="card-body">
-                                    <h5 class="card-title">{{ $apartment['title'] }}</h5>
-                                    <a href="#" class="btn btn-primary">Visualizza dettagli</a>
+                                    <h5 class="card-title">{{ $apartment->title }}</h5>
+                                    <a href=" {{ route('ownerApartmentDetails', $apartment->id) }} " class="btn btn-primary">Visualizza dettagli</a>
                                     <a class="btn btn-danger delete-id" data-route-delete=" {{ route('apartaments.destroy', $apartment->id) }} " href="#">Elimina</a>           
                                 </div>
                             </div>   
@@ -137,20 +135,14 @@
                         </div>
 
                         <div class="hidden form-group{{ $errors->has('lat') ? ' has-error' : '' }}">
-                            
-
                             <div class="col-md-9">
                                 <input id="lat" type="text" class="form-control" name="lat" value="{{ old('lat') }}" >
-                               
                             </div>
                         </div>
 
                         <div class="hidden form-group{{ $errors->has('lng') ? ' has-error' : '' }}">
-                            
-
                             <div class="col-md-9">
                                 <input id="lng" type="text" class="form-control" name="lng" value="{{ old('lng') }}" >
-                               
                             </div>
                         </div>
 

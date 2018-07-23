@@ -20,8 +20,8 @@ Auth::routes();
 
 Route::middleware('isLogged')->group(function (){
     Route::get('/home', 'UserPanelController@index')->name('home');
-     
-    
+    Route::get('/user-logged-apartment-detail/{apartment_id}', 'UserPanelController@showApartmentDetail')->name('ownerApartmentDetails');
+
 });
 
 Route::post('/test', 'TestController@index')->name('test');

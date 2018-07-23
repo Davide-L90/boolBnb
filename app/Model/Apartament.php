@@ -18,4 +18,9 @@ class Apartament extends Model
     public function user(){
         return $this->belongsTo('App\User');
     }
+
+    public function features()
+    {
+        return $this->belongsToMany('App\Model\Feature');
+    }
 }

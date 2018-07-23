@@ -171,10 +171,14 @@ $(document).ready(function() {
         $('.apartments-add-form').toggle();
     });
 
+    /* 
+        when user click on deletApartment button a popup message appear
+        for confirm the choice
+    */
     $('.delete-id').click(function() {
         var route = $(this).data("route-delete");
         $('.delete-popup').removeClass('hidden');
-        console.log(route);
+        
         
         $('#delete_form').attr('action', route); 
 
@@ -185,19 +189,5 @@ $(document).ready(function() {
     });
 
 
-/*     $('.delete_form').submit(function(e) {
-        var apartmentId = $(this).attr('data');
-        canSubmit = false;
-        $('.delete-popup').removeClass('hidden');
-        $('#yes').click(function () {
-            canSubmit = true;
-        });
 
-        $('#no').click(function () {
-            $(this).parent().addClass('hidden');
-            canSubmit = false;
-        });
-
-        return canSubmit;        
-    }) */
 });

@@ -29,6 +29,43 @@ class UserPanelController extends Controller
         $userId = Auth::user()->id;
         $features = Feature::all();
         $apartments = Apartament::where('user_id', $userId)->get();
-        return view('userPanel', ['features' => $features, 'apartments' => $apartments]);
+        return view('userLogged.userPanel', ['features' => $features, 'apartments' => $apartments]);
+    }
+
+    public function showApartmentDetail($apartment_id)
+    {
+        
+        $apartment_details = Apartament::find($apartment_id); 
+        
+        $all_features = Feature::all();
+        $features_checked = Apartament::find($apartment_id)->features;
+
+        /* 
+            Create a custom features array with field 'isChecked to make appear checkbox in 
+            userLogged.apartmentDetail view checked  
+        */
+        $list_of_features = [];
+        foreach ($all_features as $feature) {            
+            $item;
+            if ( ($features_checked->contains('name', $feature->name)) ) {
+                $item = [
+                    'id' => $feature['id'],
+                    'name' => $feature['name'],
+                    'isChecked' => true
+                ]; 
+            } else {
+                $item = [
+                    'id' => $feature['id'],
+                    'name' => $feature['name'],
+                    'isChecked' => false
+                ];
+            }               
+            $list_of_features[] = $item;
+        }
+        
+        return view('userLogged.apartmentDetail', [
+            'apartment_details' => $apartment_details,
+            'apartment_features' => $list_of_features,
+        ]);
     }
 }

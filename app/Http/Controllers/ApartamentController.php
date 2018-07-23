@@ -54,8 +54,12 @@ class ApartamentController extends Controller
         $new_apartment->latitude = $request->lat;
         $new_apartment->longitude = $request->lng;
         $new_apartment->user_id = $userId;
-        
+
+        $features = $request->features;
+
         $new_apartment->save();
+                
+        $new_apartment->features()->sync($features);
 
         return redirect()->route('home');
 
@@ -92,7 +96,30 @@ class ApartamentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $modified_apartment = Apartament::find($id);
+        
+        /*
+            If isActive exist the update method will change only this value, otherwise
+            all other fields will be update
+        */
+        if (!$request['isActive']) {
+            $requestArray = $request->toArray();
+            $modified_apartment->fill($requestArray);  
+            $modified_apartment->is_advertised = 0;
+            $modified_apartment->latitude = $request->lat;
+            $modified_apartment->longitude = $request->lng;
+        } else {
+            $modified_apartment->is_active = $request->isActive;            
+        }
+        
+        $features = $request->features;
+
+        $modified_apartment->save();
+
+        $modified_apartment->features()->sync($features);
+
+        return redirect()->route('home');
+
     }
 
     /**
@@ -108,4 +135,6 @@ class ApartamentController extends Controller
 
         return redirect()->route('home');
     }
+
+    
 }
