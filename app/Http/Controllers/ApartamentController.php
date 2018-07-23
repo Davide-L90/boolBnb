@@ -103,6 +103,9 @@ class ApartamentController extends Controller
      */
     public function destroy($id)
     {
-        dd($id);
+        $apartment_to_delete = Apartament::find($id);
+        $apartment_to_delete->delete();
+
+        return redirect()->route('home');
     }
 }

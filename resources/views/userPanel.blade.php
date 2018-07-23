@@ -20,7 +20,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $apartment['title'] }}</h5>
                                     <a href="#" class="btn btn-primary">Visualizza dettagli</a>
-                                    <a class="btn btn-danger delete-id" data-delete-id=" {{ route('apartaments.destroy') }} " href="#">Elimina</a>           
+                                    <a class="btn btn-danger delete-id" data-route-delete=" {{ route('apartaments.destroy', $apartment->id) }} " href="#">Elimina</a>           
                                 </div>
                             </div>   
                         @endforeach

@@ -172,13 +172,11 @@ $(document).ready(function() {
     });
 
     $('.delete-id').click(function() {
-        var delete_id = $(this).data("delete-id");
+        var route = $(this).data("route-delete");
         $('.delete-popup').removeClass('hidden');
-        console.log(delete_id);
-        var link = '{{ route("apartaments.destroy", '+delete_id+') }}';
-        console.log(link);
+        console.log(route);
         
-        $('#delete_form').attr('action', link); 
+        $('#delete_form').attr('action', route); 
 
         $('#no').click(function () {
             $(this).parent().addClass('hidden');
