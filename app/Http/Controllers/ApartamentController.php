@@ -97,19 +97,18 @@ class ApartamentController extends Controller
     public function update(Request $request, $id)
     {
         $modified_apartment = Apartament::find($id);
-        
         /*
             If isActive exist the update method will change only this value, otherwise
             all other fields will be update
         */
-        if (!$request['isActive']) {
+        if (!($request->has('isActive'))) {
             $requestArray = $request->toArray();
             $modified_apartment->fill($requestArray);  
             $modified_apartment->is_advertised = 0;
             $modified_apartment->latitude = $request->lat;
             $modified_apartment->longitude = $request->lng;
         } else {
-            $modified_apartment->is_active = $request->isActive;            
+            $modified_apartment->is_active = !($request->isActive);            
         }
         
         $features = $request->features;

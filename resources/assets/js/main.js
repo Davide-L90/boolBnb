@@ -188,6 +188,16 @@ $(document).ready(function() {
         
     });
 
+    /* 
+        When user click on button to disable card, background and opacity
+        will be changed
+    */
+    $('.pizza').click(function(){
+        var state =  $(this).children('.secret-status').val();
+        console.log(state);
+        var card = $(this).parents('.card');
+        return false
 
+    });
 
 });

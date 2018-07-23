@@ -9,29 +9,36 @@
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">                
                 <div class="panel-heading">
-                    Your Apartme,              <div class="apartment-list-cnt" >
-                    {{-- Apartments list --}}
-                    @if(!empty($apartments))
-                        @foreach($apartments as $apartment)
-                            <div class="card" style="width: 18rem;">
-                                <img class="img-responsive" src="https://www.orogel.it/media/immagini/190_z_carote_e_vitaminaA.jpg" alt="Card image cap">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ $apartment->title }}</h5>
-                                    <a href=" {{ route('ownerApartmentDetails', $apartment->id) }} " class="btn btn-primary">Visualizza dettagli</a>
-                                    <a class="btn btn-danger delete-id" data-route-delete=" {{ route('apartaments.destroy', $apartment->id) }} " href="#">Elimina</a>           
-                                </div>
-                            </div>   
-                        @endforeach
-                    @endif
+                    Your Apartment
+                    <div class="apartment-list-cnt" >
+                        {{-- Apartments list --}}
+                        @if(!empty($apartments))
+                            @foreach($apartments as $apartment)
+                                <div class="card" style="width: 18rem;">
+                                    <img class="img-responsive" src="https://www.orogel.it/media/immagini/190_z_carote_e_vitaminaA.jpg" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ $apartment->title }}</h5>
+                                        <a href=" {{ route('ownerApartmentDetails', $apartment->id) }} " class="btn btn-primary">Visualizza dettagli</a>
+                                        <a class="btn btn-danger delete-id" data-route-delete=" {{ route('apartaments.destroy', $apartment->id) }} " href="#">Elimina</a> 
+                                        <form class="pizza" action="{{ route('apartaments.update', $apartment->id) }}" method="post">
+                                            {{ csrf_field() }}
+                                            {{ method_field('PUT') }}
+                                            <input type="hidden" name="isActive" value="{{ $apartment->is_active ? true : false }}" class="secret-status">    
+                                            <input type="" value="{{ $apartment->is_active ? 'Disattiva annuncio' : 'Attiva annuncio' }}" class="switch-state btn btn-warning">
+                                        </form>
+                                    </div>
+                                </div>   
+                            @endforeach
+                        @endif
                 
-                    <div class="panel-body">
-                        <button id="addApartment">Inserisci nuovo appartamento</button>
+                        <div class="panel-body">
+                            <button id="addApartment">Inserisci nuovo appartamento</button>
+                        </div>
                     </div>
-                </div>
-            </div>                
-        </div>      
-    </div>    
-</div>
+                </div>                
+            </div>      
+        </div>    
+    </div>
 
 {{-- Popup window to confirm delete an apartment --}}
 <div class="hidden delete-popup" apartment_id="">

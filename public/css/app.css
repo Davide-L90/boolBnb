@@ -8368,6 +8368,14 @@ button.close {
   margin: 10px !important;
 }
 
+.apartments-list-cnt .disabled-card {
+  background-color: lightgrey;
+}
+
+.apartments-list-cnt .disabled-img {
+  opacity: 0.2;
+}
+
 div.delete-popup {
   width: 350px;
   height: 150px;

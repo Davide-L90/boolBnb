@@ -19,4 +19,5 @@ mix.js('resources/assets/js/app.js', 'public/js')
    ], 'public/js/libraries.js')
    .scripts([
        'resources/assets/js/main.js'
-   ], 'public/js/main.js');
+   ], 'public/js/main.js')
+   .browserSync('http://127.0.0.1:8000');
