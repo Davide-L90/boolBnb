@@ -11,29 +11,43 @@
                 <div class="panel-heading">
                     Your Apartments
                 </div>
-                {{-- Apartments list --}}
-                @if(!empty($apartments))
-                    @foreach($apartments as $apartment)
-                        <div class="card" style="width: 18rem;">
-                            <img class="img-responsive" src="https://www.orogel.it/media/immagini/190_z_carote_e_vitaminaA.jpg" alt="Card image cap">
-                            <div class="card-body">
-                            <h5 class="card-title">{{ $apartment['title'] }}</h5>
-                            <a href="#" class="btn btn-primary">Visualizza dettagli</a>
-                            </div>
-                        </div>
-                    
-                    @endforeach
-                @endif
-                <div class="panel-body">
-                    <button id="addApartment">Inserisci nuovo appartamento</button>
+                <div class="apartment-list-cnt" >
+                    {{-- Apartments list --}}
+                    @if(!empty($apartments))
+                        @foreach($apartments as $apartment)
+                            <div class="card" style="width: 18rem;">
+                                <img class="img-responsive" src="https://www.orogel.it/media/immagini/190_z_carote_e_vitaminaA.jpg" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $apartment['title'] }}</h5>
+                                    <a href="#" class="btn btn-primary">Visualizza dettagli</a>
+                                    <a class="btn btn-danger delete-id" data-delete-id=" {{ route('apartaments.destroy') }} " href="#">Elimina</a>           
+                                </div>
+                            </div>   
+                        @endforeach
+                    @endif
+                
+                    <div class="panel-body">
+                        <button id="addApartment">Inserisci nuovo appartamento</button>
+                    </div>
                 </div>
             </div>                
-        </div>    
+        </div>      
     </div>    
 </div>
 
+{{-- Popup window to confirm delete an apartment --}}
+<div class="hidden delete-popup" apartment_id="">
+    <h2>Sei sicuro di voler eliminare questo Appartamento?</h2>
+    <form id="delete_form" action="" data-delete-id="" method="post">
+        {{ csrf_field() }}
+        {{ method_field('DELETE') }}
+        <input id="yes" class="btn btn-danger delete-btn" type="submit" value="Si">
+    </form>
+    <a id="no" class="btn btn-primary">No</a>
+{{-- {{ route('apartaments.destroy', $apartment->id) }} --}}
+</div>
 
-
+{{-- Hidden form for add an apartment --}}
 <div class="container apartments-add-form">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">

@@ -91,6 +91,10 @@ $(document).ready(function() {
                 alert('Devi inserire un numero positivo');
                 canSubmit = false;
             }
+            if (beds_number >= 255) {
+                alert('Hai inserito un numero non veritiero');
+                canSubmit = false;
+            }
             
             /* If statment for check the number of apartment bathrooms */
             if (isNaN(bathrooms_number)) {
@@ -106,7 +110,10 @@ $(document).ready(function() {
             if (bathrooms_number <= 0) {
                 alert('Devi inserire un numero positivo');
                 canSubmit = false;
-
+            }
+            if (bathrooms_number >= 255) {
+                alert('Hai inserito un numero non veritiero');
+                canSubmit = false;
             }
             if (bathrooms_number >= beds_number) {
                 alert('Non puoi avere un numero di bagni maggiore o uguale delle stanze totali');
@@ -163,4 +170,36 @@ $(document).ready(function() {
     $('#addApartment').click(function(){
         $('.apartments-add-form').toggle();
     });
+
+    $('.delete-id').click(function() {
+        var delete_id = $(this).data("delete-id");
+        $('.delete-popup').removeClass('hidden');
+        console.log(delete_id);
+        var link = '{{ route("apartaments.destroy", '+delete_id+') }}';
+        console.log(link);
+        
+        $('#delete_form').attr('action', link); 
+
+        $('#no').click(function () {
+            $(this).parent().addClass('hidden');
+        });
+        
+    });
+
+
+/*     $('.delete_form').submit(function(e) {
+        var apartmentId = $(this).attr('data');
+        canSubmit = false;
+        $('.delete-popup').removeClass('hidden');
+        $('#yes').click(function () {
+            canSubmit = true;
+        });
+
+        $('#no').click(function () {
+            $(this).parent().addClass('hidden');
+            canSubmit = false;
+        });
+
+        return canSubmit;        
+    }) */
 });

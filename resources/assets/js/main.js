@@ -170,4 +170,36 @@ $(document).ready(function() {
     $('#addApartment').click(function(){
         $('.apartments-add-form').toggle();
     });
+
+    $('.delete-id').click(function() {
+        var delete_id = $(this).data("delete-id");
+        $('.delete-popup').removeClass('hidden');
+        console.log(delete_id);
+        var link = '{{ route("apartaments.destroy", '+delete_id+') }}';
+        console.log(link);
+        
+        $('#delete_form').attr('action', link); 
+
+        $('#no').click(function () {
+            $(this).parent().addClass('hidden');
+        });
+        
+    });
+
+
+/*     $('.delete_form').submit(function(e) {
+        var apartmentId = $(this).attr('data');
+        canSubmit = false;
+        $('.delete-popup').removeClass('hidden');
+        $('#yes').click(function () {
+            canSubmit = true;
+        });
+
+        $('#no').click(function () {
+            $(this).parent().addClass('hidden');
+            canSubmit = false;
+        });
+
+        return canSubmit;        
+    }) */
 });
