@@ -16,6 +16,9 @@ class ApartamentController extends Controller
     public function index(Request $request)
     {
         $apartments = Apartament::all()->toArray();
+        
+        $address_searched = $request->address;
+        
         $apartmentsToShow = [];
 
         foreach ($apartments as $apartment) {
@@ -25,7 +28,9 @@ class ApartamentController extends Controller
                 $apartmentsToShow[] = $apartment;
             }
         }
-        return view('publicViews.apartmentFinder', ['apartmentsToShow' => $apartmentsToShow]);
+        return view('publicViews.apartmentFinder', [
+            'apartmentsToShow' => $apartmentsToShow,
+            'address_searched' => $address_searched]);
     }
 
     /**

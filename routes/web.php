@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     return view('publicViews.welcome');
-});
+})->name('welcome');
 
 Route::get('/apartments-results', 'ApartamentController@index')->name('apartments.results');
 

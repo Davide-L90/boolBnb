@@ -89,7 +89,7 @@
                 </div>
             <form id="apartment_search_form" action="{{ route('apartments.results') }}" method="get">
                     {{ csrf_field() }}
-                    <input class="form-group" id="address" type="text" placeholder="Inserisci indirizzo">
+                    <input class="form-group" id="address" name="address" type="text" placeholder="Inserisci indirizzo">
                     <div class="hidden form-group{{ $errors->has('lat') ? ' has-error' : '' }}">
                         <div class="col-md-9">
                             <input id="lat" type="hidden" class="form-control" name="lat" value="{{ old('lat') }}" >
