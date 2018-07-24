@@ -55,7 +55,9 @@ $(document).ready(function() {
         if the view has a children with apartments-add-form class, the following
         if-statement will executed
     */
-    var hasApartmentsAddForm = $('#app').children().hasClass('apartments-add-form');
+    var hasApartmentsAddForm = $('#app').children().children().hasClass('apartments-add-form');
+    console.log(hasApartmentsAddForm);
+    
     if (hasApartmentsAddForm) {
         
 
@@ -195,15 +197,11 @@ $(document).ready(function() {
     $('.switch').click(function(){
         var state_button = $(this); 
         var state = state_button.siblings(".secret").val();
-        alert(state);
+        
         if (state == 1) {
-            state_button.siblings(".secret").val(0);
-            /* state_button.parents('.card').children(".thumbnail").addClass('disabled-img');
-            state_button.parents(".card").addClass('disabled-card'); */
+            state_button.siblings(".secret").val(0);            
         } else {
-            state_button.siblings(".secret").val(1);
-            /* state_button.parents('.card').children(".thumbnail").removeClass('disabled-img');
-            state_button.parents(".card").removeClass('disabled-card'); */
+            state_button.siblings(".secret").val(1);            
         }
         
         

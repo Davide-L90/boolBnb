@@ -8386,6 +8386,7 @@ button.close {
   background-color: #fff;
   border-width: 8px;
   border-style: dashed;
+  outline: none;
 }
 
 div.delete-popup {

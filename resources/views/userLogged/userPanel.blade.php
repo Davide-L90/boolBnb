@@ -20,7 +20,7 @@
                                         <h5 class="card-title">{{ $apartment->title }}</h5>
                                         <a href=" {{ route('ownerApartmentDetails', $apartment->id) }} " class="btn btn-primary">Visualizza dettagli</a>
                                         <a class="btn btn-danger delete-id" data-route-delete=" {{ route('apartaments.destroy', $apartment->id) }} " href="#">Elimina</a> 
-                                        <form class="pizza" action="{{ route('apartaments.update', $apartment->id) }}" method="post">
+                                        <form action="{{ route('apartaments.update', $apartment->id) }}" method="post">
                                             {{ csrf_field() }}
                                             {{ method_field('PUT') }}
                                             <input type="hidden" name="isActive" value="{{ $apartment->is_active ? 1 : 0 }}" class="secret">    
