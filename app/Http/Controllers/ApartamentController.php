@@ -108,7 +108,7 @@ class ApartamentController extends Controller
             $modified_apartment->latitude = $request->lat;
             $modified_apartment->longitude = $request->lng;
         } else {
-            $modified_apartment->is_active = !($request->isActive);            
+            $modified_apartment->is_active = $request->isActive;  
         }
         
         $features = $request->features;
@@ -130,6 +130,8 @@ class ApartamentController extends Controller
     public function destroy($id)
     {
         $apartment_to_delete = Apartament::find($id);
+
+        $apartment_to_delete->features()->detach(); //Reletions into pivot table will be delete
         $apartment_to_delete->delete();
 
         return redirect()->route('home');

@@ -8363,17 +8363,29 @@ button.close {
   display: none;
 }
 
-.apartments-list-cnt .card {
+.apartments-list-cnt div.card {
   float: left;
-  margin: 10px !important;
+  margin: 10px;
 }
 
 .apartments-list-cnt .disabled-card {
-  background-color: lightgrey;
+  background-color: lightgrey !important;
 }
 
 .apartments-list-cnt .disabled-img {
   opacity: 0.2;
+}
+
+.apartments-list-cnt div.panel-body button#addApartment {
+  width: 200px;
+  height: 200px;
+  margin: 30px;
+  border-radius: 50%;
+  font-size: 200px;
+  line-height: 200px;
+  background-color: #fff;
+  border-width: 8px;
+  border-style: dashed;
 }
 
 div.delete-popup {

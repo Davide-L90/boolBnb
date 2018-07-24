@@ -5,17 +5,35 @@
 
 .apartments-list-cnt {    
 
-    .card {
+    div.card {
         float: left;
-        margin: 10px !important;
+        margin: 10px;        
+    
+        img.thumbnail {
+
+        }
+
     }
 
     //change card background color and opacity of img depending on if it is active
     .disabled-card{
-        background-color: lightgrey;
+        background-color: lightgrey !important;
     }
     .disabled-img{
         opacity: 0.2;
+    }
+    
+
+    div.panel-body button#addApartment {
+        width: 200px;
+        height: 200px;
+        margin: 30px;
+        border-radius: 50%;
+        font-size: 200px;
+        line-height: 200px;
+        background-color: #fff;
+        border-width: 8px;
+        border-style: dashed;
     }
 }
 

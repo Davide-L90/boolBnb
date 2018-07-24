@@ -10,12 +10,12 @@
             <div class="panel panel-default">                
                 <div class="panel-heading">
                     Your Apartment
-                    <div class="apartment-list-cnt" >
+                    <div class="apartments-list-cnt" >
                         {{-- Apartments list --}}
                         @if(!empty($apartments))
                             @foreach($apartments as $apartment)
-                                <div class="card" style="width: 18rem;">
-                                    <img class="img-responsive" src="https://www.orogel.it/media/immagini/190_z_carote_e_vitaminaA.jpg" alt="Card image cap">
+                                <div class="card {{ $apartment->is_active ? '' : 'disabled-card' }}" style="width: 18rem;">
+                                    <img class="img-responsive thumbnail {{ $apartment->is_active ? '' : 'disabled-img' }} " src="https://www.orogel.it/media/immagini/190_z_carote_e_vitaminaA.jpg" alt="Card image cap">
                                     <div class="card-body">
                                         <h5 class="card-title">{{ $apartment->title }}</h5>
                                         <a href=" {{ route('ownerApartmentDetails', $apartment->id) }} " class="btn btn-primary">Visualizza dettagli</a>
@@ -23,8 +23,8 @@
                                         <form class="pizza" action="{{ route('apartaments.update', $apartment->id) }}" method="post">
                                             {{ csrf_field() }}
                                             {{ method_field('PUT') }}
-                                            <input type="hidden" name="isActive" value="{{ $apartment->is_active ? true : false }}" class="secret-status">    
-                                            <input type="" value="{{ $apartment->is_active ? 'Disattiva annuncio' : 'Attiva annuncio' }}" class="switch-state btn btn-warning">
+                                            <input type="hidden" name="isActive" value="{{ $apartment->is_active ? 1 : 0 }}" class="secret">    
+                                            <input type="submit" value="{{ $apartment->is_active ? 'Disattiva annuncio' : 'Attiva annuncio' }}" class="switch btn btn-warning">
                                         </form>
                                     </div>
                                 </div>   
@@ -32,7 +32,7 @@
                         @endif
                 
                         <div class="panel-body">
-                            <button id="addApartment">Inserisci nuovo appartamento</button>
+                            <button id="addApartment">+</button>
                         </div>
                     </div>
                 </div>                
@@ -187,9 +187,6 @@
 
 </div>
 
-
-
-    
 @endsection
 
 @section('additional-scripts')

@@ -192,11 +192,21 @@ $(document).ready(function() {
         When user click on button to disable card, background and opacity
         will be changed
     */
-    $('.pizza').click(function(){
-        var state =  $(this).children('.secret-status').val();
-        console.log(state);
-        var card = $(this).parents('.card');
-        return false
+    $('.switch').click(function(){
+        var state_button = $(this); 
+        var state = state_button.siblings(".secret").val();
+        alert(state);
+        if (state == 1) {
+            state_button.siblings(".secret").val(0);
+            /* state_button.parents('.card').children(".thumbnail").addClass('disabled-img');
+            state_button.parents(".card").addClass('disabled-card'); */
+        } else {
+            state_button.siblings(".secret").val(1);
+            /* state_button.parents('.card').children(".thumbnail").removeClass('disabled-img');
+            state_button.parents(".card").removeClass('disabled-card'); */
+        }
+        
+        
 
     });
 
