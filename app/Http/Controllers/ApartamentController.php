@@ -13,9 +13,19 @@ class ApartamentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $apartments = Apartament::all()->toArray();
+        $apartmentsToShow = [];
+
+        foreach ($apartments as $apartment) {
+            $distance = floor($this->distance($request->lat, $request->lng, $apartment['latitude'], $apartment['longitude']));
+
+            if($distance < 20){
+                $apartmentsToShow[] = $apartment;
+            }
+        }
+        return view('publicViews.apartmentFinder', ['apartmentsToShow' => $apartmentsToShow]);
     }
 
     /**
@@ -96,6 +106,13 @@ class ApartamentController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'beds_number' => 'required|integer|min:1',
+            'bathrooms_number' => 'required|integer|min:1',
+            'price' => 'required|integer|min:1'
+        ]);
+
         $modified_apartment = Apartament::find($id);
         /*
             If isActive exist the update method will change only this value, otherwise
@@ -137,5 +154,22 @@ class ApartamentController extends Controller
         return redirect()->route('home');
     }
 
+    public function distance($lat1, $lon1, $lat2, $lon2) {
+       
+        $pi80 = M_PI / 180;
+        $lat1 *= $pi80;
+        $lon1 *= $pi80;
+        $lat2 *= $pi80;
+        $lon2 *= $pi80;
     
+        $r = 6372.797; // mean radius of Earth in km
+        $dlat = $lat2 - $lat1;
+        $dlon = $lon2 - $lon1;
+        $a = sin($dlat / 2) * sin($dlat / 2) + cos($lat1) * cos($lat2) * sin($dlon / 2) * sin($dlon / 2);
+        $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
+        $km = $r * $c;
+    
+        //echo '<br/>'.$km;
+        return $km;
+    }
 }

@@ -12,8 +12,10 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('publicViews.welcome');
 });
+
+Route::get('/apartments-results', 'ApartamentController@index')->name('apartments.results');
 
 Auth::routes();
 
@@ -21,9 +23,9 @@ Auth::routes();
 Route::middleware('isLogged')->group(function (){
     Route::get('/home', 'UserPanelController@index')->name('home');
     Route::get('/user-logged-apartment-detail/{apartment_id}', 'UserPanelController@showApartmentDetail')->name('ownerApartmentDetails');
-
+    Route::resource('apartaments', 'ApartamentController');
+    
 });
 
 Route::post('/test', 'TestController@index')->name('test');
 
-Route::resource('apartaments', 'ApartamentController');

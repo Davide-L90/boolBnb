@@ -12,7 +12,7 @@
             <div class="details-cnt col-md-6">
                 <div class="panel-body">   
                                       
-                    <form id="apartment_edit_form" class="form-horizontal" method="POST" action=" {{ route('apartaments.update', $apartment_details->id) }} ">
+                    <form id="apartment_form" class="form-horizontal" method="POST" action=" {{ route('apartaments.update', $apartment_details->id) }} ">
                         {{ csrf_field() }}
                         {{ method_field('PUT') }}
                         <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
@@ -102,7 +102,7 @@
 <script>
         $(document).ready(function() {
             $("#address").geocomplete({ 
-                details: "#apartment_edit_form" 
+                details: ".apartment_form" 
             });
         })
 </script>

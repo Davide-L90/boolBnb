@@ -56,12 +56,14 @@ $(document).ready(function() {
         if-statement will executed
     */
     var hasApartmentsAddForm = $('#app').children().children().hasClass('apartments-add-form');
+    var hasApartmentEditForm = $('#app').children().hasClass('apartment-detail');
     console.log(hasApartmentsAddForm);
-    
-    if (hasApartmentsAddForm) {
+    console.log(hasApartmentEditForm);
+
+    if (hasApartmentsAddForm || hasApartmentEditForm) {
         
 
-        $('#apartment_register_form').submit(function(e) {
+        $('#apartment_form').submit(function(e) {
             
             /* Value from input field */
             var beds_number = parseInt($('#beds_number').val());
@@ -84,11 +86,11 @@ $(document).ready(function() {
                 alert('Devi inserire un numero');
                 canSubmit = false;
             }
-            else if ( (beds_number - Math.floor(beds_number)) != 0 ) {
+            /*  else if ( (beds_number - Math.floor(beds_number)) != 0 ) {
                 alert('Devi inserire un numero intero');
                 canSubmit = false;
 
-            }
+            } */
             if(beds_number <= 0){
                 alert('Devi inserire un numero positivo');
                 canSubmit = false;
@@ -104,11 +106,11 @@ $(document).ready(function() {
                 canSubmit = false;
 
             }
-            else if ((bathrooms_number - Math.floor(bathrooms_number)) != 0) {
+            /* if ((bathrooms_number - Math.floor(bathrooms_number)) != 0) {
                 alert('Devi inserire un numero intero');
                 canSubmit = false;
 
-            }
+            } */
             if (bathrooms_number <= 0) {
                 alert('Devi inserire un numero positivo');
                 canSubmit = false;
@@ -117,10 +119,10 @@ $(document).ready(function() {
                 alert('Hai inserito un numero non veritiero');
                 canSubmit = false;
             }
+            
             if (bathrooms_number >= beds_number) {
                 alert('Non puoi avere un numero di bagni maggiore o uguale delle stanze totali');
                 canSubmit = false;
-
             } 
 
             /* If statment for check the area value of apartment */
@@ -146,7 +148,7 @@ $(document).ready(function() {
                 canSubmit = false;
 
             }
-            else if ((price - Math.floor(price)) != 0) {
+            if ((price - Math.floor(price)) != 0) {
                 alert('Devi inserire un numero intero');
                 canSubmit = false;
 

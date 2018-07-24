@@ -5,12 +5,17 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        
         <title>Laravel</title>
-
+        
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        
+         {{-- libraries --}}
+        <script src="{{ asset('js/app.js') }}"></script>
+        <script src="{{ asset('js/libraries.js') }}"></script>
 
-        <script src=" {{ asset('js/app.js') }} "></script>
+        <script src=" {{ config('external_api.google_maps.base_path') }}&key={{ config('external_api.google_maps.api_key') }}"></script>
         <!-- Styles -->
         <style>
             html, body {
@@ -82,15 +87,39 @@
                 <div class="title m-b-md">
                     BoolBnb
                 </div>
+            <form id="apartment_search_form" action="{{ route('apartments.results') }}" method="get">
+                    {{ csrf_field() }}
+                    <input class="form-group" id="address" type="text" placeholder="Inserisci indirizzo">
+                    <div class="hidden form-group{{ $errors->has('lat') ? ' has-error' : '' }}">
+                        <div class="col-md-9">
+                            <input id="lat" type="hidden" class="form-control" name="lat" value="{{ old('lat') }}" >
+                        </div>
+                    </div>
 
+                    <div class="hidden form-group{{ $errors->has('lng') ? ' has-error' : '' }}">
+                        <div class="col-md-9">
+                            <input id="lng" type="hidden" class="form-control" name="lng" value="{{ old('lng') }}" >
+                        </div>
+                    </div>
+                    <input type="submit" value="Cerca">
+                </form>
+
+                {{-- 
                 <div class="links">
                     <a href="https://laravel.com/docs">Documentation</a>
                     <a href="https://laracasts.com">Laracasts</a>
                     <a href="https://laravel-news.com">News</a>
                     <a href="https://forge.laravel.com">Forge</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+                </div> --}}
             </div>
         </div>
     </body>
+    <script>
+        $(document).ready(function() {
+            $("#address").geocomplete({ 
+                details: "#apartment_search_form" 
+            });
+        })
+    </script>
 </html>

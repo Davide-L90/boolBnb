@@ -60,7 +60,7 @@
                 <div class="panel-heading">Add Apartments detail</div>
                     
                 <div class="panel-body">                        
-                    <form id="apartment_register_form" class="form-horizontal" method="POST" action=" {{ route('apartaments.store') }} ">
+                    <form id="apartment_form" class="form-horizontal" method="POST" action=" {{ route('apartaments.store') }} ">
                         {{ csrf_field() }}
                         <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                             <label for="title" class="col-md-2 control-label">Title</label>
@@ -194,7 +194,7 @@
 <script>
         $(document).ready(function() {
             $("#address").geocomplete({ 
-                details: "#apartment_register_form" 
+                details: "#apartment_form" 
             });
         })
 </script>
