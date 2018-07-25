@@ -11,9 +11,16 @@
 |
 */
 
+
+Route::get('/test', function () {
+    return view('test');
+})->name('test');
+
 Route::get('/', function () {
     return view('publicViews.welcome');
 })->name('welcome');
+
+
 
 Route::get('/apartments-results', 'ApartamentController@index')->name('apartments.results');
 
@@ -24,8 +31,12 @@ Route::middleware('isLogged')->group(function (){
     Route::get('/home', 'UserPanelController@index')->name('home');
     Route::get('/user-logged-apartment-detail/{apartment_id}', 'UserPanelController@showApartmentDetail')->name('ownerApartmentDetails');
     Route::resource('apartaments', 'ApartamentController');
+
+    //Manage images
+    /* Route::get('image/upload','ImageController@fileCreate'); */
+    Route::post('/user-logged-apartment-detail/{apartment_id}/image-store','ImageController@fileStore')->name('image.store');
+    Route::post('/user-logged-apartment-detail/{apartment_id}/image-delete','ImageController@fileDestroy')->name('image.delete');
     
 });
 
-Route::post('/test', 'TestController@index')->name('test');
 
