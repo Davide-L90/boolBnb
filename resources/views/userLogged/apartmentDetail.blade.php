@@ -7,7 +7,12 @@
         <div class="row">
 
             <div class="images-cnt col-md-6">
-                images
+                <div class="col-md-12">
+                    <h3 class="jumbotron">Laravel Multiple Images Upload Using Dropzone</h3>
+                    <form method="post" action=" {{-- {{ url("user-logged-apartment-detail/$apartment_details->id/image-store") }} --}} {{ route('image.store', $apartment_details->id) }}" enctype="multipart/form-data" class="dropzone" id="dropzone">
+                        {{ csrf_field() }}
+                    </form> 
+                </div>
             </div>
             <div class="details-cnt col-md-6">
                 <div class="panel-body">   
@@ -99,12 +104,33 @@
 
 @section('additional-scripts')
 
-<script>
+<script type="text/javascript">
         $(document).ready(function() {
             $("#address").geocomplete({ 
                 details: ".apartment_form" 
             });
-        })
+
+            Dropzone.options.dropzone = {
+                maxFilesize: 12,
+                renameFile: function(file) {
+                    var dt = new Date();
+                    var time = dt.getTime();
+                    return time+file.name;
+                },
+                acceptedFiles: ".jpeg,.jpg,.png,.gif",
+                addRemoveLinks: true,
+                timeout: 5000,
+                success: function(file, response) 
+                {
+                    console.log(response);
+                },
+                error: function(file, response)
+                {
+                return false;
+                }
+            };
+
+        });
 </script>
 
 @endsection
