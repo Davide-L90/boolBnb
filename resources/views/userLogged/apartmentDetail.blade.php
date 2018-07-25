@@ -9,7 +9,7 @@
             <div class="images-cnt col-md-6">
                 <div class="col-md-12">
                     <h3 class="jumbotron">Laravel Multiple Images Upload Using Dropzone</h3>
-                    <form method="post" action=" {{-- {{ url("user-logged-apartment-detail/$apartment_details->id/image-store") }} --}} {{ route('image.store', $apartment_details->id) }} " enctype="multipart/form-data" class="dropzone" id="dropzone">
+                    <form method="post" action=" {{-- {{ url("user-logged-apartment-detail/$apartment_details->id/image-store") }} --}} {{ route('image.store', $apartment_details->id) }} " enctype="multipart/form-data" class="dropzone" id="pippo">
                         {{ csrf_field() }}
                     </form> 
                 </div>
@@ -110,7 +110,7 @@
                 details: ".apartment_form" 
             });
 
-            Dropzone.options.dropzone = {
+            /* Dropzone.options.dropzone = {
                 maxFilesize: 12,
                 renameFile: function(file) {
                     var dt = new Date();
@@ -128,7 +128,7 @@
                 {
                 return false;
                 }
-            };
+            }; */
 
         });
 </script>

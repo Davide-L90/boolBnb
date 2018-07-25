@@ -1,4 +1,4 @@
-$(document).ready(function() {
+/* $(document).ready(function() {
     Dropzone.options.myAwesomeDropzone = {
         paramName: "file", // The name that will be used to transfer the file
         maxFilesize: 2, // MB
@@ -20,4 +20,4 @@ $(document).ready(function() {
             this.on("addedfile", function (file) { alert("Added file."); });
         }
     };
-});
+}); */
