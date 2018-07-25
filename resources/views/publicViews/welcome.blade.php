@@ -101,6 +101,17 @@
                             <input id="lng" type="hidden" class="form-control" name="lng" value="{{ old('lng') }}" >
                         </div>
                     </div>
+                    {{-- FILTRI --}}
+                    
+                    <input class="form-group" type="number" name="beds-number" id="" placeholder="Numero min. di letti">
+                    <input class="form-group" type="number" name="rooms-number" id="" placeholder="Numero min. di bagni">
+                    <input class="form-group" type="text" name="distance" id="" placeholder="Cerca in un raggio di ... Km">
+                    
+                    @foreach($features as $feature)
+                    <label for="{{ $feature['id'] }}"> {{ $feature['name'] }} </label>
+                    <input type="checkbox" name="features[]" id="{{ $feature['id'] }}" value="{{ $feature['id'] }}">
+                    @endforeach
+                
                     <input type="submit" value="Cerca">
                 </form>
 

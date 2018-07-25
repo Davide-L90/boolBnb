@@ -21,13 +21,28 @@ class ApartamentController extends Controller
         
         $apartmentsToShow = [];
 
-        foreach ($apartments as $apartment) {
-            $distance = floor($this->distance($request->lat, $request->lng, $apartment['latitude'], $apartment['longitude']));
+        $distanceToSearch = 20;
+        if(!empty($request->distance))
+        {
+            $distanceToSearch = $request->distance;
+        }
 
-            if($distance < 20){
-                $apartmentsToShow[] = $apartment;
+        foreach ($apartments as $apartment) {
+            $distance = $this->distance($request->lat, $request->lng, $apartment['latitude'], $apartment['longitude']);
+            if($distance < $distanceToSearch){
+               /*  $apartmentsToShow[] = $apartment; */
+                $apartmentsToShow[] = [
+                    'apartment' => $apartment,
+                    'distance' => $distance
+                ];
             }
         }
+        usort($apartmentsToShow, function($a, $b) {
+            return $a['distance'] <=> $b['distance'];
+        });
+        
+
+
         return view('publicViews.apartmentFinder', [
             'apartmentsToShow' => $apartmentsToShow,
             'address_searched' => $address_searched]);
@@ -173,7 +188,9 @@ class ApartamentController extends Controller
         $a = sin($dlat / 2) * sin($dlat / 2) + cos($lat1) * cos($lat2) * sin($dlon / 2) * sin($dlon / 2);
         $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
         $km = $r * $c;
-    
+       /*  if($km < 1){
+            $km = $km * 1000;
+        } */
         //echo '<br/>'.$km;
         return $km;
     }
