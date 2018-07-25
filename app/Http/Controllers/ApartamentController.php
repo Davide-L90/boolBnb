@@ -17,6 +17,18 @@ class ApartamentController extends Controller
     public function index(Request $request)
     {   
         
+        
+        if($request->ajax()){ 
+            $r = $request->beds_number;
+            $ap = Apartament::all();
+            $ap = $ap->where('beds_number', '>=', $request->beds_number);
+
+            return response()->json([
+                "log" => "Chiamata AJAX",
+                'req' => $ap
+            ]);
+        }
+        
         $request->validate([
             'address' => 'required|string|max:255'
             ]);
@@ -83,7 +95,9 @@ class ApartamentController extends Controller
         
         return view('publicViews.apartmentFinder', [
             'apartmentsToShow' => $apartmentsToShow,
-            'address_searched' => $address_searched]);
+            'address_searched' => $address_searched,
+            'request_field' => $request
+        ]);
     }
 
     /**
