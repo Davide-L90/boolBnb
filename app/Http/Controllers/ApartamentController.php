@@ -14,33 +14,64 @@ class ApartamentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    {
-        $apartments = Apartament::all()->toArray();
+    {   
         
-        $address_searched = $request->address;
-        
-        $apartmentsToShow = [];
+        $request->validate([
+            'address' => 'required|string|max:255'
+            ]);
+            
+            $apartments = Apartament::all();
+            
+            $address_searched = $request->address;
+            
+            if (!empty($request->beds_number)) {        
+                $apartments = $apartments->where('beds_number', '>=', $request->beds_number);
+            }
+            if (!empty($request->bathrooms_number)) {        
+                $apartments = $apartments->where('bathrooms_number', '>=', $request->bathrooms_number);
+            }
+            if (!empty($request->features)) {
+                
+                /* dd($request->features); */
 
-        $distanceToSearch = 20;
+                foreach ($apartments as $apartment) {
+                    $fea = $apartment->features;  
+                    dd($fea);
+                }
+            }
+            /* $apartments = $apartments->where('bathrooms_number', $request->features); */
+            /* dd($apartments); */
+
+        $distanceToSearch = 20; //Distance search default value
+        
         if(!empty($request->distance))
         {
             $distanceToSearch = $request->distance;
         }
+        
+        $apartmentsToShow = [];
+        
 
         foreach ($apartments as $apartment) {
             $distance = $this->distance($request->lat, $request->lng, $apartment['latitude'], $apartment['longitude']);
+            
             if($distance < $distanceToSearch){
-               /*  $apartmentsToShow[] = $apartment; */
+               
                 $apartmentsToShow[] = [
                     'apartment' => $apartment,
                     'distance' => $distance
                 ];
             }
         }
+
+        
+
+        //Sort result by distance
         usort($apartmentsToShow, function($a, $b) {
             return $a['distance'] <=> $b['distance'];
         });
         
+
 
 
         return view('publicViews.apartmentFinder', [
@@ -126,7 +157,7 @@ class ApartamentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request);
+        
         $request->validate([
             'title' => 'required|string|max:255',
             'beds_number' => 'required|integer|min:1',
@@ -175,6 +206,7 @@ class ApartamentController extends Controller
         return redirect()->route('home');
     }
 
+    // Method to calculate distance between two point by lat and lng
     public function distance($lat1, $lon1, $lat2, $lon2) {
        
         $pi80 = M_PI / 180;
@@ -184,15 +216,14 @@ class ApartamentController extends Controller
         $lon2 *= $pi80;
     
         $r = 6372.797; // mean radius of Earth in km
+        $r_meters = $r * 1000;
         $dlat = $lat2 - $lat1;
         $dlon = $lon2 - $lon1;
         $a = sin($dlat / 2) * sin($dlat / 2) + cos($lat1) * cos($lat2) * sin($dlon / 2) * sin($dlon / 2);
         $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
+        
         $km = $r * $c;
-       /*  if($km < 1){
-            $km = $km * 1000;
-        } */
-        //echo '<br/>'.$km;
+        
         return $km;
     }
 }
