@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Model\Apartament;
+use App\Model\Feature;
 use Illuminate\Support\Facades\Auth;
 
 class ApartamentController extends Controller
@@ -20,27 +21,38 @@ class ApartamentController extends Controller
             'address' => 'required|string|max:255'
             ]);
             
-            $apartments = Apartament::all();
+        $apartments = new Apartament();
+        
+        $address_searched = $request->address;
+        
+        if (!empty($request->beds_number)) {        
+            $apartments = $apartments->where('beds_number', '>=', $request->beds_number);
+        }
+        if (!empty($request->bathrooms_number)) {        
+            $apartments = $apartments->where('bathrooms_number', '>=', $request->bathrooms_number);
+        }
+        if (!empty($request->features)) {
             
-            $address_searched = $request->address;
-            
-            if (!empty($request->beds_number)) {        
-                $apartments = $apartments->where('beds_number', '>=', $request->beds_number);
-            }
-            if (!empty($request->bathrooms_number)) {        
-                $apartments = $apartments->where('bathrooms_number', '>=', $request->bathrooms_number);
-            }
-            if (!empty($request->features)) {
-                
-                /* dd($request->features); */
+            $featuresDB = Feature::all();
 
-                foreach ($apartments as $apartment) {
-                    $fea = $apartment->features;  
-                    dd($fea);
+            foreach ($request->features as $featureId) {
+                
+                if($featuresDB->contains('id', $featureId))
+                {
+                    $apartments = $apartments->whereHas('features', function ($query) use($featureId) {
+                        $query->where('feature_id', $featureId);
+                    });
+                }
+                else
+                {
+                    return view('publicViews.welcome', ['features' => $featuresDB]);
                 }
             }
-            /* $apartments = $apartments->where('bathrooms_number', $request->features); */
-            /* dd($apartments); */
+        }
+        /* $apartments = $apartments->where('bathrooms_number', $request->features); */
+        /* dd($apartments); */
+
+        $apartments = $apartments->get();
 
         $distanceToSearch = 20; //Distance search default value
         
@@ -64,16 +76,11 @@ class ApartamentController extends Controller
             }
         }
 
-        
-
         //Sort result by distance
         usort($apartmentsToShow, function($a, $b) {
             return $a['distance'] <=> $b['distance'];
         });
         
-
-
-
         return view('publicViews.apartmentFinder', [
             'apartmentsToShow' => $apartmentsToShow,
             'address_searched' => $address_searched]);
