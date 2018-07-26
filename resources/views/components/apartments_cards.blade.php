@@ -7,7 +7,7 @@
             <h3> {{ $apartment['apartment']['title'] }} </h3>
             <p> {{ $apartment['apartment']['price'] }} &euro;/mese </p>
             <p> {{ ($apartment['distance'] < 1) ? (number_format(($apartment['distance'] * 1000), 0)).' m' : (number_format($apartment['distance'], 1)).' km' }} </p>
-            <p><a href="#" class="btn btn-primary" role="button">Visualizza Dettagli</a></p>
+            <p><a href="{{route('apartments.detail', $apartment['apartment']['id'])}}" class="btn btn-primary" role="button">Visualizza Dettagli</a></p>
         </div>
         </div>
     </div>

@@ -198,7 +198,10 @@ class ApartamentController extends Controller
      */
     public function show($id)
     {
-        //
+        $apart = Apartament::find($id);
+        
+        return view('publicViews.showApartment', ['apartment' => $apart]);
+
     }
 
     /**

@@ -8419,9 +8419,20 @@ div.delete-popup form#delete_form {
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   z-index: 10;
+  /* &.hide {
+        display: none;
+    } */
 }
 
-#ajax_spinner.hide {
-  display: none;
+.send_message_cnt * {
+  padding-left: 0;
+}
+
+.map_cnt {
+  height: 400px;
+}
+
+.map_cnt #map {
+  height: 100%;
 }
 
