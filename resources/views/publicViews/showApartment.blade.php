@@ -10,7 +10,7 @@
                         gallery
         
                     </div>
-        
+                    
                     <div class="features_cnt col-md-6">
                         <div class="info_cnt">
                             <h1 class="title">{{$apartment->title}}</h1>      
@@ -34,6 +34,17 @@
                         <div class="info_cnt">
                             <p class="info_type">Prezzo: </p>
                             <p class="price">{{$apartment->price}}</p>      
+                        </div>
+                        <div class="info_cnt">
+                            <p class="info_type">Servizi aggiuntivi: </p>
+                            <ul class="features-list">
+                                @foreach($features as $feature)
+                                    <li class="feature">
+                                        <p>{{$feature->name}}</p>
+                                    </li>
+                                @endforeach    
+                            </ul>    
+                                 
                         </div>
         
         
