@@ -9,19 +9,16 @@
         float: left;
         margin: 10px;        
     
-        img.thumbnail {
-
+        //change card background color and opacity of img depending on if it is active
+        &.disabled-card {
+            background-color: lightgrey !important;
+            img {
+                opacity: 0.2;
+            }
         }
 
     }
 
-    //change card background color and opacity of img depending on if it is active
-    .disabled-card{
-        background-color: lightgrey !important;
-    }
-    .disabled-img{
-        opacity: 0.2;
-    }
     
 
     div.panel-body button#addApartment {

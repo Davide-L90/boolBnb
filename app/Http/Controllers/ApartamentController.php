@@ -20,13 +20,17 @@ class ApartamentController extends Controller
         
         if($request->ajax()){ 
             $r = $request->beds_number;
-            $ap = Apartament::all();
-            $ap = $ap->where('beds_number', '>=', $request->beds_number);
+            $ap = new Apartament();
+            $ap = $ap->where('beds_number', '>=', $request->beds_number)->get();
+
+            $html = view('components.apartments_cards', ['apartmentsToShow' => $ap])->render();
 
             return response()->json([
                 "log" => "Chiamata AJAX",
-                'req' => $ap
+                'req' => $ap,
+                'html' => $html
             ]);
+
         }
         
         $request->validate([
@@ -177,27 +181,29 @@ class ApartamentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'beds_number' => 'required|integer|min:1',
-            'bathrooms_number' => 'required|integer|min:1',
-            'price' => 'required|integer|min:1'
-        ]);
-
+    {       
         $modified_apartment = Apartament::find($id);
         /*
             If isActive exist the update method will change only this value, otherwise
             all other fields will be update
         */
-        if (!($request->has('isActive'))) {
+        if (!$request->has('isActive')) {
+
+            $request->validate([
+                'title' => 'required|string|max:255',
+                'beds_number' => 'required|integer|min:1',
+                'bathrooms_number' => 'required|integer|min:1',
+                'price' => 'required|integer|min:1'
+            ]);
+            
             $requestArray = $request->toArray();
+            
             $modified_apartment->fill($requestArray);  
             $modified_apartment->is_advertised = 0;
             $modified_apartment->latitude = $request->lat;
             $modified_apartment->longitude = $request->lng;
-        } else {
+
+        } else {            
             $modified_apartment->is_active = $request->isActive;  
         }
         

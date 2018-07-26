@@ -8368,11 +8368,11 @@ button.close {
   margin: 10px;
 }
 
-.apartments-list-cnt .disabled-card {
+.apartments-list-cnt div.card.disabled-card {
   background-color: lightgrey !important;
 }
 
-.apartments-list-cnt .disabled-img {
+.apartments-list-cnt div.card.disabled-card img {
   opacity: 0.2;
 }
 

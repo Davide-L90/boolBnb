@@ -31,21 +31,7 @@
 
                 </div>
                 <div class="col-md-10 results-cnt">
-                    @foreach($apartmentsToShow as $apartment)
-                    
-                        <div class="col-sm-6 col-md-4">
-                            <div class="thumbnail">
-                            <img src="https://www.orogel.it/media/immagini/190_z_carote_e_vitaminaA.jpg" alt="...">
-                            <div class="caption">
-                                <h3> {{ $apartment['apartment']['title'] }} </h3>
-                                <p> {{ $apartment['apartment']['price'] }} &euro;/mese </p>
-                                <p> {{ ($apartment['distance'] < 1) ? (number_format(($apartment['distance'] * 1000), 0)).' m' : (number_format($apartment['distance'], 1)).' km' }} </p>
-                                <p><a href="#" class="btn btn-primary" role="button">Visualizza Dettagli</a></p>
-                            </div>
-                            </div>
-                        </div>
-                    @endforeach
-
+                    @include('components.apartments_cards')
                 </div>
 
             @else
@@ -89,14 +75,22 @@
                     }
                 });
                 */ 
-                $ .ajax({
+                $.ajax({
                     url: $('#re_search').attr('action'),
                     method : "GET", 
                     data : {
                         "beds_number" : $('#beds_number').val()
-                    },           
+                    },
+                    beforeSend:function() {
+                        $('body').css('backgroundColor', 'red');
+                        console.log('ciao');
+                        
+                    },          
                     success:function(data, stato) {
                         console.log(data);
+                        $('body').css('background', 'transparent');
+
+                        $('.results-cnt').html(data.html);
                     },
                     error:function(richiesta,stato,errori) {
                         alert( "E' avvenuto un errore. ");

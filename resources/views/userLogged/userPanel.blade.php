@@ -1,5 +1,5 @@
 @extends('layouts.app')
-<script src=" {{ config('external_api.google_maps.base_path') }}&key={{ config('external_api.google_maps.api_key') }}"></script>
+<script src=" {{ config('external_api.google_maps.base_path') }}&amp;key={{ config('external_api.google_maps.api_key') }}"></script>
 
 @section('content')
 
@@ -14,12 +14,12 @@
                         {{-- Apartments list --}}
                         @if(!empty($apartments))
                             @foreach($apartments as $apartment)
-                                <div class="card {{ $apartment->is_active ? '' : 'disabled-card' }}" style="width: 18rem;">
-                                    <img class="img-responsive thumbnail {{ $apartment->is_active ? '' : 'disabled-img' }} " src="https://www.orogel.it/media/immagini/190_z_carote_e_vitaminaA.jpg" alt="Card image cap">
+                                <div class="card{{ !($apartment->is_active) ? ' disabled-card' : null }}" style="width: 18rem;">
+                                    <img class="img-responsive thumbnail" src="https://www.orogel.it/media/immagini/190_z_carote_e_vitaminaA.jpg" alt="Card image cap">
                                     <div class="card-body">
                                         <h5 class="card-title">{{ $apartment->title }}</h5>
                                         <a href=" {{ route('ownerApartmentDetails', $apartment->id) }} " class="btn btn-primary">Visualizza dettagli</a>
-                                        <a class="btn btn-danger delete-id" data-route-delete=" {{ route('apartaments.destroy', $apartment->id) }} " href="#">Elimina</a> 
+                                        <a class="btn btn-danger delete-id" data-route-delete="{{ route('apartaments.destroy', $apartment->id) }}" href="#">Elimina</a> 
                                         <form action="{{ route('apartaments.update', $apartment->id) }}" method="post">
                                             {{ csrf_field() }}
                                             {{ method_field('PUT') }}
