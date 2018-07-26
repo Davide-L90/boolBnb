@@ -8412,3 +8412,16 @@ div.delete-popup form#delete_form {
   float: left;
 }
 
+#ajax_spinner {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  z-index: 10;
+}
+
+#ajax_spinner.hide {
+  display: none;
+}
+

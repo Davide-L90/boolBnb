@@ -20,6 +20,8 @@
     
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/libs/dropzone.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/libs/all.min.css') }}"> {{-- FontAwesome --}}
+
 
 
    

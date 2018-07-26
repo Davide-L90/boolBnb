@@ -1,6 +1,12 @@
 @extends('layouts.app')
-
+    <script src=" {{ config('external_api.google_maps.base_path') }}&amp;key={{ config('external_api.google_maps.api_key') }}"></script>
 @section('content')
+
+    {{-- <div id="ajax_spinner hide">
+        <div class="fa-5x" >
+            <i class="fas fa-spinner fa-spin"></i>
+        </div>
+    </div> --}}
 
     <div class="container">
         <div class="row">
@@ -9,17 +15,55 @@
                 <h1 class="">Appartamenti vicino a: {{ $address_searched }} </h1>    
                 
                 <div class="col-md-2 filters-cnt">
-                        
-                    <form id="re_search" class="form-horizontal" method="GET" action="{{ route('apartments.results') }}">
-                        {{ csrf_field() }}
-                        {{ method_field('GET') }}                        
+                    
+                    {{-- {{ dd($request_field) }}  --}}   
 
-                        <div class="form-group{{ $errors->has('beds_number') ? 'has-error' : '' }}">
-                            <label for="beds_number" class="col-md-12 control-label text-left">Stanze</label>
+                    <form id="re_search" class="form-horizontal" method="GET" action="{{ route('apartments.results') }}">           
+                        
+                        <div class="form-group{{ $errors->has('address') ? 'has-error' : '' }}">
+                            <label for="address" class="col-md-12 control-label text-left">Indirizzo</label>
                             <div class="col-md-12">
-                                <input id="beds_number" type="number" class="form-control col-xs-12" name="beds_number" value="{{ $request_field->beds_number }}" required autofocus>   
+                                <input id="address" type="text" class="form-control col-xs-12" name="address" value="{{ $request_field->address }}" required autofocus>   
                             </div>
                         </div>
+
+                        <div class="hidden form-group{{ $errors->has('lat') ? ' has-error' : '' }}">
+                            <div class="col-md-9">
+                                <input id="lat" type="hidden" class="form-control" name="lat" value="{{ $request_field->lat }}" >
+                            </div>
+                        </div>
+
+                        <div class="hidden form-group{{ $errors->has('lng') ? ' has-error' : '' }}">
+                            <div class="col-md-9">
+                                <input id="lng" type="hidden" class="form-control" name="lng" value="{{ $request_field->lng }}" >
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('beds_number') ? 'has-error' : '' }}">
+                            <label for="beds_number" class="col-md-12 control-label text-left">Posti letto</label>
+                            <div class="col-md-12">
+                                <input id="beds_number" type="number" class="form-control col-xs-12" name="beds_number" value="{{ $request_field->beds_number }}">   
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('bathrooms_number') ? 'has-error' : '' }}">
+                            <label for="bathrooms_number" class="col-md-12 control-label text-left">Numero bagni</label>
+                            <div class="col-md-12">
+                                <input id="bathrooms_number" type="number" class="form-control col-xs-12" name="bathrooms_number" value="{{ $request_field->bathrooms_number }}">   
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('distance') ? 'has-error' : '' }}">
+                            <label for="distance" class="col-md-12 control-label text-left">Cerca nel raggio di Km...</label>
+                            <div class="col-md-12">
+                                <input id="distance" type="number" class="form-control col-xs-12" name="distance" value="{{ $request_field->distance }}">   
+                            </div>
+                        </div>
+
+                        @foreach($chek_notcheck_feat as $feat)
+                                    <label class="col-md-8" for="{{ $feat['name'] }}">{{ $feat['name'] }}</label>
+                                    <input type="checkbox" class="col-md-4" name="features[]" id="{{ $feat['name'] }}" value="{{ $feat['id'] }}" {{ $feat['isChecked'] ? 'checked' : null}} autofocus> 
+                                @endforeach 
                         
                         <div class="form-group">
                             <div class="col-md-10 ">
@@ -41,8 +85,11 @@
                 <a href=" {{ route('welcome') }} " class="btn btn-primary" role="button">Cerca in un\'altra zona</a>
             @endif        
                     
-        </div>
+        </div>       
+
     </div>
+
+    
     {{-- {{ dd($apartmentsToShow) }} --}}
 @endsection
 
@@ -52,6 +99,10 @@
         
         $(document).ready(function() {
 
+            $("#address").geocomplete({ 
+                details: "#apartment_search_form" 
+            });
+
             $('#re_search').on('submit', function(event) {
                 event.preventDefault();
 
@@ -59,10 +110,10 @@
 
                 console.log($('#beds_number').val());
                 
-                formData.append('bedsnumber', '4');
+                /* formData.append('bedsnumber', '4');
                 for (var key of formData.entries()) {
                     console.log(key[0] + ', ' + key[1]);
-                }
+                } */
                 
                 
                 /* $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
@@ -75,11 +126,23 @@
                     }
                 });
                 */ 
+                var myCheckboxes = new Array();
+                var features = new Array(); 
+                $("input:checked").each(function() {
+                    features.push($(this).val());
+                });
+
                 $.ajax({
                     url: $('#re_search').attr('action'),
                     method : "GET", 
                     data : {
-                        "beds_number" : $('#beds_number').val()
+                        "address" : $('#address').val(),
+                        "lat" : $('#lat').val(),
+                        "lng" : $('#lng').val(),
+                        "beds_number" : $('#beds_number').val(),
+                        "bathrooms_number" : $('#bathrooms_number').val(),
+                        "distance" : $('#distance').val(),
+                        "features[]" : features
                     },
                     beforeSend:function() {
                         $('body').css('backgroundColor', 'red');
@@ -87,7 +150,7 @@
                         
                     },          
                     success:function(data, stato) {
-                        console.log(data);
+                        console.log( data.html );
                         $('body').css('background', 'transparent');
 
                         $('.results-cnt').html(data.html);

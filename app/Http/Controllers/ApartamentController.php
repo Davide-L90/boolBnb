@@ -15,29 +15,14 @@ class ApartamentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    {   
-        
-        
-        if($request->ajax()){ 
-            $r = $request->beds_number;
-            $ap = new Apartament();
-            $ap = $ap->where('beds_number', '>=', $request->beds_number)->get();
-
-            $html = view('components.apartments_cards', ['apartmentsToShow' => $ap])->render();
-
-            return response()->json([
-                "log" => "Chiamata AJAX",
-                'req' => $ap,
-                'html' => $html
-            ]);
-
-        }
+    {         
         
         $request->validate([
             'address' => 'required|string|max:255'
-            ]);
+        ]);
             
         $apartments = new Apartament();
+        $featuresDB = Feature::all();
         
         $address_searched = $request->address;
         
@@ -47,10 +32,44 @@ class ApartamentController extends Controller
         if (!empty($request->bathrooms_number)) {        
             $apartments = $apartments->where('bathrooms_number', '>=', $request->bathrooms_number);
         }
-        if (!empty($request->features)) {
-            
-            $featuresDB = Feature::all();
 
+        
+        
+        
+
+        /*  Define temp array that will contain all features sent by reqeust or nothing
+            it will be used to check checked checkbox and to fill a $checked_and_notChecked array
+            with correct value to send with ajax
+        */
+        $checked_and_notChecked = [];
+
+        $control_array;
+        
+        if (!empty($request->features)) {
+            $control_array = $request->features;   
+        } else {
+            $control_array = [];
+        }
+
+        /* Create am array that contain all features id, and isChecked key to differentiate wich features are sent checke from welcome view */
+        foreach ($featuresDB as $f) {
+            if( in_array($f['id'], $control_array ) ) {
+                $temp = [
+                    'id' => $f['id'],
+                    'name' => $f['name'],
+                    'isChecked' => true
+                ];
+            } else {
+                $temp = [
+                    'id' => $f['id'],
+                    'name' => $f['name'],
+                    'isChecked' => false
+                ];
+            }
+            $checked_and_notChecked[] = $temp;
+        }
+
+        if (!empty($request->features)) {
             foreach ($request->features as $featureId) {
                 
                 if($featuresDB->contains('id', $featureId))
@@ -96,10 +115,30 @@ class ApartamentController extends Controller
         usort($apartmentsToShow, function($a, $b) {
             return $a['distance'] <=> $b['distance'];
         });
+
+        /* dd($apartmentsToShow); */
+        
+        if($request->ajax()){ 
+
+            /* dd($apartmentsToShow); */
+            /* $r = $request->beds_number;
+            $ap = new Apartament();
+            $ap = $ap->where('beds_number', '>=', $request->beds_number)->get(); */
+
+            $html = view('components.apartments_cards', ['apartmentsToShow' => $apartmentsToShow])->render();
+
+            return response()->json([
+                "log" => "Chiamata AJAX",
+                /* 'res' => $results, */
+                'html' => $html
+            ]);
+        }
         
         return view('publicViews.apartmentFinder', [
             'apartmentsToShow' => $apartmentsToShow,
             'address_searched' => $address_searched,
+            'features' => $featuresDB,
+            'chek_notcheck_feat' => $checked_and_notChecked,
             'request_field' => $request
         ]);
     }
