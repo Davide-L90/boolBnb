@@ -7,16 +7,19 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    
 
     {{-- libraries --}}
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/libraries.js') }}"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/dropzone.js"></script> --}}
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/libs/dropzone.min.css') }}" rel="stylesheet">
+    
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/libs/dropzone.min.css') }}">
 
 
    
@@ -86,7 +89,7 @@
     <!-- Scripts -->
    {{--  <script src="{{ asset('js/libraries.js') }}"></script> --}}
    {{--  <script src="{{ asset('js/app.js') }}"></script> --}}
-    <script src="{{ asset('js/main.js') }}"></script>
+    {{-- <script src="{{ asset('js/main.js') }}"></script> --}}
     @yield('additional-scripts')
 </body>
 </html>

@@ -11,16 +11,19 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/assets/js/app.js', 'public/js')
+mix.js([
+        'resources/assets/js/app.js',
+        'resources/assets/js/main.js',
+    ], 'public/js')
    .sass('resources/assets/sass/app.scss', 'public/css')
    .scripts([  
         'resources/assets/js/lib/geocomplete/jquery.geocomplete.js',
         'resources/assets/js/lib/moment.js',
-        'resources/assets/js/lib/dropzone.js'
+        'resources/assets/js/lib/dropzone.min.js',       
     ],'public/js/libraries.js')
-   .scripts([
+   /* .scripts([
         'resources/assets/js/main.js',
         'resources/assets/js/image_upload.js'
-    ],'public/js/main.js');
+    ],'public/js/main.js'); */
    
     /* .browserSync('http://127.0.0.1:8000'); */

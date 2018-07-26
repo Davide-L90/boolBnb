@@ -27,7 +27,7 @@ Route::middleware('isLogged')->group(function (){
     //Manage images
     /* Route::get('image/upload','ImageController@fileCreate'); */
     Route::post('/user-logged-apartment-detail/{apartment_id}/image-store','ImageController@fileStore')->name('image.store');
-    Route::post('/user-logged-apartment-detail/{apartment_id}/image-delete','ImageController@fileDestroy')->name('image.delete');
+    Route::post('/user-logged-apartment-detail/image-delete','ImageController@fileDestroy')->name('image.delete');
     
 });
 
