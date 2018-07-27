@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Model\Apartament;
 use App\Model\Feature;
+use App\Model\Image;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ApartamentController extends Controller
 {
@@ -200,9 +202,27 @@ class ApartamentController extends Controller
     {
         $apart = Apartament::find($id);
         $feat = $apart->features;
-        
-        
-        return view('publicViews.showApartment', ['apartment' => $apart, 'features' => $feat]);
+        $images = Image::where('apartament_id', $apart->id)->get();
+
+        $images_container = [];
+
+        foreach ($images as $image) {
+            
+            $image_exist = Storage::disk('public')->exists($image->title);            
+
+            if ($image_exist) {
+                $images_url_container[] = $image->title;
+            }
+            
+        }        
+               
+        /* dd($images_url_container); */
+
+        return view('publicViews.showApartment', [
+            'apartment' => $apart, 
+            'features' => $feat,
+            'images' => $images_url_container
+        ]);
 
     }
 

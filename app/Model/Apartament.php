@@ -28,4 +28,9 @@ class Apartament extends Model
     {
         return $this->hasMany('App\Model\Message');
     }
+
+    public function images()
+    {
+        return $this->hasMany('App\Model\Image');
+    }
 }
