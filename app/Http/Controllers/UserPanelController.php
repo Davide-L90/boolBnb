@@ -83,25 +83,10 @@ class UserPanelController extends Controller
 
         $joined_table = Message::join('guestusers', 'messages.guest_user_id', '=', 'guestusers.id');
 
-        $joined_table = $joined_table->whereHas('apartament', function ($query) use($userId) { 
+        $filtered_messages = $joined_table->whereHas('apartament', function ($query) use($userId) { 
             $query->where('user_id', $userId); 
         })->get();
-        
-        dd($joined_table);
-
-        /* $messages = $messages->whereHas('apartament', function ($query) use($userId) { 
-            $query->where('user_id', $userId); 
-        })->join('guestusers', 'usersid', '=', 'contacts.user_id');
-        */
-          
-        dd($messages);
-        /* foreach ($apartments as $apartment) {
-            
-        
-        }
-         */
-
-        
-        return view('userLogged.inbox');
+        /* dd($filtered_messages); */
+        return view('userLogged.inbox', ['filtered_messages' => $filtered_messages]);
     }
 }
