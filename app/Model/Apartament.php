@@ -23,4 +23,9 @@ class Apartament extends Model
     {
         return $this->belongsToMany('App\Model\Feature');
     }
+
+    public function messages()
+    {
+        return $this->hasMany('App\Model\Message');
+    }
 }

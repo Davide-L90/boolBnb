@@ -132,5 +132,7 @@
                 details: "#apartment_search_form" 
             });
         })
+
+        
     </script>
 </html>

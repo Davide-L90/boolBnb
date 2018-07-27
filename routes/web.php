@@ -17,6 +17,9 @@ Route::get('/', 'HomeController@index')->name('welcome');
 Route::get('/apartments-results', 'ApartamentController@index')->name('apartments.results');
 Route::get('/apartments-detail/{apartment_id}', 'ApartamentController@show')->name('apartments.detail');
 
+//Send Message
+Route::post('/apartments-detail/{apartment_id}/send-message','MessageController@sendMessage')->name('message.send');
+
 Auth::routes();
 
 
@@ -24,6 +27,8 @@ Route::middleware('isLogged')->group(function (){
     Route::get('/home', 'UserPanelController@index')->name('home');
     Route::get('/user-logged-apartment-detail/{apartment_id}', 'UserPanelController@showApartmentDetail')->name('ownerApartmentDetails');
     Route::resource('apartaments', 'ApartamentController');
+
+
 
     //Manage images
     /* Route::get('image/upload','ImageController@fileCreate'); */
