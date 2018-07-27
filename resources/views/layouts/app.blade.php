@@ -77,6 +77,11 @@
                                             {{ csrf_field() }}
                                         </form>
                                     </li>
+                                     <li>
+                                        <a href="{{ route('inbox.show') }}">
+                                            Inbox
+                                        </a>                                        
+                                    </li>
                                 </ul>
                             </li>
                         @endguest

@@ -298,7 +298,7 @@ class ApartamentController extends Controller
     }
 
     // Method to calculate distance between two point by lat and lng
-    public function distance($lat1, $lon1, $lat2, $lon2) {
+    private function distance($lat1, $lon1, $lat2, $lon2) {
        
         $pi80 = M_PI / 180;
         $lat1 *= $pi80;
@@ -317,4 +317,7 @@ class ApartamentController extends Controller
         
         return $km;
     }
+
+
+
 }

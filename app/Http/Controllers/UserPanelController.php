@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Model\Feature;
 use App\Model\Apartament;
 use Illuminate\Support\Facades\Auth;
+use App\Model\Message;
 
 class UserPanelController extends Controller
 {
@@ -67,5 +68,40 @@ class UserPanelController extends Controller
             'apartment_details' => $apartment_details,
             'apartment_features' => $list_of_features,
         ]);
+    }
+
+    public function showInbox()
+    {
+        $userId = Auth::user()->id;
+        $apartments = Apartament::where('user_id', $userId)->get();
+
+        /* dd($apartments); */
+
+        $messages_for_apartments = [];
+
+        $messages = new Message();
+
+        $joined_table = Message::join('guestusers', 'messages.guest_user_id', '=', 'guestusers.id');
+
+        $joined_table = $joined_table->whereHas('apartament', function ($query) use($userId) { 
+            $query->where('user_id', $userId); 
+        })->get();
+        
+        dd($joined_table);
+
+        /* $messages = $messages->whereHas('apartament', function ($query) use($userId) { 
+            $query->where('user_id', $userId); 
+        })->join('guestusers', 'usersid', '=', 'contacts.user_id');
+        */
+          
+        dd($messages);
+        /* foreach ($apartments as $apartment) {
+            
+        
+        }
+         */
+
+        
+        return view('userLogged.inbox');
     }
 }

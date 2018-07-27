@@ -26,9 +26,9 @@ Auth::routes();
 Route::middleware('isLogged')->group(function (){
     Route::get('/home', 'UserPanelController@index')->name('home');
     Route::get('/user-logged-apartment-detail/{apartment_id}', 'UserPanelController@showApartmentDetail')->name('ownerApartmentDetails');
+    Route::get('/home/inbox', 'UserPanelController@showInbox')->name('inbox.show');
+
     Route::resource('apartaments', 'ApartamentController');
-
-
 
     //Manage images
     /* Route::get('image/upload','ImageController@fileCreate'); */
