@@ -10,4 +10,9 @@ class Message extends Model
     {
         return $this->belongsTo('App\Model\Apartament');
     }
+
+    public function guestUser()
+    {
+        return $this->belongsTo('App\Model\GuestUser');
+    }
 }

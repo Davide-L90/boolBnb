@@ -81,7 +81,7 @@
                             <div class="form-group{{ $errors->has('email') ? 'has-error' : '' }}">
                                 <label for="email" class="col-md-12 control-label text-left pl-0">e-mail</label>
                                 <div class="col-md-12">
-                                    <input id="email" type="text" class="form-control col-xs-12" name="email" placeholder="Insert your email">   
+                                    <input id="email" type="text" class="form-control col-xs-12" name="email" value="{{ !(Auth::guest()) ? Auth::user()->email : null }}" placeholder="Insert your email">   
                                 </div>
                             </div>
         
