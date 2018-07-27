@@ -30,7 +30,7 @@ $(document).ready(function() {
             */
             var canSubmit = true;
 
-            hasNumber = /\d/;
+            var hasNumber = /\d/;
             if( hasNumber.test(name) ) {
                 alert('nome contiene un numero');
                 canSubmit = false;
@@ -46,9 +46,7 @@ $(document).ready(function() {
             }
             
             return canSubmit;
-
         });
-
     }
 
     /*
@@ -143,12 +141,12 @@ $(document).ready(function() {
             }
 
             /* If statment for check the price of apartment */
-            if (isNaN(price)) {
-                alert('Devi inserire un numero');
+            if ((isNaN(price)) || ((price - Math.floor(price)) != 0) || (price <= 0)) {
+                alert('Inserisci un prezzo corretto');
                 canSubmit = false;
 
             }
-            if ((price - Math.floor(price)) != 0) {
+            /* if ((price - Math.floor(price)) != 0) {
                 alert('Devi inserire un numero intero');
                 canSubmit = false;
 
@@ -157,7 +155,7 @@ $(document).ready(function() {
                 alert('Devi inserire un numero positivo');
                 canSubmit = false;
 
-            }
+            } */
 
             var lat = parseFloat($('#lat').val());
             $('#lat').val(lat.toFixed(8));
@@ -205,9 +203,37 @@ $(document).ready(function() {
         } else {
             state_button.siblings(".secret").val(1);            
         }
-        
-        
-
     });
 
+    /* 
+        Sending message form validation
+    */
+    $('#send_message_form').submit(function(e){
+        var name = $('#name').val();
+        var surname = $('#surname').val();
+        var email = $('#email').val();
+        var message = $('#message_content').val();
+        
+        var canSubmit = true;
+
+        var hasNumber = /\d/;
+
+        if((hasNumber.test(name)) || (name == "")) {
+            alert('il nome è errato o non è stato inserito');
+            canSubmit = false;
+        }
+        if ((hasNumber.test(surname)) || (surname == "")) {
+            alert('il cognome è errato o non è stato inserito');
+            canSubmit = false;
+        }
+        if(!(email.includes('.')) || !(email.includes('@')) || email == ""){
+            alert('inserire un indirizzo mail corretto');
+            canSubmit = false;
+        }
+        // if(message == ""){
+        //     alert('Scrivere un messaggio');
+        //     canSubmit = false;
+        // }
+        return canSubmit;
+    });
 });

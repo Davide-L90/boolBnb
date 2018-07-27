@@ -59,42 +59,46 @@
 
                     {{-- Form to send message --}}
                     <div class="send_message_cnt col-md-6">
-                        
-                        <form action="{{route('message.send', $apartment->id)}}" method="post">
-                            {{ csrf_field() }}
-                            {{ method_field('POST') }}
 
-                            <div class="form-group{{ $errors->has('name') ? 'has-error' : '' }}">
+                        <form id="send_message_form" action="{{route('message.send', $apartment->id)}}" method="post">
+                            {{ csrf_field() }}
+
+                            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                 <label for="name" class="col-md-12 control-label text-left pl-0">Nome</label>
                                 <div class="col-md-12">
-                                    <input id="name" type="text" class="form-control col-xs-12" name="name" placeholder="Insert your name">   
+                                    <input id="name" type="text" class="form-control col-xs-12" name="name" value="{{ !(Auth::guest()) ? Auth::user()->name : null }}" placeholder="Insert your name">   
                                 </div>
                             </div>
 
-                            <div class="form-group{{ $errors->has('surname') ? 'has-error' : '' }}">
+                            <div class="form-group{{ $errors->has('surname') ? ' has-error' : '' }}">
                                 <label for="surname" class="col-md-12 control-label text-left pl-0">Cognome</label>
                                 <div class="col-md-12">
-                                    <input id="surname" type="text" class="form-control col-xs-12" name="surname" placeholder="Insert your surname">   
+                                    <input id="surname" type="text" class="form-control col-xs-12" name="surname" value="{{ !(Auth::guest()) ? Auth::user()->surname : null }}" placeholder="Insert your surname">   
                                 </div>
                             </div>
         
-                            <div class="form-group{{ $errors->has('email') ? 'has-error' : '' }}">
+                            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                                 <label for="email" class="col-md-12 control-label text-left pl-0">e-mail</label>
                                 <div class="col-md-12">
                                     <input id="email" type="text" class="form-control col-xs-12" name="email" value="{{ !(Auth::guest()) ? Auth::user()->email : null }}" placeholder="Insert your email">   
                                 </div>
                             </div>
         
-                            <div class="form-group{{ $errors->has('message_content') ? 'has-error' : '' }}">
+                            <div class="form-group{{ $errors->has('message_content') ? ' has-error' : '' }}">
                                 <label for="message_content" class="col-md-12 control-label text-left">Messaggio</label>
                                 <div class="col-md-12">
-                                    <textarea class="form-control col-xs-12" name="message_content" type="text" id="message_content" cols="30" rows="8" placeholder="Invia un messaggio al proprietario"></textarea>  
+                                    <textarea class="form-control" name="message_content" type="text" id="message_content" cols="30" rows="8" placeholder="Invia un messaggio al proprietario"></textarea>  
+                                    @if ($errors->has('message_content'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('message_content') }}</strong>
+                                        </span>
+                                     @endif
                                 </div>
                             </div>
         
                             <div class="form-group">
                                 <div class="col-md-12">
-                                    <input id="email" type="submit" class="form-control col-xs-12 btn btn-primary" value="Invia">
+                                    <input type="submit" class="form-control col-xs-12 btn btn-primary" value="Invia">
                                 </div>
                             </div>
                             
