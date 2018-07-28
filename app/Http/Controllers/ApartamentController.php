@@ -220,8 +220,6 @@ class ApartamentController extends Controller
         else{
             $images_url_container[] = 'placeholder.jpg';
         }
-               
-        dd($images_url_container);
 
         return view('publicViews.showApartment', [
             'apartment' => $apart, 

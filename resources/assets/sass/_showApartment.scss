@@ -1,5 +1,13 @@
 $height_bottom_cnt : 400px;
 
+.carousel-inner{
+    .item{
+        img{
+            width: 100%;
+        }
+    }
+}
+
 .send_message_cnt * {
     padding-left: 0;
 }

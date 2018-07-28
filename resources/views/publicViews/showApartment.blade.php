@@ -14,8 +14,7 @@
                             <ol class="carousel-indicators">
                                 @foreach($images as $image)
                                     <li data-target="#carousel-example-generic" data-slide-to="{{ $loop->iteration }}" class="{{ ($loop->iteration == 1) ? 'active' : null}}"></li>
-                                @endforeach
-                                
+                                @endforeach 
                             </ol>
 
                             <!-- Wrapper for slides -->
@@ -88,7 +87,7 @@
                     {{-- Form to send message --}}
                     <div class="send_message_cnt col-md-6">
 
-                        <form id="send_message_form" action="{{route('message.send', $apartment->id)}}" method="post">
+                        <form class="{{ (Auth::user()->id == $apartment->user_id) ? "hidden" : null }}" id="send_message_form" action="{{route('message.send', $apartment->id)}}" method="post">
                             {{ csrf_field() }}
 
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">

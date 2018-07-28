@@ -8424,6 +8424,10 @@ div.delete-popup form#delete_form {
     } */
 }
 
+.carousel-inner .item img {
+  width: 100%;
+}
+
 .send_message_cnt * {
   padding-left: 0;
 }
