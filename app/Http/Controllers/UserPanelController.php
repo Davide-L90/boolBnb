@@ -86,7 +86,10 @@ class UserPanelController extends Controller
         $filtered_messages = $joined_table->whereHas('apartament', function ($query) use($userId) { 
             $query->where('user_id', $userId); 
         })->get();
-        /* dd($filtered_messages); */
+
+        
+        /* dd($filtered_messages->sortByDesc('created_at')); */
+
         return view('userLogged.inbox', ['filtered_messages' => $filtered_messages]);
     }
 }

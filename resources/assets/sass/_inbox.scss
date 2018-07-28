@@ -1,0 +1,43 @@
+.message_cnt {
+    border: 1px solid #002CF9 !important;
+    margin: 5px 0;
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px;
+    
+
+    .info_msg {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+
+        & span {
+            width: 100%; 
+        }
+
+        
+
+
+    }
+    
+}
+
+
+@media screen and (min-width: 768px) {
+  .message_cnt {
+
+    .info_msg {
+
+        & span {
+           width: 25%; 
+        }
+
+        
+
+
+    }
+    
+}
+}

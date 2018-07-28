@@ -8436,3 +8436,41 @@ div.delete-popup form#delete_form {
   height: 100%;
 }
 
+.message_cnt {
+  border: 1px solid #002CF9 !important;
+  margin: 5px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 0 10px;
+}
+
+.message_cnt .info_msg {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: left;
+}
+
+.message_cnt .info_msg span {
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .message_cnt .info_msg span {
+    width: 25%;
+  }
+}
+
