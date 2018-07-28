@@ -70,14 +70,11 @@ class UserPanelController extends Controller
         ]);
     }
 
-    public function showInbox()
+    public function showInbox(Request $request)
     {
+
         $userId = Auth::user()->id;
         $apartments = Apartament::where('user_id', $userId)->get();
-
-        /* dd($apartments); */
-
-        $messages_for_apartments = [];
 
         $messages = new Message();
 
@@ -85,11 +82,35 @@ class UserPanelController extends Controller
 
         $filtered_messages = $joined_table->whereHas('apartament', function ($query) use($userId) { 
             $query->where('user_id', $userId); 
-        })->get();
-
-        
+        });      
+ 
         /* dd($filtered_messages->sortByDesc('created_at')); */
 
-        return view('userLogged.inbox', ['filtered_messages' => $filtered_messages]);
+        if ($request->ajax()) {
+
+            $filtered_messages = $filtered_messages->join('apartaments', 'messages.apartament_id', '=', 'apartaments.id');
+            
+            if ($request->apartment_id == -1) {
+
+                $filtered_messages = $filtered_messages->get();
+            } else {
+                $filtered_messages = $filtered_messages->where('apartament_id', $request->apartment_id)->get();
+            }
+
+            return response()->json([
+                'response' => 'ok',
+                'ap_id' => $request->apartment_id,
+                'filtered_message' => $filtered_messages
+            ]);
+        }
+
+        $filtered_messages = $filtered_messages->get();
+
+        return view('userLogged.inbox', [
+            'user_apartments' => $apartments, 
+            'filtered_messages' => $filtered_messages
+        ]);
     }
+
+   
 }
