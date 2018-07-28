@@ -106,6 +106,13 @@
 
 @section('additional-scripts')
     <script type="text/javascript">
+
+        $(document).ready(function() {
+            $("#address").geocomplete({ 
+                details: "#apartment_form" 
+            });
+        });
+
         Dropzone.options.dropzone =
          {
             maxFilesize: 12,
