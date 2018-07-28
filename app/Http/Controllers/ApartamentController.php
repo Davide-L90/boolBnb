@@ -201,7 +201,19 @@ class ApartamentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
+    {   
+        /*
+            If user is logged the form on his apartments notice 
+            will be set hiddes. The control below return the id or -1
+            at showApartment view
+        */
+        $userId = Auth::user();
+        if (is_null($userId) ) {
+            $userId = -1;
+        } else {
+            $userId = Auth::user()->id;            
+        }
+
         $apart = Apartament::find($id);
         $feat = $apart->features;
         $images = Image::where('apartament_id', $apart->id)->get();
@@ -222,6 +234,7 @@ class ApartamentController extends Controller
         }
 
         return view('publicViews.showApartment', [
+            'user_logged_id' => $userId,
             'apartment' => $apart, 
             'features' => $feat,
             'images' => $images_url_container

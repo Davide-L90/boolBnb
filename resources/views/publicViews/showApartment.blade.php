@@ -86,8 +86,8 @@
 
                     {{-- Form to send message --}}
                     <div class="send_message_cnt col-md-6">
-
-                        <form class="{{ (Auth::user()->id == $apartment->user_id) ? "hidden" : null }}" id="send_message_form" action="{{route('message.send', $apartment->id)}}" method="post">
+                        {{-- {{ dd(Auth::user()) }} --}}
+                        <form class="{{ ($user_logged_id == $apartment->user_id) ? "hidden" : null }}" id="send_message_form" action="{{route('message.send', $apartment->id)}}" method="post">
                             {{ csrf_field() }}
 
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
