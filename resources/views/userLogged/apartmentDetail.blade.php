@@ -97,7 +97,7 @@
                     </form>        
             </div>
             <div class="buttons-cnt">
-                buttons
+                <a href="{{ route('show.sponsors', $apartment_details->id) }}" class="btn btn-primary">Sponsorizza appartamento</a>
             </div>
         </div>
     </div>

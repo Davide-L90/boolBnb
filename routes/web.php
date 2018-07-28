@@ -27,6 +27,9 @@ Route::middleware('isLogged')->group(function (){
     Route::get('/home', 'UserPanelController@index')->name('home');
     Route::get('/user-logged-apartment-detail/{apartment_id}', 'UserPanelController@showApartmentDetail')->name('ownerApartmentDetails');
     Route::get('/home/inbox', 'UserPanelController@showInbox')->name('inbox.show');
+    Route::get('/user-logged-apartment-detail/{apartment_id}/sponsor', function($apart_id){
+        return view('userLogged.sponsorship', ['apartment_id' => $apart_id]);
+    })->name('show.sponsors');
 
     Route::resource('apartaments', 'ApartamentController');
 
