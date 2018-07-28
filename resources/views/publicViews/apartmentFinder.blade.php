@@ -20,7 +20,7 @@
 
                     <form id="re_search" class="form-horizontal" method="GET" action="{{ route('apartments.results') }}">           
                         
-                        <div class="form-group{{ $errors->has('address') ? 'has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
                             <label for="address" class="col-md-12 control-label text-left">Indirizzo</label>
                             <div class="col-md-12">
                                 <input id="address" type="text" class="form-control col-xs-12" name="address" value="{{ $request_field->address }}" required autofocus>   
@@ -39,21 +39,21 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('beds_number') ? 'has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('beds_number') ? ' has-error' : '' }}">
                             <label for="beds_number" class="col-md-12 control-label text-left">Posti letto</label>
                             <div class="col-md-12">
                                 <input id="beds_number" type="number" class="form-control col-xs-12" name="beds_number" value="{{ $request_field->beds_number }}">   
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('bathrooms_number') ? 'has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('bathrooms_number') ? ' has-error' : '' }}">
                             <label for="bathrooms_number" class="col-md-12 control-label text-left">Numero bagni</label>
                             <div class="col-md-12">
                                 <input id="bathrooms_number" type="number" class="form-control col-xs-12" name="bathrooms_number" value="{{ $request_field->bathrooms_number }}">   
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('distance') ? 'has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('distance') ? ' has-error' : '' }}">
                             <label for="distance" class="col-md-12 control-label text-left">Cerca nel raggio di Km...</label>
                             <div class="col-md-12">
                                 <input id="distance" type="number" class="form-control col-xs-12" name="distance" value="{{ $request_field->distance }}">   
@@ -82,11 +82,9 @@
 
                 <h1> Non sono stati trovati appartamenti in questa zona </h1>        
                 <h3> {{ $address_searched }} </h3> 
-                <a href=" {{ route('welcome') }} " class="btn btn-primary" role="button">Cerca in un\'altra zona</a>
-            @endif        
-                    
+                <a href=" {{ route('welcome') }} " class="btn btn-primary" role="button">Cerca in un' altra zona</a>
+            @endif                 
         </div>       
-
     </div>
 
     
@@ -100,7 +98,7 @@
         $(document).ready(function() {
 
             $("#address").geocomplete({ 
-                details: "#apartment_search_form" 
+                details: "#re_search"; 
             });
 
             $('#re_search').on('submit', function(event) {
@@ -145,9 +143,7 @@
                         "features[]" : features
                     },
                     beforeSend:function() {
-                        $('body').css('backgroundColor', 'red');
-                        console.log('ciao');
-                        
+                        $('body').css('backgroundColor', 'red');                        
                     },          
                     success:function(data, stato) {
                         console.log( data.html );

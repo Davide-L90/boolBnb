@@ -75,12 +75,8 @@
                                         <p>{{$feature->name}}</p>
                                     </li>
                                 @endforeach    
-                            </ul>    
-                                 
+                            </ul>               
                         </div>
-        
-        
-            
                     </div>
                 </div>
                 <div class="detail_cnt_right col-xs-12">

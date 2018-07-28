@@ -1,5 +1,5 @@
+         
 @foreach($apartmentsToShow as $apartment)
-                    
     <div class="col-sm-6 col-md-4">
         <div class="thumbnail">
         <img src="https://www.orogel.it/media/immagini/190_z_carote_e_vitaminaA.jpg" alt="...">

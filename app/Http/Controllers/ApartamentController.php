@@ -22,7 +22,10 @@ class ApartamentController extends Controller
         $request->validate([
             'address' => 'required|string|max:255'
         ]);
-            
+        $indirizzo = $request->address;
+        $latitudine = $request->lat;
+        $longitudine = $request->lng;
+        
         $apartments = new Apartament();
         $featuresDB = Feature::all();
         
@@ -34,6 +37,7 @@ class ApartamentController extends Controller
         if (!empty($request->bathrooms_number)) {        
             $apartments = $apartments->where('bathrooms_number', '>=', $request->bathrooms_number);
         }
+        
 
         
         
@@ -90,7 +94,7 @@ class ApartamentController extends Controller
         /* dd($apartments); */
 
         $apartments = $apartments->get();
-
+        
         $distanceToSearch = 20; //Distance search default value
         
         if(!empty($request->distance))
@@ -100,7 +104,7 @@ class ApartamentController extends Controller
         
         $apartmentsToShow = [];
         
-
+        // dd($indirizzo, $latitudine, $longitudine);
         foreach ($apartments as $apartment) {
             $distance = $this->distance($request->lat, $request->lng, $apartment['latitude'], $apartment['longitude']);
             
@@ -118,17 +122,15 @@ class ApartamentController extends Controller
             return $a['distance'] <=> $b['distance'];
         });
 
-        /* dd($apartmentsToShow); */
+        // dd($apartmentsToShow);
         
         if($request->ajax()){ 
-
+            
             /* dd($apartmentsToShow); */
             /* $r = $request->beds_number;
             $ap = new Apartament();
             $ap = $ap->where('beds_number', '>=', $request->beds_number)->get(); */
-
             $html = view('components.apartments_cards', ['apartmentsToShow' => $apartmentsToShow])->render();
-
             return response()->json([
                 "log" => "Chiamata AJAX",
                 /* 'res' => $results, */
@@ -187,7 +189,7 @@ class ApartamentController extends Controller
         $new_apartment->save();
                 
         $new_apartment->features()->sync($features);
-
+        
         return redirect()->route('home');
 
     }
@@ -204,19 +206,22 @@ class ApartamentController extends Controller
         $feat = $apart->features;
         $images = Image::where('apartament_id', $apart->id)->get();
 
-        $images_container = [];
+        $images_url_container = [];
 
-        foreach ($images as $image) {
-            
-            $image_exist = Storage::disk('public')->exists($image->title);            
-
-            if ($image_exist) {
-                $images_url_container[] = $image->title;
-            }
-            
-        }        
+        if($images->isNotEmpty()){
+            foreach ($images as $image) {
+                
+                $image_exist = Storage::disk('public')->exists($image->title);            
+                if ($image_exist) {
+                    $images_url_container[] = $image->title;
+                } 
+            }        
+        }
+        else{
+            $images_url_container[] = 'placeholder.jpg';
+        }
                
-        /* dd($images_url_container); */
+        dd($images_url_container);
 
         return view('publicViews.showApartment', [
             'apartment' => $apart, 
@@ -317,7 +322,4 @@ class ApartamentController extends Controller
         
         return $km;
     }
-
-
-
 }
