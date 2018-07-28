@@ -1,8 +1,9 @@
          
 @foreach($apartmentsToShow as $apartment)
+
     <div class="col-sm-6 col-md-4">
         <div class="thumbnail">
-        <img src="https://www.orogel.it/media/immagini/190_z_carote_e_vitaminaA.jpg" alt="...">
+        <img src="{{ asset('storage/'.$apartment['thumbnail']) }}" alt="...">
         <div class="caption">
             <h3> {{ $apartment['apartment']['title'] }} </h3>
             <p> {{ $apartment['apartment']['price'] }} &euro;/mese </p>
@@ -11,5 +12,5 @@
         </div>
         </div>
     </div>
-                        
+
 @endforeach

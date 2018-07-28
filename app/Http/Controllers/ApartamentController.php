@@ -37,11 +37,6 @@ class ApartamentController extends Controller
         if (!empty($request->bathrooms_number)) {        
             $apartments = $apartments->where('bathrooms_number', '>=', $request->bathrooms_number);
         }
-        
-
-        
-        
-        
 
         /*  Define temp array that will contain all features sent by reqeust or nothing
             it will be used to check checked checkbox and to fill a $checked_and_notChecked array
@@ -106,13 +101,23 @@ class ApartamentController extends Controller
         
         // dd($indirizzo, $latitudine, $longitudine);
         foreach ($apartments as $apartment) {
+
             $distance = $this->distance($request->lat, $request->lng, $apartment['latitude'], $apartment['longitude']);
             
             if($distance < $distanceToSearch){
-               
+                $thumbnail = Image::where('apartament_id', $apartment->id)->first();
+                    
+                if( !(is_null($thumbnail))  && (Storage::disk('public')->exists($thumbnail->title)) ){
+                    $thumbnail = $thumbnail->title;     
+                }
+                else{
+                    $thumbnail = 'placeholder.jpg';
+                }
+
                 $apartmentsToShow[] = [
                     'apartment' => $apartment,
-                    'distance' => $distance
+                    'distance' => $distance,
+                    'thumbnail' => $thumbnail
                 ];
             }
         }
@@ -122,8 +127,13 @@ class ApartamentController extends Controller
             return $a['distance'] <=> $b['distance'];
         });
 
-        // dd($apartmentsToShow);
+        /* dd($apartmentsToShow); */
         
+
+        $images_url_container = [];
+
+        
+
         if($request->ajax()){ 
             
             /* dd($apartmentsToShow); */

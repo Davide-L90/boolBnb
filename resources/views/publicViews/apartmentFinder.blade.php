@@ -104,7 +104,7 @@
             });
 
             $('#re_search').on('submit', function(event) {
-                // event.preventDefault();
+                event.preventDefault();
                 
                 /* 
                     Get input value of address field and change the address showed 

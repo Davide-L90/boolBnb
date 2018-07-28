@@ -55,6 +55,7 @@
                     success:function(data, stato) {
                         console.log( data.filtered_message );
                         $('body').css('background', 'transparent');
+                        
                         $('.message_cnt').remove();
                             //On success, the old html will be changed with result of ajax call's response
                             $.each(data.filtered_message, function(k, v) {
