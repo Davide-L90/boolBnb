@@ -105,6 +105,7 @@ class ApartamentController extends Controller
             $distance = $this->distance($request->lat, $request->lng, $apartment['latitude'], $apartment['longitude']);
             
             if($distance < $distanceToSearch){
+                
                 $thumbnail = Image::where('apartament_id', $apartment->id)->first();
                     
                 if( !(is_null($thumbnail))  && (Storage::disk('public')->exists($thumbnail->title)) ){
