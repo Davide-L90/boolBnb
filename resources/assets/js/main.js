@@ -9,14 +9,19 @@ $(document).ready(function() {
         $('form').submit(function(e) {
             
             /* Value from input field */
-            var name = $('#name').val();
-            var surname = $('#surname').val();
-            var stringDate = $('#date_of_birth').val();
+            var name_field = $('#name'); 
+            var name_value = name_field.val();
+
+            var surname_field = $('#surname'); 
+            var surname_value = surname_field.val();
+            
+            var stringDate_field = $('#date_of_birth');
+            var stringDate_value = stringDate_field.val()
 
             /* Import Moment.js */
             var moment = require('moment');
             
-            var bornDate = moment(stringDate);
+            var bornDate = moment(stringDate_value);
             var today = moment();
 
             /* 
@@ -30,19 +35,20 @@ $(document).ready(function() {
             */
             var canSubmit = true;
 
+            errorReset();
+
             var hasNumber = /\d/;
-            if( hasNumber.test(name) ) {
-                alert('nome contiene un numero');
+            if( hasNumber.test(name_value) ) {
+                showError(name_field, 'Il nome non può contenere numeri');
                 canSubmit = false;
             }
-            if (hasNumber.test(surname)) {
-                alert('cognome contiene un numero');
+            if (hasNumber.test(surname_value)) {
+                showError(surname_field, 'Il cognome non può contenere numeri');
                 canSubmit = false;
             }
             if (yearDifference < 18) {
-                alert('Per registrarti devi essere maggiorenne');
+                showError(stringDate_field, 'Per registrarti devi essere maggiorenne');
                 canSubmit = false;
-
             }
             
             return canSubmit;
@@ -57,6 +63,71 @@ $(document).ready(function() {
     var hasApartmentEditForm = $('#app').children().hasClass('apartment-detail');
     console.log(hasApartmentsAddForm);
     console.log(hasApartmentEditForm);
+
+    var hasApartmentSearchForm = $('body').find('.search_form_validation');
+    var hasResultsFilterForm = $('body').find('.filter_form_validation');
+    
+    if (hasApartmentSearchForm.length != 0 ||
+        hasResultsFilterForm.length != 0) {
+
+        $('#apartment_search_form').submit(function (e) {
+            var address_field = $('#address');
+            var address_value = address_field.val();
+    
+            var beds_field = $('#beds_number');
+            var beds_value = beds_field.val();
+    
+            var bathrooms_field = $('#bathrooms_number');
+            var bathrooms_value = bathrooms_field.val();
+    
+            var distance_field = $('#distance');
+            var distance_value = distance_field.val();
+            
+            var canSubmit = true;
+
+            errorReset();
+            
+            if ( address_value.length == 0 ) {
+                showError(address_field, 'E\' necessario inserire l\'indirizzo');
+                canSubmit = false;            
+            }
+
+            if (beds_value.length != 0 && beds_value <= 0 ) {
+                showError(beds_field, 'Il numero di posti letto inserito deve essere maggiore o uguale a 0');
+                canSubmit = false;
+            }
+
+
+            if (bathrooms_value.length != 0 && beds_value.length != 0) {
+                if (bathrooms_value > beds_value) {
+                    showError(bathrooms_field, 'Il numero di bagni inserito deve essere minore dei posti letto richiesti');
+                    canSubmit = false;
+                } 
+            }
+            
+            if (bathrooms_value.length != 0 && bathrooms_value <= 0) {
+                showError(bathrooms_field, 'Il numero di bagni inserito deve essere maggiore o uguale a 0');
+                canSubmit = false;
+            }
+
+            if (distance_value.length != 0 && distance_value <= 0) {
+                showError(distance_field, 'Inserire un numero positivo');
+                canSubmit = false;
+            }
+
+            return canSubmit;
+
+        });    
+        
+        
+    }
+    
+    
+    console.log(hasApartmentSearchForm.length == 0);
+    console.log(hasResultsFilterForm.length == 0);
+
+    
+
 
     if (hasApartmentsAddForm || hasApartmentEditForm) {
         
@@ -81,9 +152,8 @@ $(document).ready(function() {
                 if true, the post will submit else return an error message
             */
             var canSubmit = true;
-
-            $('.help-block').remove();
-            $('.form-group').removeClass('has-error');
+            
+            errorReset();
             
             /* If statment for check the number of apartment rooms */
             if( isNaN(beds_value)                              ||
@@ -147,7 +217,7 @@ $(document).ready(function() {
     });
 
     /* 
-        when user click on deletApartment button a popup message appear
+        when user click on deleteApartment button a popup message appear
         for confirm the choice
     */
     $('.delete-id').click(function() {
@@ -217,8 +287,12 @@ $(document).ready(function() {
             '<span class="help-block">' + 
                 '<strong class="error_showed">' + message + '</strong>' + 
             '</span>'
-        );
-        
+        );        
+    }
+
+    function errorReset() {
+        $('.help-block').remove();
+        $('.form-group').removeClass('has-error');
     }
 });
 

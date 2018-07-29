@@ -3,7 +3,7 @@
     <div class="form-group{{ $errors->has('address') ? 'has-error' : '' }}">
         <label for="address" class="col-md-12 control-label text-left">Indirizzo</label>
         <div class="col-md-12">
-            <input id="address" type="text" class="form-control col-xs-12" name="address" value="{{ !empty($data['form_data']['request_field']) ? $data['form_data']['request_field']->address : null }}" required autofocus>   
+            <input id="address" type="text" class="form-control col-xs-12" name="address" value="{{ !empty($data['form_data']['request_field']) ? $data['form_data']['request_field']->address : null }}" >   
         </div>
     </div>
 

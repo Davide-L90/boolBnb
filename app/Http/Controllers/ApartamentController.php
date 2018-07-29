@@ -148,7 +148,7 @@ class ApartamentController extends Controller
         $data = [
             'form_data' => [
                 'id' => 're_search',
-                'class' => 'form-horizontal',
+                'class' => 'form-horizontal filter_form_validation',
                 'action' => route('apartments.results'),
                 'method' => 'GET',
                 'request_field' => $request,

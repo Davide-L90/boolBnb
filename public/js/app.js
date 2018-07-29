@@ -48198,14 +48198,19 @@ $(document).ready(function () {
         $('form').submit(function (e) {
 
             /* Value from input field */
-            var name = $('#name').val();
-            var surname = $('#surname').val();
-            var stringDate = $('#date_of_birth').val();
+            var name_field = $('#name');
+            var name_value = name_field.val();
+
+            var surname_field = $('#surname');
+            var surname_value = surname_field.val();
+
+            var stringDate_field = $('#date_of_birth');
+            var stringDate_value = stringDate_field.val();
 
             /* Import Moment.js */
             var moment = __webpack_require__(0);
 
-            var bornDate = moment(stringDate);
+            var bornDate = moment(stringDate_value);
             var today = moment();
 
             /* 
@@ -48219,17 +48224,19 @@ $(document).ready(function () {
             */
             var canSubmit = true;
 
+            errorReset();
+
             var hasNumber = /\d/;
-            if (hasNumber.test(name)) {
-                alert('nome contiene un numero');
+            if (hasNumber.test(name_value)) {
+                showError(name_field, 'Il nome non può contenere numeri');
                 canSubmit = false;
             }
-            if (hasNumber.test(surname)) {
-                alert('cognome contiene un numero');
+            if (hasNumber.test(surname_value)) {
+                showError(surname_field, 'Il cognome non può contenere numeri');
                 canSubmit = false;
             }
             if (yearDifference < 18) {
-                alert('Per registrarti devi essere maggiorenne');
+                showError(stringDate_field, 'Per registrarti devi essere maggiorenne');
                 canSubmit = false;
             }
 
@@ -48245,6 +48252,62 @@ $(document).ready(function () {
     var hasApartmentEditForm = $('#app').children().hasClass('apartment-detail');
     console.log(hasApartmentsAddForm);
     console.log(hasApartmentEditForm);
+
+    var hasApartmentSearchForm = $('body').find('.search_form_validation');
+    var hasResultsFilterForm = $('body').find('.filter_form_validation');
+
+    if (hasApartmentSearchForm.length != 0 || hasResultsFilterForm.length != 0) {
+
+        $('#apartment_search_form').submit(function (e) {
+            var address_field = $('#address');
+            var address_value = address_field.val();
+
+            var beds_field = $('#beds_number');
+            var beds_value = beds_field.val();
+
+            var bathrooms_field = $('#bathrooms_number');
+            var bathrooms_value = bathrooms_field.val();
+
+            var distance_field = $('#distance');
+            var distance_value = distance_field.val();
+
+            var canSubmit = true;
+
+            errorReset();
+
+            if (address_value.length == 0) {
+                showError(address_field, 'E\' necessario inserire l\'indirizzo');
+                canSubmit = false;
+            }
+
+            if (beds_value.length != 0 && beds_value <= 0) {
+                showError(beds_field, 'Il numero di posti letto inserito deve essere maggiore o uguale a 0');
+                canSubmit = false;
+            }
+
+            if (bathrooms_value.length != 0 && beds_value.length != 0) {
+                if (bathrooms_value > beds_value) {
+                    showError(bathrooms_field, 'Il numero di bagni inserito deve essere minore dei posti letto richiesti');
+                    canSubmit = false;
+                }
+            }
+
+            if (bathrooms_value.length != 0 && bathrooms_value <= 0) {
+                showError(bathrooms_field, 'Il numero di bagni inserito deve essere maggiore o uguale a 0');
+                canSubmit = false;
+            }
+
+            if (distance_value.length != 0 && distance_value <= 0) {
+                showError(distance_field, 'Inserire un numero positivo');
+                canSubmit = false;
+            }
+
+            return canSubmit;
+        });
+    }
+
+    console.log(hasApartmentSearchForm.length == 0);
+    console.log(hasResultsFilterForm.length == 0);
 
     if (hasApartmentsAddForm || hasApartmentEditForm) {
 
@@ -48264,17 +48327,12 @@ $(document).ready(function () {
             var price_field = $('#price');
             var price_value = parseInt(price_field.val());
 
-            /* var bathrooms_value = parseInt($('#bathrooms_value').val());
-            var area = $('#area').val();
-            var price = $('#price').val();   */
-
             /*
                 if true, the post will submit else return an error message
             */
             var canSubmit = true;
 
-            $('.help-block').remove();
-            $('.form-group').removeClass('has-error');
+            errorReset();
 
             /* If statment for check the number of apartment rooms */
             if (isNaN(beds_value) || beds_value - Math.floor(beds_value) != 0 || beds_value <= 0 || beds_value >= 255) {
@@ -48303,69 +48361,10 @@ $(document).ready(function () {
 
             if (isNaN(price_value) || price_value - Math.floor(price_value) != 0 || price_value <= 0) {
 
-                showError(price_field, 'Inserisci un valore di superficie plausibile, intero e maggiore di zero');
+                showError(price_field, 'Inserisci un prezzo plausibile, intero e maggiore di zero');
 
                 canSubmit = false;
             }
-
-            /*  if(){
-                 alert('Devi inserire un numero positivo');
-                 canSubmit = false;
-             }
-             if () {
-                 alert('Hai inserito un numero non veritiero');
-                 canSubmit = false;
-             } */
-            /* If statment for check the number of apartment bathrooms */
-            /* if (isNaN(bathrooms_number)) {
-                alert('Devi inserire un numero');
-                canSubmit = false;
-             } */
-            /* if ((bathrooms_number - Math.floor(bathrooms_number)) != 0) {
-                alert('Devi inserire un numero intero');
-                canSubmit = false;
-             } */
-            /* if (bathrooms_number <= 0) {
-                alert('Devi inserire un numero positivo');
-                canSubmit = false;
-            }
-            if (bathrooms_number >= 255) {
-                alert('Hai inserito un numero non veritiero');
-                canSubmit = false;
-            }
-            
-            if (bathrooms_number >= beds_number) {
-                alert('Non puoi avere un numero di bagni maggiore o uguale delle stanze totali');
-                canSubmit = false;
-            }  */
-
-            /* If statment for check the area value of apartment */
-            /* if (isNaN(area)) {
-                alert('Devi inserire un numero');
-                canSubmit = false;
-             }
-            else if ((area - Math.floor(area)) != 0) {
-                alert('Devi inserire un numero intero');
-                canSubmit = false;
-             }
-            if (area <= 0) {
-                alert('La superficie dell\'appartamento deve essere positiva');
-                canSubmit = false;
-             } */
-
-            /* If statment for check the price of apartment */
-            /*  if ((isNaN(price)) || ((price - Math.floor(price)) != 0) || (price <= 0)) {
-                 alert('Inserisci un prezzo corretto');
-                 canSubmit = false;
-              } */
-            /* if ((price - Math.floor(price)) != 0) {
-                alert('Devi inserire un numero intero');
-                canSubmit = false;
-             }
-            if (price <= 0) {
-                alert('Devi inserire un numero positivo');
-                canSubmit = false;
-             } */
 
             var lat = parseFloat($('#lat').val());
             $('#lat').val(lat.toFixed(8));
@@ -48384,7 +48383,7 @@ $(document).ready(function () {
     });
 
     /* 
-        when user click on deletApartment button a popup message appear
+        when user click on deleteApartment button a popup message appear
         for confirm the choice
     */
     $('.delete-id').click(function () {
@@ -48448,6 +48447,11 @@ $(document).ready(function () {
     function showError(field_obj, message) {
         field_obj.parents('.form-group').addClass('has-error');
         field_obj.parent().append('<span class="help-block">' + '<strong class="error_showed">' + message + '</strong>' + '</span>');
+    }
+
+    function errorReset() {
+        $('.help-block').remove();
+        $('.form-group').removeClass('has-error');
     }
 });
 
