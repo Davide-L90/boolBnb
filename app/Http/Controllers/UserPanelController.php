@@ -34,8 +34,7 @@ class UserPanelController extends Controller
         $features = Feature::all();
         $apartments = Apartament::where('user_id', $userId)->get();
 
-        foreach ($apartments as $apartment) {
-            //dd($apartment);
+        foreach ($apartments as $apartment) {            
             $thumbnail = Image::where('apartament_id', $apartment->id)->first();
 
             if ( !(is_null($thumbnail)) && (Storage::disk('public')->exists($thumbnail->title)) ) {
@@ -44,12 +43,32 @@ class UserPanelController extends Controller
             else{
                 $thumbnail = 'placeholder.jpg';
             }
-            $apartment['thumbnail'] = $thumbnail;
-            
-            
+            $apartment['thumbnail'] = $thumbnail;            
+        }        
+
+        $list_of_features = [];
+        foreach ($features as $feature) {
+            $item = [
+                'id' => $feature['id'],
+                'name' => $feature['name'],
+                'isChecked' => false
+            ];
+
+            $list_of_features[] = $item;
         }
 
-        return view('userLogged.userPanel', ['features' => $features, 'apartments' => $apartments]);
+        $data = [
+            'form_data' => [
+                'id' => 'apartment_form',
+                'class' => 'form-horizontal',
+                'action' => route('apartaments.store'),
+                'method' => 'POST',
+                'apartment_details' => [],
+                'apartment_features' => $list_of_features,
+            ]
+        ];
+
+        return view('userLogged.userPanel', ['features' => $features, 'apartments' => $apartments, 'data' => $data]);
     }
 
     public function showApartmentDetail($apartment_id)
@@ -61,8 +80,8 @@ class UserPanelController extends Controller
         $features_checked = Apartament::find($apartment_id)->features;
 
         /* 
-            Create a custom features array with field 'isChecked to make appear checkbox in 
-            userLogged.apartmentDetail view checked  
+            Create a custom features array with field 'isChecked' to make appear checked 
+            the checkbox in userLogged.apartmentDetail view 
         */
         $list_of_features = [];
         foreach ($all_features as $feature) {            
@@ -82,10 +101,28 @@ class UserPanelController extends Controller
             }               
             $list_of_features[] = $item;
         }
+
+        $data = [
+            'form_data' => [
+                'id' => 'apartment_form',
+                'class' => 'form-horizontal',
+                'action' => route('apartaments.update', $apartment_details->id),
+                'method' => 'PUT',
+                'apartment_details' => $apartment_details,
+                'apartment_features' => $list_of_features,
+            ]
+        ];
         
         return view('userLogged.apartmentDetail', [
-            'apartment_details' => $apartment_details,
+            /* 'apartment_details' => $apartment_details,
             'apartment_features' => $list_of_features,
+            'form_data' => [
+                'action' => route('apartaments.update', $apartment_details->id),
+                'method' => 'PUT',
+                'id' => 'apartment_form',
+                'class' => 'form-horizontal'
+            ], */
+            'data' => $data
         ]);
     }
 

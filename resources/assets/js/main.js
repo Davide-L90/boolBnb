@@ -123,7 +123,7 @@ $(document).ready(function() {
                 (price_value - Math.floor(price_value)) != 0 ||
                 (price_value <= 0)) {
 
-                showError(price_field, 'Inserisci un valore di superficie plausibile, intero e maggiore di zero');
+                showError(price_field, 'Inserisci un prezzo plausibile, intero e maggiore di zero');
 
                 canSubmit = false;
 

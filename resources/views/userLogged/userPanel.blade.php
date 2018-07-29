@@ -1,5 +1,5 @@
 @extends('layouts.app')
-<script src=" {{ config('external_api.google_maps.base_path') }}&amp;key={{ config('external_api.google_maps.api_key') }}"></script>
+
 
 @section('content')
 
@@ -52,135 +52,17 @@
     {{-- {{ route('apartaments.destroy', $apartment->id) }} --}}
     </div>
 
-{{-- Hidden form for add an apartment --}}
+    {{-- Hidden form for add an apartment --}}
     <div class="container apartments-add-form">
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
                 <div class="panel panel-default">                
-                    <div class="panel-heading">Add Apartments detail</div>
-                        
-                    <div class="panel-body">                        
-                        <form id="apartment_form" class="form-horizontal" method="POST" action=" {{ route('apartaments.store') }} ">
-                            {{ csrf_field() }}
-                            <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
-                                <label for="title" class="col-md-2 control-label">Title</label>
-
-                                <div class="col-md-9">
-                                    <input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}" required autofocus>
-                                    @if ($errors->has('title'))
-                                        <span class="help-block">
-                                            <strong>{{ $errors->first('title') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div> 
-
-                            <div class="form-group{{ $errors->has('beds_number') ? ' has-error' : '' }}">
-                                <label for="beds_number" class="col-md-2 control-label">Posti Letto</label>
-
-                                <div class="col-md-9">
-                                    <input id="beds_number" type="text" class="form-control" name="beds_number" value="{{ old('beds_number') }}" placeholder"" required autofocus>
-                                    @if ($errors->has('beds_number'))
-                                        <span class="help-block">
-                                            <strong>{{ $errors->first('beds_number') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
-
-                            <div class="form-group{{ $errors->has('bathrooms_number') ? ' has-error' : '' }}">
-                                <label for="bathrooms_number" class="col-md-2 control-label">Numero bagni</label>
-
-                                <div class="col-md-9">
-                                    <input id="bathrooms_number" type="text" class="form-control" name="bathrooms_number" value="{{ old('bathrooms_number') }}" required autofocus>
-                                    @if ($errors->has('bathrooms_number'))
-                                        <span class="help-block">
-                                            <strong>{{ $errors->first('bathrooms_number') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
-
-                            <div class="form-group{{ $errors->has('area') ? ' has-error' : '' }}">
-                                <label for="area" class="col-md-2 control-label">Metri quadrati</label>
-
-                                <div class="col-md-9">
-                                    <input id="area" type="text" class="form-control" name="area" value="{{ old('area') }}" required autofocus>
-                                    @if ($errors->has('area'))
-                                        <span class="help-block">
-                                            <strong>{{ $errors->first('area') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
-
-
-                            <div class="form-group{{ $errors->has('price') ? ' has-error' : '' }}">
-                                <label for="price" class="col-md-2 control-label">Prezzo</label>
-
-                                <div class="col-md-9">
-                                    <input id="price" type="text" class="form-control" name="price" value="" required autofocus>
-                                    @if ($errors->has('price'))
-                                        <span class="help-block">
-                                            <strong>{{ $errors->first('price') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
-
-                            <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
-                                <label for="address" class="col-md-2 control-label">Indirizzo</label>
-
-                                <div class="col-md-9">
-                                    <input id="address" type="text" class="form-control" name="address" value="{{ old('address') }}" required autofocus>
-                                    @if ($errors->has('address'))
-                                        <span class="help-block">
-                                            <strong>{{ $errors->first('address') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
-
-                            <div class="hidden form-group{{ $errors->has('lat') ? ' has-error' : '' }}">
-                                <div class="col-md-9">
-                                    <input id="lat" type="text" class="form-control" name="lat" value="{{ old('lat') }}" >
-                                </div>
-                            </div>
-
-                            <div class="hidden form-group{{ $errors->has('lng') ? ' has-error' : '' }}">
-                                <div class="col-md-9">
-                                    <input id="lng" type="text" class="form-control" name="lng" value="{{ old('lng') }}" >
-                                </div>
-                            </div>
-
-
-                            <div class="form-group{{ $errors->has('features') ? ' has-error' : '' }}">
-                                <label for="features" class="col-md-2 control-label">Servizi Aggiuntivi</label>
-
-                                <div class="col-md-9">
-                                    @foreach($features as $feature)
-                                        <label class="col-md-8" for="{{ $feature['name'] }}">{{ $feature['name'] }}</label>
-                                        <input type="checkbox" class="col-md-4" name="features[]" id="{{ $feature['name'] }}" value="{{ $feature['id'] }}" autofocus> 
-                                    @endforeach
-                                    
-                                    @if ($errors->has('features'))
-                                        <span class="help-block">
-                                            <strong>{{ $errors->first('features') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
-                            
-                            <div class="form-group">
-                                <div class="col-md-6 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        Add
-                                    </button>
-                                </div>
-                            </div>                        
-
-                        </form>
+                    <div class="panel-heading">
+                        Add Apartments detail
                     </div>
+
+                    @include('components.add_edit_form')                        
+                    
                 </div>                
             </div>    
         </div>
@@ -189,14 +71,3 @@
 
 @endsection
 
-@section('additional-scripts')
-
-    <script>
-            $(document).ready(function() {
-                $("#address").geocomplete({ 
-                    details: "#apartment_form" 
-                });
-            })
-    </script>
-
-@endsection

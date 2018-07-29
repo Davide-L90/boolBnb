@@ -12,7 +12,8 @@
         {{-- libraries --}}
         <script src="{{ asset('js/app.js') }}"></script>
         <script src="{{ asset('js/libraries.js') }}"></script>
-        {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/dropzone.js"></script> --}}
+        <script src=" {{ config('external_api.google_maps.base_path') }}&amp;key={{ config('external_api.google_maps.api_key') }}"></script>
+       
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
