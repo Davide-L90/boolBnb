@@ -15,7 +15,7 @@
                         @if(!empty($apartments))
                             @foreach($apartments as $apartment)
                                 <div class="card{{ !($apartment->is_active) ? ' disabled-card' : null }}" style="width: 18rem;">
-                                    <img class="img-responsive thumbnail" src="https://www.orogel.it/media/immagini/190_z_carote_e_vitaminaA.jpg" alt="Card image cap">
+                                    <img class="img-responsive thumbnail" src="{{ asset('storage/'.$apartment->thumbnail) }}" alt="Card image cap">
                                     <div class="card-body">
                                         <h5 class="card-title">{{ $apartment->title }}</h5>
                                         <a href=" {{ route('ownerApartmentDetails', $apartment->id) }} " class="btn btn-primary">Visualizza dettagli</a>

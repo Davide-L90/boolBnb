@@ -7,6 +7,9 @@ use App\Model\Feature;
 use App\Model\Apartament;
 use Illuminate\Support\Facades\Auth;
 use App\Model\Message;
+use App\Model\Image;
+use Illuminate\Support\Facades\Storage;
+
 
 class UserPanelController extends Controller
 {
@@ -30,6 +33,22 @@ class UserPanelController extends Controller
         $userId = Auth::user()->id;
         $features = Feature::all();
         $apartments = Apartament::where('user_id', $userId)->get();
+
+        foreach ($apartments as $apartment) {
+            //dd($apartment);
+            $thumbnail = Image::where('apartament_id', $apartment->id)->first();
+
+            if ( !(is_null($thumbnail)) && (Storage::disk('public')->exists($thumbnail->title)) ) {
+                $thumbnail = $thumbnail->title;     
+            }
+            else{
+                $thumbnail = 'placeholder.jpg';
+            }
+            $apartment['thumbnail'] = $thumbnail;
+            
+            
+        }
+
         return view('userLogged.userPanel', ['features' => $features, 'apartments' => $apartments]);
     }
 
