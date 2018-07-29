@@ -83,46 +83,17 @@
                 </div>
             @endif
 
-            <div class="content">
-                <div class="title m-b-md">
-                    BoolBnb
+            <div class="container content">
+                <div class="row">
+
+                    <div class="title m-b-md">
+                        BoolBnb
+                    </div>
+
+                    @include('components.search_form')                    
+                    
                 </div>
-            <form id="apartment_search_form" action="{{ route('apartments.results') }}" method="get">
-                    
-                    <input class="form-group" id="address" name="address" type="text" placeholder="Inserisci indirizzo" request autofocus>
-                    <div class="hidden form-group{{ $errors->has('lat') ? ' has-error' : '' }}">
-                        <div class="col-md-9">
-                            <input id="lat" type="hidden" class="form-control" name="lat" value="{{ old('lat') }}" >
-                        </div>
-                    </div>
-
-                    <div class="hidden form-group{{ $errors->has('lng') ? ' has-error' : '' }}">
-                        <div class="col-md-9">
-                            <input id="lng" type="hidden" class="form-control" name="lng" value="{{ old('lng') }}" >
-                        </div>
-                    </div>
-                    {{-- FILTRI --}}
-                    
-                    <input class="form-group" type="number" name="beds_number" id="" placeholder="Numero min. di letti">
-                    <input class="form-group" type="number" name="bathrooms_number" id="" placeholder="Numero min. di bagni">
-                    <input class="form-group" type="text" name="distance" id="" placeholder="Cerca in un raggio di ... Km">
-                    
-                    @foreach($features as $feature)
-                    <label for="{{ $feature['id'] }}"> {{ $feature['name'] }} </label>
-                    <input type="checkbox" name="features[]" id="{{ $feature['id'] }}" value="{{ $feature['id'] }}">
-                    @endforeach
-                
-                    <input type="submit" value="Cerca">
-                </form>
-
-                {{-- 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div> --}}
+               
             </div>
         </div>
     </body>
@@ -131,8 +102,6 @@
             $("#address").geocomplete({ 
                 details: "#apartment_search_form" 
             });
-        })
-
-        
+        });        
     </script>
 </html>

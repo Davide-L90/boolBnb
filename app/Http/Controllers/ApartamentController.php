@@ -137,10 +137,6 @@ class ApartamentController extends Controller
 
         if($request->ajax()){ 
             
-            /* dd($apartmentsToShow); */
-            /* $r = $request->beds_number;
-            $ap = new Apartament();
-            $ap = $ap->where('beds_number', '>=', $request->beds_number)->get(); */
             $html = view('components.apartments_cards', ['apartmentsToShow' => $apartmentsToShow])->render();
             return response()->json([
                 "log" => "Chiamata AJAX",
@@ -149,12 +145,23 @@ class ApartamentController extends Controller
             ]);
         }
         
+        $data = [
+            'form_data' => [
+                'id' => 're_search',
+                'class' => 'form-horizontal',
+                'action' => route('apartments.results'),
+                'method' => 'GET',
+                'request_field' => $request,
+                'chek_notcheck_feat' => $checked_and_notChecked,
+
+            ]
+        ];
+
         return view('publicViews.apartmentFinder', [
             'apartmentsToShow' => $apartmentsToShow,
             'address_searched' => $address_searched,
             'features' => $featuresDB,
-            'chek_notcheck_feat' => $checked_and_notChecked,
-            'request_field' => $request
+            'data' => $data
         ]);
     }
 

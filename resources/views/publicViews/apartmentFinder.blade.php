@@ -1,5 +1,5 @@
 @extends('layouts.app')
-    <script src=" {{ config('external_api.google_maps.base_path') }}&amp;key={{ config('external_api.google_maps.api_key') }}"></script>
+    
 @section('content')
 
     {{-- <div id="ajax_spinner hide">
@@ -10,72 +10,21 @@
 
     <div class="container">
         <div class="row">
+            
             @if( !(empty($apartmentsToShow)) )
                 
                 <h1 class="">Appartamenti vicino a: <span id="address_searched">{{ $address_searched }}</span> </h1>    
                 
                 <div class="col-md-2 filters-cnt">
-                    
-                    {{-- {{ dd($request_field) }}  --}}   
-
-                    <form id="re_search" class="form-horizontal" method="GET" action="{{ route('apartments.results') }}">           
-                        
-                        <div class="form-group{{ $errors->has('address') ? 'has-error' : '' }}">
-                            <label for="address" class="col-md-12 control-label text-left">Indirizzo</label>
-                            <div class="col-md-12">
-                                <input id="address" type="text" class="form-control col-xs-12" name="address" value="{{ $request_field->address }}" required autofocus>   
-                            </div>
-                        </div>
-
-                        <div class="hidden form-group{{ $errors->has('lat') ? ' has-error' : '' }}">
-                            <div class="col-md-9">
-                                <input id="lat" type="hidden" class="form-control" name="lat" value="{{ $request_field->lat }}" >
-                            </div>
-                        </div>
-
-                        <div class="hidden form-group{{ $errors->has('lng') ? ' has-error' : '' }}">
-                            <div class="col-md-9">
-                                <input id="lng" type="hidden" class="form-control" name="lng" value="{{ $request_field->lng }}" >
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('beds_number') ? 'has-error' : '' }}">
-                            <label for="beds_number" class="col-md-12 control-label text-left">Posti letto</label>
-                            <div class="col-md-12">
-                                <input id="beds_number" type="number" class="form-control col-xs-12" name="beds_number" value="{{ $request_field->beds_number }}">   
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('bathrooms_number') ? 'has-error' : '' }}">
-                            <label for="bathrooms_number" class="col-md-12 control-label text-left">Numero bagni</label>
-                            <div class="col-md-12">
-                                <input id="bathrooms_number" type="number" class="form-control col-xs-12" name="bathrooms_number" value="{{ $request_field->bathrooms_number }}">   
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('distance') ? 'has-error' : '' }}">
-                            <label for="distance" class="col-md-12 control-label text-left">Cerca nel raggio di Km...</label>
-                            <div class="col-md-12">
-                                <input id="distance" type="number" class="form-control col-xs-12" name="distance" value="{{ $request_field->distance }}">   
-                            </div>
-                        </div>
-
-                        @foreach($chek_notcheck_feat as $feat)
-                                    <label class="col-md-8" for="{{ $feat['name'] }}">{{ $feat['name'] }}</label>
-                                    <input type="checkbox" class="col-md-4" name="features[]" id="{{ $feat['name'] }}" value="{{ $feat['id'] }}" {{ $feat['isChecked'] ? 'checked' : null}} autofocus> 
-                                @endforeach 
-                        
-                        <div class="form-group">
-                            <div class="col-md-10 ">
-                                <input id="send_ajax_call" type="submit" class="btn btn-primary" value="Cerca">
-                            </div>
-                        </div>   
-                    </form>  
-
+                   
+                    @include('components.search_form')
 
                 </div>
+
                 <div class="col-md-10 results-cnt">
+                
                     @include('components.apartments_cards')
+                
                 </div>
 
             @else
@@ -83,6 +32,7 @@
                 <h1> Non sono stati trovati appartamenti in questa zona </h1>        
                 <h3> {{ $address_searched }} </h3> 
                 <a href=" {{ route('welcome') }} " class="btn btn-primary" role="button">Cerca in un'altra zona</a>
+            
             @endif        
                     
         </div>       
