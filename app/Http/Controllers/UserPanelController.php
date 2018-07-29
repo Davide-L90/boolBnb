@@ -57,6 +57,7 @@ class UserPanelController extends Controller
             $list_of_features[] = $item;
         }
 
+        /* create an array to send data at view and form */
         $data = [
             'form_data' => [
                 'id' => 'apartment_form',
@@ -68,7 +69,10 @@ class UserPanelController extends Controller
             ]
         ];
 
-        return view('userLogged.userPanel', ['features' => $features, 'apartments' => $apartments, 'data' => $data]);
+        return view('userLogged.userPanel', [
+            'apartments' => $apartments, 
+            'data' => $data
+        ]);
     }
 
     public function showApartmentDetail($apartment_id)
@@ -113,17 +117,7 @@ class UserPanelController extends Controller
             ]
         ];
         
-        return view('userLogged.apartmentDetail', [
-            /* 'apartment_details' => $apartment_details,
-            'apartment_features' => $list_of_features,
-            'form_data' => [
-                'action' => route('apartaments.update', $apartment_details->id),
-                'method' => 'PUT',
-                'id' => 'apartment_form',
-                'class' => 'form-horizontal'
-            ], */
-            'data' => $data
-        ]);
+        return view('userLogged.apartmentDetail', ['data' => $data]);
     }
 
     public function showInbox(Request $request)
