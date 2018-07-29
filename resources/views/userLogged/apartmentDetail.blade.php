@@ -30,14 +30,14 @@
                         </div> 
 
                         <div class="form-group{{ $errors->has('beds_number') ? ' has-error' : '' }}">
-                            <label for="beds_number" class="col-md-2 control-label">Stanze</label>
+                            <label for="beds_number" class="col-md-2 control-label">Posti Letto</label>
                             <div class="col-md-9">
                                 <input id="beds_number" type="text" class="form-control" name="beds_number" value="{{ $apartment_details->beds_number }}" required autofocus>   
                             </div>
                         </div>
 
                         <div class="form-group{{ $errors->has('bathrooms_number') ? ' has-error' : '' }}">
-                            <label for="bathrooms_number" class="col-md-2 control-label">Bagni</label>
+                            <label for="bathrooms_number" class="col-md-2 control-label">Numero bagni</label>
                             <div class="col-md-9">
                                 <input id="bathrooms_number" type="text" class="form-control" name="bathrooms_number" value="{{ $apartment_details->bathrooms_number }}" required autofocus>   
                             </div>
