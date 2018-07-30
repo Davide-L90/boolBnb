@@ -151,10 +151,8 @@
                         }
                     });
                 }
-
                                 
-            });
-        
+            });        
         
             function showError(field_obj, message) {
                 field_obj.parents('.form-group').addClass('has-error');
@@ -169,7 +167,7 @@
                 $('.help-block').remove();
                 $('.form-group').removeClass('has-error');
             }
-                });
+        });
 
     </script>    
 @endsection
