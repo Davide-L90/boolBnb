@@ -8,6 +8,7 @@ use App\Model\Apartament;
 use App\Model\Advertisement;
 use Braintree\Gateway;
 use Braintree_Transaction;
+use Carbon\Carbon;
 
 class AdvertisementController extends Controller
 {
@@ -72,8 +73,10 @@ class AdvertisementController extends Controller
             $apartment = Apartament::find($apartment_id);
             $advertisement = Advertisement::find($request->advertisement_id); 
 
-            $apartment->advertisements()->attach($advertisement->id);
-        
+            $date_now = new Carbon();
+            $end_date = $date_now->addHours($advertisement->validity);
+            $apartment->advertisements()->attach($advertisement->id, ['valid_until' => $end_date]);
+            
             
         }
         
