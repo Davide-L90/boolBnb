@@ -33,4 +33,9 @@ class Apartament extends Model
     {
         return $this->hasMany('App\Model\Image');
     }
+
+    public function advertisements()
+    {
+        return $this->belongsToMany('App\Model\Advertisement');
+    }
 }

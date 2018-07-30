@@ -27,16 +27,21 @@ Route::middleware('isLogged')->group(function (){
     Route::get('/home', 'UserPanelController@index')->name('home');
     Route::get('/user-logged-apartment-detail/{apartment_id}', 'UserPanelController@showApartmentDetail')->name('ownerApartmentDetails');
     Route::get('/home/inbox', 'UserPanelController@showInbox')->name('inbox.show');
-    Route::get('/user-logged-apartment-detail/{apartment_id}/sponsor', function($apart_id){
-        return view('userLogged.sponsorship', ['apartment_id' => $apart_id]);
-    })->name('show.sponsors');
-
+    
+    
     Route::resource('apartaments', 'ApartamentController');
-
+    
     //Manage images
     /* Route::get('image/upload','ImageController@fileCreate'); */
     Route::post('/user-logged-apartment-detail/{apartment_id}/image-store','ImageController@fileStore')->name('image.store');
     Route::post('/user-logged-apartment-detail/image-delete','ImageController@fileDestroy')->name('image.delete');
+    
+    //Manage payment
+    Route::get('/user-logged-apartment-detail/{apartment_id}/sponsor', 'AdvertisementController@index')->name('show.sponsors');
+    Route::get('/user-logged-apartment-detail/{apartment_id}/sponsor/payment', 'AdvertisementController@tokenGen')->name('payment.tokenGen');
+    Route::get('/user-logged-apartment-detail/{apartment_id}/sponsor/payment/process', 'AdvertisementController@process')->name('payment.process');
+    
+
     
 });
 
