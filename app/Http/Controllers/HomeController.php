@@ -28,7 +28,16 @@ class HomeController extends Controller
         $data = [
             'form_data' => [
                 'id' => 'apartment_search_form',
-                'class' => 'form-horizontal search_form_validation',
+                'class' => [
+                    'form' => 'form-horizontal filter_form_validation',
+                    'field_cnt' => 'col-md-8',
+                    'label' => '',
+                    'input_cnt' => '',
+                    'input' => '',
+                    'filter_cnt' => '',
+                    'check_label' => '',
+                    'check_input' => ''
+                ],
                 'action' => route('apartments.results'),
                 'method' => 'GET',
                 'request_field' => [],

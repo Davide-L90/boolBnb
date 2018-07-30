@@ -17,7 +17,7 @@
 
         <script src=" {{ config('external_api.google_maps.base_path') }}&key={{ config('external_api.google_maps.api_key') }}"></script>
         <!-- Styles -->
-        {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
         <style>
             html, body {
@@ -92,8 +92,9 @@
                         BoolBnb
                     </div>
 
-                    
-                    @include('components.search_form')                    
+                    <div class="form_cnt col-md-6">
+                        @include('components.search_form')                    
+                    </div>
                     
 
                     

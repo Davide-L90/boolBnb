@@ -29,6 +29,7 @@ class ApartamentController extends Controller
         $apartments = new Apartament();
         $featuresDB = Feature::all();
         
+        //This variable will show on the result page the address searched
         $address_searched = $request->address;
         
         if (!empty($request->beds_number)) {        
@@ -70,6 +71,7 @@ class ApartamentController extends Controller
             $checked_and_notChecked[] = $temp;
         }
 
+        //Return on the welcome page if a user change features value manually
         if (!empty($request->features)) {
             foreach ($request->features as $featureId) {
                 
@@ -85,8 +87,6 @@ class ApartamentController extends Controller
                 }
             }
         }
-        /* $apartments = $apartments->where('bathrooms_number', $request->features); */
-        /* dd($apartments); */
 
         $apartments = $apartments->get();
         
@@ -128,12 +128,9 @@ class ApartamentController extends Controller
             return $a['distance'] <=> $b['distance'];
         });
 
-        /* dd($apartmentsToShow); */
-        
+        /* dd($apartmentsToShow); */       
 
-        $images_url_container = [];
-
-        
+        /* $images_url_container = []; */       
 
         if($request->ajax()){ 
             
@@ -148,7 +145,16 @@ class ApartamentController extends Controller
         $data = [
             'form_data' => [
                 'id' => 'form_search_ajax',
-                'class' => 'form-horizontal filter_form_validation',
+                'class' => [
+                    'form' => 'form-horizontal filter_form_validation',
+                    'field_cnt' => '',
+                    'label' => 'col-md-12 text-left',
+                    'input_cnt' => 'col-md-12',
+                    'input' => 'col-xs-12',
+                    'filter_cnt' => '',
+                    'check_label' => 'col-md-8',
+                    'check_input' => 'col-md-4'
+                ],
                 'action' => route('apartments.results'),
                 'method' => 'GET',
                 'request_field' => $request,
