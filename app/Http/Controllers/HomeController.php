@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Model\Feature;
+use App\Model\Apartament;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -25,6 +27,11 @@ class HomeController extends Controller
 
         }
 
+        $apartments = new Apartament();
+        $apartments = $apartments->whereHas('advertisements', function($query){
+            $query->where('valid_until', '>', Carbon::now());
+        })->get();
+        dd($apartments);
         $data = [
             'form_data' => [
                 'id' => 'apartment_search_form',

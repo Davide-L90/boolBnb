@@ -96,7 +96,9 @@
                         @include('components.search_form')                    
                     </div>
                     
+                    <div id="sponsored_apart" class="col-md-6">
 
+                    </div>
                     
                 </div>
                
