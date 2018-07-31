@@ -284,9 +284,9 @@ class ApartamentController extends Controller
         if($images->isNotEmpty()){
             foreach ($images as $image) {
                 
-                $image_exist = Storage::disk('public')->exists($image->title);            
+                $image_exist = Storage::disk('public')->exists($image->filename);            
                 if ($image_exist) {
-                    $images_url_container[] = $image->title;
+                    $images_url_container[] = $image->filename;
                 } 
             }        
         }
@@ -373,8 +373,8 @@ class ApartamentController extends Controller
         $related_images = Image::where('apartament_id', $id)->get();
 
         foreach ($related_images as $i) {
-            $path = storage_path().'/app/public/'.$i->title;        
-            Image::where('title',$i->title)->delete();
+            $path = storage_path().'/app/public/'.$i->filename;        
+            Image::where('filename',$i->filename)->delete();
 
             if (file_exists($path)) {
                 unlink($path);
@@ -411,8 +411,8 @@ class ApartamentController extends Controller
     private function setThumbnail($apartment_id){
         $thumbnail = Image::where('apartament_id', $apartment_id)->first();
     
-        if( !(is_null($thumbnail))  && (Storage::disk('public')->exists($thumbnail->title)) ){
-                $thumbnail = $thumbnail->title;     
+        if( !(is_null($thumbnail))  && (Storage::disk('public')->exists($thumbnail->filename)) ){
+                $thumbnail = $thumbnail->filename;     
             }
         else{
             $thumbnail = 'placeholder.jpg';
