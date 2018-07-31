@@ -38,9 +38,8 @@
             $("#address").geocomplete({ 
                 details: "#apartment_form" 
             });
-        });
-
-        Dropzone.options.dropzone =
+        
+            Dropzone.options.dropzone =
          {
             maxFilesize: 12,
             renameFile: function(file) {
@@ -81,6 +80,9 @@
                return false;
             }
         };
+        });
+
+        
     </script>
 
 
