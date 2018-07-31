@@ -13,14 +13,12 @@
         <script src="{{ asset('js/app.js') }}"></script>
         <script src="{{ asset('js/libraries.js') }}"></script>
         <script src=" {{ config('external_api.google_maps.base_path') }}&amp;key={{ config('external_api.google_maps.api_key') }}"></script>
-       
 
         <title>{{ config('app.name', 'Laravel') }}</title>
-
+        
         <!-- Styles -->
         
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-        <link rel="stylesheet" href="{{ asset('css/libs/dropzone.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/libs/all.min.css') }}"> {{-- FontAwesome --}}
     </head>
     <body>

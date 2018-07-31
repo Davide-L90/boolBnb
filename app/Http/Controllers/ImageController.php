@@ -24,7 +24,7 @@ class ImageController extends Controller
         /* $image->move(public_path('images'),$imageName); */
         
         $imageUpload = new Image();
-        $imageUpload->title = $imageName;
+        $imageUpload->filename = $imageName;
         $imageUpload->apartament_id = $apartment_id; 
         $imageUpload->save();
         return response()->json(['success'=>$imageName]);
@@ -33,7 +33,7 @@ class ImageController extends Controller
     public function fileDestroy(Request $request)
     {
         $filename =  $request->get('filename');
-        Image::where('title',$filename)->delete();
+        Image::where('filename',$filename)->delete();
         
         //$path=public_path().'/images/'.$filename;
         $path=storage_path().'/app/public/'.$filename;        

@@ -37,8 +37,8 @@ class UserPanelController extends Controller
         foreach ($apartments as $apartment) {            
             $thumbnail = Image::where('apartament_id', $apartment->id)->first();
 
-            if ( !(is_null($thumbnail)) && (Storage::disk('public')->exists($thumbnail->title)) ) {
-                $thumbnail = $thumbnail->title;     
+            if ( !(is_null($thumbnail)) && (Storage::disk('public')->exists($thumbnail->filename)) ) {
+                $thumbnail = $thumbnail->filename;     
             }
             else{
                 $thumbnail = 'placeholder.jpg';
