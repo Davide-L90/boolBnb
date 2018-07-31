@@ -8,6 +8,7 @@ use App\Model\Feature;
 use App\Model\Image;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
 
 class ApartamentController extends Controller
 {
@@ -18,20 +19,55 @@ class ApartamentController extends Controller
      */
     public function index(Request $request)
     {         
-        
+    
         $request->validate([
             'address' => 'required|string|max:255'
         ]);
         $indirizzo = $request->address;
         $latitudine = $request->lat;
-        $longitudine = $request->lng;
+        $longitudine = $request->lng;        
         
-        $apartments = new Apartament();
         $featuresDB = Feature::all();
-        
+    
         //This variable will show on the result page the address searched
         $address_searched = $request->address;
         
+        /* Get all apartment advertised */
+        $apartments_advertised = new Apartament();
+        $apartments_advertised = $apartments_advertised->whereHas('advertisements', function($query){
+            $query->where('valid_until', '>', Carbon::now());
+        })->get();
+
+        $distanceToSearch = 20; //Distance search default value
+        
+        if(!empty($request->distance))
+        {
+            $distanceToSearch = $request->distance;
+        }
+
+        $apartmentsToShow = [];
+
+        if ($apartments_advertised->isNotEmpty()) {
+            # code...
+            foreach ($apartments_advertised as $apartment) {
+
+                $distance = $this->distance($request->lat, $request->lng, $apartment['latitude'], $apartment['longitude']);
+                
+                if( $distance < ($distanceToSearch+10) ){
+
+                    $thumbnail = setThumbnail(apartment_id);
+        
+                    $apartmentsToShow[] = [
+                        'apartment' => $apartment,
+                        'distance' => $distance,
+                        'thumbnail' => $thumbnail
+                    ];
+                }
+            }
+        }
+
+        $apartments = new Apartament();
+
         if (!empty($request->beds_number)) {        
             $apartments = $apartments->where('beds_number', '>=', $request->beds_number);
         }
@@ -88,38 +124,43 @@ class ApartamentController extends Controller
             }
         }
 
-        $apartments = $apartments->get();
+        $apartments = $apartments->get();       
         
-        $distanceToSearch = 20; //Distance search default value
-        
-        if(!empty($request->distance))
-        {
-            $distanceToSearch = $request->distance;
-        }
-        
-        $apartmentsToShow = [];
-        
-        // dd($indirizzo, $latitudine, $longitudine);
         foreach ($apartments as $apartment) {
-
-            $distance = $this->distance($request->lat, $request->lng, $apartment['latitude'], $apartment['longitude']);
+            
+            $distance = $this->distance($request->lat, $request->lng, $apartment->latitude, $apartment->longitude);
             
             if($distance < $distanceToSearch){
                 
-                $thumbnail = Image::where('apartament_id', $apartment->id)->first();
+                $thumbnail = $thumbnail = setThumbnail(apartment_id);                
+                
+                if(count($apartmentsToShow) != 0) {
                     
-                if( !(is_null($thumbnail))  && (Storage::disk('public')->exists($thumbnail->title)) ){
-                    $thumbnail = $thumbnail->title;     
-                }
-                else{
-                    $thumbnail = 'placeholder.jpg';
-                }
+                    $i = 0;
+                    $itemIsFound = false;    
 
-                $apartmentsToShow[] = [
-                    'apartment' => $apartment,
-                    'distance' => $distance,
-                    'thumbnail' => $thumbnail
-                ];
+                    do {
+                        if ( ($apartmentsToShow[$i]['apartment']->id) == ($apartment->id) ) {
+                            $itemIsFound = true;
+                        } else {
+                            $i++;
+                        }
+                    } while ( !($itemIsFound) && ($i < count($apartmentsToShow)) );
+
+                    if (!($itemIsFound)) {
+                        $apartmentsToShow[] = [
+                            'apartment' => $apartment,
+                            'distance' => $distance,
+                            'thumbnail' => $thumbnail
+                        ];
+                    }
+                } else {
+                    $apartmentsToShow[] = [
+                        'apartment' => $apartment,
+                        'distance' => $distance,
+                        'thumbnail' => $thumbnail
+                    ];
+                }                 
             }
         }
 
@@ -127,10 +168,6 @@ class ApartamentController extends Controller
         usort($apartmentsToShow, function($a, $b) {
             return $a['distance'] <=> $b['distance'];
         });
-
-        /* dd($apartmentsToShow); */       
-
-        /* $images_url_container = []; */       
 
         if($request->ajax()){ 
             
@@ -356,5 +393,19 @@ class ApartamentController extends Controller
         $km = $r * $c;
         
         return $km;
+    }
+
+    //Method to find the apartment thumbnail.
+    private function setThumbnail($apartment_id){
+        $thumbnail = Image::where('apartament_id', $apartment->id)->first();
+    
+        if( !(is_null($thumbnail))  && (Storage::disk('public')->exists($thumbnail->title)) ){
+                $thumbnail = $thumbnail->title;     
+            }
+        else{
+            $thumbnail = 'placeholder.jpg';
+        }
+
+        return $thumbnail;
     }
 }

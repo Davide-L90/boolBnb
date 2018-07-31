@@ -31,7 +31,7 @@ class HomeController extends Controller
         $apartments = $apartments->whereHas('advertisements', function($query){
             $query->where('valid_until', '>', Carbon::now());
         })->get();
-        dd($apartments);
+        /* dd($apartments); */
         $data = [
             'form_data' => [
                 'id' => 'apartment_search_form',

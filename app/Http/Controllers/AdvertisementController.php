@@ -75,7 +75,7 @@ class AdvertisementController extends Controller
 
             $date_now = new Carbon();
             // $end_date = $date_now->addHours($advertisement->validity);
-            $end_date = $date_now->addSeconds(30);
+            $end_date = $date_now->addMinutes(2);
 
             $apartment->advertisements()->attach($advertisement->id, ['valid_until' => $end_date]);
             
