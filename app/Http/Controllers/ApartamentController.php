@@ -48,14 +48,14 @@ class ApartamentController extends Controller
         $apartmentsToShow = [];
 
         if ($apartments_advertised->isNotEmpty()) {
-            # code...
+            
             foreach ($apartments_advertised as $apartment) {
 
                 $distance = $this->distance($request->lat, $request->lng, $apartment['latitude'], $apartment['longitude']);
                 
                 if( $distance < ($distanceToSearch+10) ){
 
-                    $thumbnail = setThumbnail(apartment_id);
+                    $thumbnail = $this->setThumbnail($apartment->id);
         
                     $apartmentsToShow[] = [
                         'apartment' => $apartment,
@@ -127,12 +127,12 @@ class ApartamentController extends Controller
         $apartments = $apartments->get();       
         
         foreach ($apartments as $apartment) {
-            
+
             $distance = $this->distance($request->lat, $request->lng, $apartment->latitude, $apartment->longitude);
             
             if($distance < $distanceToSearch){
                 
-                $thumbnail = $thumbnail = setThumbnail(apartment_id);                
+                $thumbnail = $this->setThumbnail($apartment->id);                
                 
                 if(count($apartmentsToShow) != 0) {
                     
@@ -369,6 +369,18 @@ class ApartamentController extends Controller
         $apartment_to_delete = Apartament::find($id);
 
         $apartment_to_delete->features()->detach(); //Reletions into pivot table will be delete
+        
+        $related_images = Image::where('apartament_id', $id)->get();
+
+        foreach ($related_images as $i) {
+            $path = storage_path().'/app/public/'.$i->title;        
+            Image::where('title',$i->title)->delete();
+
+            if (file_exists($path)) {
+                unlink($path);
+            }
+        }
+        
         $apartment_to_delete->delete();
 
         return redirect()->route('home');
@@ -397,7 +409,7 @@ class ApartamentController extends Controller
 
     //Method to find the apartment thumbnail.
     private function setThumbnail($apartment_id){
-        $thumbnail = Image::where('apartament_id', $apartment->id)->first();
+        $thumbnail = Image::where('apartament_id', $apartment_id)->first();
     
         if( !(is_null($thumbnail))  && (Storage::disk('public')->exists($thumbnail->title)) ){
                 $thumbnail = $thumbnail->title;     
