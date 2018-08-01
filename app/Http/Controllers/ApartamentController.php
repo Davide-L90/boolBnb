@@ -291,7 +291,7 @@ class ApartamentController extends Controller
             }        
         }
         else{
-            $images_url_container[] = 'placeholder.jpg';
+            $images_url_container[] = 'placeholder.png';
         }
 
         return view('publicViews.showApartment', [

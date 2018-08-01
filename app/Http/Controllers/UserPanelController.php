@@ -83,6 +83,20 @@ class UserPanelController extends Controller
         $all_features = Feature::all();
         $features_checked = Apartament::find($apartment_id)->features;
 
+        // Retrieve all images for the apartment
+        $images = Image::where('apartament_id', $apartment_id)->get();
+
+        if($images->isNotEmpty())
+        {
+            $filteredImages = $images->reject(function($value, $key){
+                $canDelete = false;
+                if (!(Storage::disk('public')->exists($value->filename)) ) {
+                    $canDelete = true;
+                }
+                return $canDelete;
+            });
+        }
+
         /* 
             Create a custom features array with field 'isChecked' to make appear checked 
             the checkbox in userLogged.apartmentDetail view 
@@ -117,7 +131,7 @@ class UserPanelController extends Controller
             ]
         ];
         
-        return view('userLogged.apartmentDetail', ['data' => $data]);
+        return view('userLogged.apartmentDetail', ['data' => $data, 'images' => $filteredImages]);
     }
 
     public function showInbox(Request $request)

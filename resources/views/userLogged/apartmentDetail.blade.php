@@ -7,8 +7,13 @@
         
         <div class="col-md-12">
             <div class="images-cnt col-md-6">
-                
-                    <h3 class="jumbotron">Laravel Multiple Images Upload Using Dropzone</h3>
+                <div id="img-gallery">
+                    @if ($images->isNotEmpty())
+                        @foreach ($images as $image)
+                            
+                        @endforeach    
+                    @endif
+                </div>
                     <form method="post" action="{{ route('image.store', $data['form_data']['apartment_details']->id) }}" enctype="multipart/form-data" class="dropzone" id="dropzone">
                         {{ csrf_field() }}
                     </form>
