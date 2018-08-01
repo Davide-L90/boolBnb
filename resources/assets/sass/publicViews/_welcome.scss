@@ -192,6 +192,8 @@ div.top_cnt {
 
     div.top_cnt {
 
+        position: relative;
+
         div.image_background {
             height: $top_cnt_height - 10vh;             
         }
@@ -216,9 +218,16 @@ div.top_cnt {
 
         form#apartment_search_form {
 
+            /* position: absolute;
+            left: 50%;
+            transform: translate(-50%, +35%);
+            padding: 25px;
+            background-color: rgba(0, 0, 0, 0.5); */
+
             div.filter_cnt {
                 
                 display: flex;
+                
                 justify-content: space-between;
 
                 div.input_wrapper {
@@ -353,6 +362,7 @@ div.top_cnt {
             div.filter_cnt {
                 
                 display: flex;
+                
                 justify-content: space-between;
 
                 div.input_wrapper {

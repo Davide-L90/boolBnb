@@ -8678,6 +8678,10 @@ div.top_cnt form#apartment_search_form div.filter_cnt div.checkbox_list_cnt ul.c
 }
 
 @media (min-width: 576px) {
+  div.top_cnt {
+    position: relative;
+  }
+
   div.top_cnt div.image_background {
     height: 68vh;
   }
@@ -8699,6 +8703,14 @@ div.top_cnt form#apartment_search_form div.filter_cnt div.checkbox_list_cnt ul.c
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
+  }
+
+  div.top_cnt form#apartment_search_form {
+    /* position: absolute;
+            left: 50%;
+            transform: translate(-50%, +35%);
+            padding: 25px;
+            background-color: rgba(0, 0, 0, 0.5); */
   }
 
   div.top_cnt form#apartment_search_form div.filter_cnt {
