@@ -8,11 +8,11 @@
         <div class="col-md-12">
             <div class="images-cnt col-md-6">
                 <div id="img-gallery">
-                    @if ($images->isNotEmpty())
+                    {{-- @if ($images->isNotEmpty())
                         @foreach ($images as $image)
                             
                         @endforeach    
-                    @endif
+                    @endif --}}
                 </div>
                     <form method="post" action="{{ route('image.store', $data['form_data']['apartment_details']->id) }}" enctype="multipart/form-data" class="dropzone" id="dropzone">
                         {{ csrf_field() }}

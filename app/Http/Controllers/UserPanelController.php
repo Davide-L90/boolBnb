@@ -85,6 +85,7 @@ class UserPanelController extends Controller
 
         // Retrieve all images for the apartment
         $images = Image::where('apartament_id', $apartment_id)->get();
+        $filteredImages = collect();
 
         if($images->isNotEmpty())
         {

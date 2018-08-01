@@ -22,7 +22,7 @@
         <!-- Styles -->        
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('css/libs/all.min.css') }}"> {{-- FontAwesome --}}
-        <link rel="stylesheet" href="{{ asset('css/libs/dropzone.css') }}"> {{-- FontAwesome --}}
+        <link rel="stylesheet" href="{{ asset('css/libs/dropzone.css') }}"> {{-- Dropzone --}}
 
     </head>
     <body>

@@ -36,8 +36,8 @@ class HomeController extends Controller
             'form_data' => [
                 'id' => 'apartment_search_form',
                 'class' => [
-                    'form' => 'form-horizontal filter_form_validation',
-                    'field_cnt' => 'col-md-8',
+                    'form' => '',
+                    'field_cnt' => '',
                     'label' => '',
                     'input_cnt' => '',
                     'input' => '',
