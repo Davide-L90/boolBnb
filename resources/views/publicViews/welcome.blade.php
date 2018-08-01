@@ -12,8 +12,8 @@
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
         
          {{-- libraries --}}
+         <script src="{{ asset('js/libraries.js') }}"></script>
         <script src="{{ asset('js/app.js') }}"></script>
-        <script src="{{ asset('js/libraries.js') }}"></script>
 
         <script src=" {{ config('external_api.google_maps.base_path') }}&key={{ config('external_api.google_maps.api_key') }}"></script>
         <!-- Styles -->
