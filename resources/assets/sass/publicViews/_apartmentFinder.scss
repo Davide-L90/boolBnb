@@ -1,5 +1,36 @@
 div.row {
 
+    h1#search_title{
+        text-align: center;
+    }
+
+    form#form_search_ajax{
+        max-width: 500px;
+        margin: 0 auto;
+
+        input{
+            border-style: none;
+            border-bottom: 1px solid #000;
+            outline: none;
+            padding-left: 0;
+        }
+
+        ul.features_list{
+            display: flex;
+            flex-wrap: wrap;
+            list-style: none;
+            padding-left: 0;
+
+            li{
+                width: 50%;
+            }
+
+            label.features_name{
+                margin-left: 10px;
+            }
+        }
+    }
+
     div.results-cnt {
         display: flex;
         justify-content: center;
@@ -36,6 +67,18 @@ div.row {
 
 @media (min-width: 768px) {}
 
-@media (min-width: 992px) {}
+@media (min-width: 992px) {
+    div.row {
+        form#form_search_ajax{
+        
+            ul.features_list{
+
+                li{
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
 
 @media (min-width: 1200px) {}

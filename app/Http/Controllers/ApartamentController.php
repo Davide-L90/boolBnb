@@ -204,7 +204,9 @@ class ApartamentController extends Controller
         return view('publicViews.apartmentFinder', [
             'apartmentsToShow' => $apartmentsToShow,
             'address_searched' => $address_searched,
+            'request' => $request,
             'features' => $featuresDB,
+            'check_notcheck_feat' => $checked_and_notChecked,
             'data' => $data
         ]);
     }

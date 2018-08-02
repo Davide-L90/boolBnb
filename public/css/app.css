@@ -8878,6 +8878,40 @@ div.top_cnt div.image_background form#apartment_search_form div.filter_cnt div.c
   }
 }
 
+div.row h1#search_title {
+  text-align: center;
+}
+
+div.row form#form_search_ajax {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+div.row form#form_search_ajax input {
+  border-style: none;
+  border-bottom: 1px solid #000;
+  outline: none;
+  padding-left: 0;
+}
+
+div.row form#form_search_ajax ul.features_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  list-style: none;
+  padding-left: 0;
+}
+
+div.row form#form_search_ajax ul.features_list li {
+  width: 50%;
+}
+
+div.row form#form_search_ajax ul.features_list label.features_name {
+  margin-left: 10px;
+}
+
 div.row div.results-cnt {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -8903,6 +8937,12 @@ div.row div.results-cnt {
     -webkit-box-pack: start;
         -ms-flex-pack: start;
             justify-content: start;
+  }
+}
+
+@media (min-width: 992px) {
+  div.row form#form_search_ajax ul.features_list li {
+    width: 100%;
   }
 }
 
