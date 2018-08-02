@@ -1,6 +1,6 @@
 //dimension
 $top_cnt_height: 78vh;
-$nav_height: 60px;
+$nav_height: 40px;
 $checkbox_height: 25px;
 $main_input_height: 40px;
 $secondary_input_height: 30px;
@@ -10,9 +10,13 @@ $font_size_sm: 18px;
 $main_input_font_size: 20px;
 $secondary_input_font_size: 18px;
 
-//font colors 
+//colors 
 $color_primary: #fff;
 $color_primary_transparent: rgba(255, 255, 255, 0.5);
+$black_overlay : rgba(0, 0, 0, 0.5);
+
+//padding
+$form_padding : 5px;
 
 div.top_cnt {
 
@@ -21,170 +25,175 @@ div.top_cnt {
         background-image: url('/images/home_background.jpg');
         background-size: cover;
         background-position: 50%;
-    }
-
-    nav {
-        height: $nav_height;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-size: $font_size_sm;
-        font-weight: 500;
-        color: $color_primary;
-
-        div.auth_cnt {
-            
-            div.menu_items {
-                display: none;
-                width: 130px;       
-                a {
-                    color: $color_primary;
-                    text-decoration: none;
+        
+        nav {
+            height: $nav_height;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: $font_size_sm;
+            font-weight: 500;
+            color: $color_primary;
+            background-color: rgba(0, 0, 0, 0.3);
+    
+            div.auth_cnt {
+                
+                div.menu_items {
+                    display: none;
+                    width: 130px;       
+                    a {
+                        color: $color_primary;
+                        text-decoration: none;
+                    }
                 }
             }
         }
-    }
-
-    form#apartment_search_form {
-
-        input#address {
-            width: 100%;
-            height: $main_input_height;
-            border: none;
-            border-bottom: 2px solid $color_primary;
-            background-color: rgba(255, 255, 255, 0);
-            color: $color_primary;
-            font-size: $main_input_font_size;
-            font-weight: 600;
-            outline: none;
-
-            &::placeholder {
+    
+        form#apartment_search_form {
+            
+            padding: $form_padding;
+            background-color: rgba(0, 0, 0, 0.5);
+            
+            input#address {
+                width: 100%;
+                height: $main_input_height;
+                border: none;
+                border-bottom: 2px solid $color_primary;
+                background-color: rgba(255, 255, 255, 0);
                 color: $color_primary;
                 font-size: $main_input_font_size;
-                font-weight: 200;
-            }
-        }
-
-        div.filter_cnt {
-
-            width: 100%; 
-
-            div.input_wrapper {
-
-                width: 100%; 
-
-                & input {
-                    width: 100%;
-                    height: $secondary_input_height;
-                    border: none;
-                    border-bottom: 1px solid $color_primary;
-                    background-color: rgba(255, 255, 255, 0);
+                font-weight: 600;
+                outline: none;
+    
+                &::placeholder {
                     color: $color_primary;
                     font-size: $main_input_font_size;
-                    font-weight: 500;
-                    outline: none;
-
-                    &::placeholder {
-                        color: $color_primary;
-                        font-size: $secondary_input_font_size;
-                        font-weight: 200;
-                    }
+                    font-weight: 200;
                 }
-
-                div.flex_input_cnt {
-                    display: flex;
-                    justify-content: space-between;
+            }
     
-                    div.form_group.flex_input {
-                        width: 30%;
-                    }
-                }
-            
-            }
-
-            div.checkbox_list_cnt {
-
-                width: 100%;
-
-                ul.checkbox_list {
-                    list-style: none;
-                    padding-left: 0;
-
-                    li.checkbox_item_cnt {
-
+            div.filter_cnt {
+    
+                width: 100%; 
+    
+                div.input_wrapper {
+    
+                    width: 100%; 
+    
+                    & input {
                         width: 100%;
-                        height: $checkbox_height;
-                        margin-bottom: 5px;
-
-                        label.checkbox_item {
-                            display: block;
-                            position: relative;
-                            padding-left: 35px;                            
-                            //margin-bottom: 12px;
-                            cursor: pointer;
-                            font-size: $font_size_sm;
+                        height: $secondary_input_height;
+                        border: none;
+                        border-bottom: 1px solid $color_primary;
+                        background-color: rgba(255, 255, 255, 0);
+                        color: $color_primary;
+                        font-size: $main_input_font_size;
+                        font-weight: 500;
+                        outline: none;
+    
+                        &::placeholder {
                             color: $color_primary;
-                            -webkit-user-select: none;
-                            -moz-user-select: none;
-                            -ms-user-select: none;
-                            user-select: none;
-
-                            input {
-                                position: absolute;
-                                opacity: 0;
-                                cursor: pointer;
-                            }
-
-                            span.checkmark {
-                                position: absolute;
-                                top: 0;
-                                left: 0;
-                                height: 20px;
-                                width: 20px;
-                                background-color: #eee;
-                            }
-
-                            &:hover input ~ span.checkmark {
-                                background-color: #ccc;
-                            }
-
-                            input:checked ~ span.checkmark {
-                                background-color: #2196F3;
-                            }
-
-                            span.checkmark:after {
-                                content: "";
-                                position: absolute;
-                                display: none;
-                            }
-
-                            input:checked ~ span.checkmark:after {
-                                display: block;
-                            }
-
-                            /* Style the checkmark/indicator */
-                            span.checkmark:after {
-                                top: 1px;
-                                left: 6px;
-                                width: 8px;
-                                height: 15px;
-                                border: solid white;
-                                border-width: 0 3px 3px 0;
-                                -webkit-transform: rotate(45deg);
-                                -ms-transform: rotate(45deg);
-                                transform: rotate(45deg);
-                            }
+                            font-size: $secondary_input_font_size;
+                            font-weight: 200;
                         }
-
-                        
+                    }
+    
+                    div.flex_input_cnt {
+                        display: flex;
+                        justify-content: space-between;
+        
+                        div.form_group.flex_input {
+                            width: 30%;
+                        }
+                    }
+                
+                }
+    
+                div.checkbox_list_cnt {
+    
+                    width: 100%;
+    
+                    ul.checkbox_list {
+                        list-style: none;
+                        padding-left: 0;
+    
+                        li.checkbox_item_cnt {
+    
+                            width: 100%;
+                            height: $checkbox_height;
+                            margin-bottom: 5px;
+    
+                            label.checkbox_item {
+                                display: block;
+                                position: relative;
+                                padding-left: 35px;                            
+                                //margin-bottom: 12px;
+                                cursor: pointer;
+                                font-size: $font_size_sm;
+                                color: $color_primary;
+                                -webkit-user-select: none;
+                                -moz-user-select: none;
+                                -ms-user-select: none;
+                                user-select: none;
+    
+                                input {
+                                    position: absolute;
+                                    opacity: 0;
+                                    cursor: pointer;
+                                }
+    
+                                span.checkmark {
+                                    position: absolute;
+                                    top: 0;
+                                    left: 0;
+                                    height: 20px;
+                                    width: 20px;
+                                    background-color: #eee;
+                                }
+    
+                                &:hover input ~ span.checkmark {
+                                    background-color: #ccc;
+                                }
+    
+                                input:checked ~ span.checkmark {
+                                    background-color: #2196F3;
+                                }
+    
+                                span.checkmark:after {
+                                    content: "";
+                                    position: absolute;
+                                    display: none;
+                                }
+    
+                                input:checked ~ span.checkmark:after {
+                                    display: block;
+                                }
+    
+                                /* Style the checkmark/indicator */
+                                span.checkmark:after {
+                                    top: 1px;
+                                    left: 6px;
+                                    width: 8px;
+                                    height: 15px;
+                                    border: solid white;
+                                    border-width: 0 3px 3px 0;
+                                    -webkit-transform: rotate(45deg);
+                                    -ms-transform: rotate(45deg);
+                                    transform: rotate(45deg);
+                                }
+                            }
+    
+                            
+                        }
                     }
                 }
+                
+                
             }
-            
-            
+    
         }
-
     }
+
 }
 
 // Small devices (landscape phones, 576px and up)
@@ -192,87 +201,89 @@ div.top_cnt {
 
     div.top_cnt {
 
-        position: relative;
-
+        
         div.image_background {
-            height: $top_cnt_height - 10vh;             
-        }
-
-        nav {
-            height: $nav_height + 30px;            
-            font-size: $font_size_sm + 3px;            
             
-            div.auth_cnt {
+            height: $top_cnt_height - 10vh;             
+            
+            nav {
+                height: $nav_height + 30px;            
+                font-size: $font_size_sm + 3px;            
                 
-                div.hamburger_menu {
-                    display: none; 
-                }
-
-                div.menu_items {
-                    width: 230px;       
-                    display: flex;
-                    justify-content: space-between;                    
-                }
-            }
-        }
-
-        form#apartment_search_form {
-
-            /* position: absolute;
-            left: 50%;
-            transform: translate(-50%, +35%);
-            padding: 25px;
-            background-color: rgba(0, 0, 0, 0.5); */
-
-            div.filter_cnt {
-                
-                display: flex;
-                
-                justify-content: space-between;
-
-                div.input_wrapper {
-
-                    width: 48%;
-
-                    div.flex_input_cnt {
-                        flex-wrap: wrap;
-                        width: 100%;
+                div.auth_cnt {
+                    
+                    div.hamburger_menu {
+                        display: none; 
+                    }
     
-                        div.form-group.flex_input {
-                            width: 100%;
-                        }
-                    }
-
-                }
-
-                div.checkbox_list_cnt {
-
-                    width: 50%;
-
-                    ul.checkbox_list {                        
-
+                    div.menu_items {
+                        width: 230px;       
                         display: flex;
-                        flex-wrap: wrap;
-
-                        li.checkbox_item_cnt {
-
-                            width: 50%;
-                            height: $checkbox_height;
-                            margin-bottom: 5px;
-
-                            label.checkbox_item {
-                                font-size: $font_size_sm - 5px;
-                                
-                            }
-
-                            
-                        }
+                        justify-content: space-between;                    
                     }
                 }
-                
             }
-
+            
+            div.form_cnt {
+                
+                position: relative;
+                
+                form#apartment_search_form {
+                    
+                    padding: $form_padding * 2;
+        
+                    div.filter_cnt {
+                        
+                        display: flex;
+                        
+                        justify-content: space-between;
+        
+                        div.input_wrapper {
+        
+                            width: 48%;
+        
+                            div.flex_input_cnt {
+                                flex-wrap: wrap;
+                                width: 100%;
+            
+                                div.form-group.flex_input {
+                                    width: 100%;
+                                }
+                            }
+        
+                        }
+        
+                        div.checkbox_list_cnt {
+        
+                            width: 50%;
+        
+                            ul.checkbox_list {                        
+        
+                                display: flex;
+                                flex-wrap: wrap;
+        
+                                li.checkbox_item_cnt {
+        
+                                    width: 50%;
+                                    height: $checkbox_height;
+                                    margin-bottom: 5px;
+        
+                                    label.checkbox_item {
+                                        font-size: $font_size_sm - 5px;
+                                        
+                                    }
+        
+                                    
+                                }
+                            }
+                        }
+                        
+                    }
+        
+                }
+            }
         }
+
     }
 }
 
@@ -283,52 +294,64 @@ div.top_cnt {
 
         div.image_background {
             height: $top_cnt_height + 15vh;             
-        }
-
-        nav {
-            height: $nav_height + 30px;            
-            font-size: $font_size_sm + 3px;            
             
-            div.auth_cnt {    
-
-                div.menu_items {
-                    width: 230px;       
-                    display: flex;
-                    justify-content: space-between;                    
-                }
-            }
-        }
-
-        form#apartment_search_form {
-
-            max-width: 75%;
-            margin: 0 auto;
-
-            div.filter_cnt {
+            nav {
+                height: $nav_height + 30px;            
+                font-size: $font_size_sm + 3px;            
                 
-                display: flex;
-                justify-content: space-between;
-
-                div.input_wrapper {
-
-                    width: 48%;
-
-                    div.flex_input_cnt {
-                        flex-wrap: wrap;
-                        width: 100%;
+                div.auth_cnt {    
     
-                        div.form-group.flex_input {
-                            width: 100%;
-                        }
+                    div.menu_items {
+                        max-width: 230px;       
+                        display: flex;
+                        justify-content: space-between;                    
                     }
-
                 }
-
-                
-                
             }
-
+    
+            div.form_cnt {
+                    
+                position: relative;
+    
+                form#apartment_search_form {
+        
+                    width: 70%;
+                    margin: 0 auto;
+                    position: absolute;
+                    left: 50%;
+                    transform: translate(-50%, +15%);
+                    padding: $form_padding * 5;
+                    
+        
+                    div.filter_cnt {
+                        
+                        display: flex;
+                        justify-content: space-between;
+        
+                        div.input_wrapper {
+        
+                            width: 48%;
+        
+                            div.flex_input_cnt {
+                                flex-wrap: wrap;
+                                width: 100%;
+            
+                                div.form-group.flex_input {
+                                    width: 100%;
+                                }
+                            }
+        
+                        }
+        
+                        
+                        
+                    }
+        
+                }
+            }    
         }
+
+
     }
 }
 
@@ -338,53 +361,59 @@ div.top_cnt {
 
         div.image_background {
             height: $top_cnt_height + 15vh;             
-        }
-
-        nav {
-            height: $nav_height + 30px;            
-            font-size: $font_size_sm + 3px;            
             
-            div.auth_cnt {    
-
-                div.menu_items {
-                    width: 230px;       
-                    display: flex;
-                    justify-content: space-between;                    
-                }
-            }
-        }
-
-        form#apartment_search_form {
-
-            max-width: 55%;
-            margin: 0 auto;
-
-            div.filter_cnt {
+            nav {
+                height: $nav_height + 30px;            
+                font-size: $font_size_sm + 3px;            
                 
-                display: flex;
-                
-                justify-content: space-between;
-
-                div.input_wrapper {
-
-                    width: 48%;
-
-                    div.flex_input_cnt {
-                        flex-wrap: wrap;
-                        width: 100%;
+                div.auth_cnt {    
     
-                        div.form-group.flex_input {
-                            width: 100%;
-                        }
+                    div.menu_items {
+                        width: 230px;       
+                        display: flex;
+                        justify-content: space-between;                    
                     }
-
                 }
-
-                
-                
             }
 
+            div.form_cnt {
+
+                form#apartment_search_form {
+        
+                    max-width: 55%;
+                    margin: 0 auto;
+                    transform: translate(-50%, +45%);
+        
+                    div.filter_cnt {
+                        
+                        display: flex;
+                        
+                        justify-content: space-between;
+        
+                        div.input_wrapper {
+        
+                            width: 48%;
+        
+                            div.flex_input_cnt {
+                                flex-wrap: wrap;
+                                width: 100%;
+            
+                                div.form-group.flex_input {
+                                    width: 100%;
+                                }
+                            }
+        
+                        }
+        
+                        
+                        
+                    }
+        
+                }
+            }
+    
         }
+
     }
 }
 
