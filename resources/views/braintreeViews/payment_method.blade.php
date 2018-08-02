@@ -4,8 +4,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <script src="{{ asset('js/app.js') }}"></script>
         <script src="{{ asset('js/libraries.js') }}"></script>
+        <script src="{{ asset('js/app.js') }}"></script>
         <script src="https://js.braintreegateway.com/web/dropin/1.11.0/js/dropin.min.js"></script>
         <title>Document</title>
     </head>

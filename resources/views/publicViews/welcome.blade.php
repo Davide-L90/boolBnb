@@ -19,6 +19,7 @@
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:100,300,400,600,700" rel="stylesheet">
 
 
         <style>
@@ -190,6 +191,17 @@
 
             <div class="row bottom_cnt">
                 
+                @if( !empty($apartmentsToShow[0]['apartment']) )
+                    <div id="apartments_advertised_cnt" class="">
+                        @foreach($apartmentsToShow as $apartment)
+                            @include('components.apartments_cards')
+                        @endforeach
+                    </div>
+                @else 
+                    <div class="alert_message col-md-8 col-md-offset-2">
+                        Non ci sono appartamenti sponsorizzati    
+                    </div>   
+                @endif
             </div>
         </div>
 
