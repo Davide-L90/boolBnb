@@ -34,6 +34,7 @@ class ApartamentController extends Controller
         
         /* Get all apartment advertised */
         $apartments_advertised = new Apartament();
+        $apartments_advertised = $apartments_advertised->where('is_active', 1);
         $apartments_advertised = $apartments_advertised->whereHas('advertisements', function($query){
             $query->where('valid_until', '>', Carbon::now());
         })->get();
