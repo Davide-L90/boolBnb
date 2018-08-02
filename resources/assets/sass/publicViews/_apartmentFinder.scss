@@ -36,7 +36,10 @@ div.row {
         justify-content: center;
         flex-wrap: wrap;
         padding-right: 0;
-        
+    }
+
+    div#not_found_msg_cnt{
+        text-align: center;
     }
 }
 
@@ -60,23 +63,29 @@ div.row {
 
         div.results-cnt {
             justify-content: start;
-            
         }
     }
 }
 
-@media (min-width: 768px) {}
+@media (min-width: 768px) {
+
+}
 
 @media (min-width: 992px) {
     div.row {
+
         form#form_search_ajax{
-        
+
             ul.features_list{
 
                 li{
                     width: 100%;
                 }
             }
+        }
+        div.results-cnt {
+            border-left: 1px solid lightgrey;
+
         }
     }
 }

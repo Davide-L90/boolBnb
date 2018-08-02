@@ -19,13 +19,13 @@ class ApartamentController extends Controller
      */
     public function index(Request $request)
     {         
-    
+        
         $request->validate([
             'address' => 'required|string|max:255'
         ]);
-        $indirizzo = $request->address;
-        $latitudine = $request->lat;
-        $longitudine = $request->lng;        
+        // $indirizzo = $request->address;
+        // $latitudine = $request->lat;
+        // $longitudine = $request->lng;        
         
         $featuresDB = Feature::all();
     
@@ -38,7 +38,7 @@ class ApartamentController extends Controller
         $apartments_advertised = $apartments_advertised->whereHas('advertisements', function($query){
             $query->where('valid_until', '>', Carbon::now());
         })->get();
-
+        
         $distanceToSearch = 20; //Distance search default value
         
         if(!empty($request->distance))
@@ -126,7 +126,6 @@ class ApartamentController extends Controller
         }
 
         $apartments = $apartments->get();       
-        
         foreach ($apartments as $apartment) {
 
             $distance = $this->distance($request->lat, $request->lng, $apartment->latitude, $apartment->longitude);
@@ -169,14 +168,12 @@ class ApartamentController extends Controller
         usort($apartmentsToShow, function($a, $b) {
             return $a['distance'] <=> $b['distance'];
         });
-
         if($request->ajax()){ 
-            
             $html = view('components.apartments_cards', ['apartmentsToShow' => $apartmentsToShow])->render();
             return response()->json([
                 "log" => "Chiamata AJAX",
                 /* 'res' => $results, */
-                'html' => $html
+                'html' => $html      
             ]);
         }
         
