@@ -8,23 +8,25 @@
         </div>
     </div> --}}
 
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             
             @if( !(empty($apartmentsToShow)) )
                 
                 <h1 class="">Appartamenti vicino a: <span id="address_searched">{{ $address_searched }}</span> </h1>    
                 
-                <div class="col-md-2 filters-cnt">
+                <div class="col-md-3 filters-cnt">
                    
                     @include('components.search_form')
 
                 </div>
 
-                <div class="col-md-10 results-cnt">
-                
-                    @include('components.apartments_cards')
-                
+                <div class="col-md-9 results-cnt">
+                    @foreach($apartmentsToShow as $apartment)
+                        
+                            @include('components.apartments_cards')
+                        
+                    @endforeach
                 </div>
 
             @else

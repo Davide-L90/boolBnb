@@ -1,0 +1,41 @@
+div.row {
+
+    div.results-cnt {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding-right: 0;
+        
+    }
+}
+
+
+
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+    div.row {
+
+        div.results-cnt {
+            justify-content: start;
+            
+        }
+    }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 626px) {
+    div.row {
+
+        div.results-cnt {
+            justify-content: start;
+            
+        }
+    }
+}
+
+@media (min-width: 768px) {}
+
+@media (min-width: 992px) {}
+
+@media (min-width: 1200px) {}

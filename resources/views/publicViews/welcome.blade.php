@@ -81,7 +81,7 @@
                 <div class="image_background">
                     <nav class="col-xs-12">
                         <div class="heading">
-                            Boolbnb
+                            <a href="{{ route('welcome') }}">BoolBnb</a>
                         </div>
                         <div class="auth_cnt">
                             <div class="hamburger_menu">
@@ -109,24 +109,23 @@
                         </div>
                     </nav>
 
-                    <div class="form_cnt col-xs-12">
-                        {!! Form::open(['id' => $data['form_data']['id'], 'class' => 'filter_form_validation', 'url' => $data['form_data']['action'], 'method' => $data['form_data']['method']]) !!}
-    
+                    <div class="form_cnt col-xs-12">                        
+                        <form id="apartment_search_form" class="filter_form_validation" action="{{ route('apartments.results') }}" method="GET">
                             <div class="form-group{{ $errors->has('address') ? 'has-error' : '' }}">                                
-                                <div class="{{ $data['form_data']['class']['input_cnt'] }}">
-                                    <input id="address" type="text" class="{{ $data['form_data']['class']['input'] }}" name="address" value="{{ !empty($data['form_data']['request_field']) ? $data['form_data']['request_field']->address : null }}" >   
+                                <div class="">
+                                    <input id="address" type="text" class="" name="address" value="" >   
                                 </div>
                             </div>
 
                             <div class="hidden form-group{{ $errors->has('lat') ? ' has-error' : '' }}">
                                 <div class="col-md-9">
-                                    <input id="lat" type="hidden" class="form-control" name="lat" value="{{ !empty($data['form_data']['request_field']) ? $data['form_data']['request_field']->lat : null }}" >
+                                    <input id="lat" type="hidden" class="form-control" name="lat" value="" >
                                 </div>
                             </div>
 
                             <div class="hidden form-group{{ $errors->has('lng') ? ' has-error' : '' }}">
                                 <div class="col-md-9">
-                                    <input id="lng" type="hidden" class="form-control" name="lng" value="{{ !empty($data['form_data']['request_field']) ? $data['form_data']['request_field']->lng : null }}" >
+                                    <input id="lng" type="hidden" class="form-control" name="lng" value="" >
                                 </div>
                             </div>                            
 
@@ -138,40 +137,42 @@
     
                                         <div class="form-group flex_input{{ $errors->has('beds_number') ? 'has-error' : '' }}">                                    
                                             <div class="">
-                                                <input id="beds_number" type="number" class="{{ $data['form_data']['class']['input'] }}" name="beds_number" value="{{ !empty($data['form_data']['request_field']) ? $data['form_data']['request_field']->beds_number : null }}" placeholder="Quanti posti letto">   
+                                                <input id="beds_number" type="number" class="" name="beds_number" value="" placeholder="Quanti posti letto">   
                                             </div>
                                         </div>
                                     
                                         <div class="form-group flex_input{{ $errors->has('bathrooms_number') ? 'has-error' : '' }}">                                    
                                             <div class="">
-                                                <input id="bathrooms_number" type="number" class="{{ $data['form_data']['class']['input'] }}" name="bathrooms_number" value="{{ !empty($data['form_data']['request_field']) ? $data['form_data']['request_field']->bathrooms_number : null }}" placeholder="Quanti bagni">   
+                                                <input id="bathrooms_number" type="number" class="" name="bathrooms_number" value="" placeholder="Quanti bagni">   
                                             </div>
                                         </div>
     
                                     </div>
                                 
                                     <div class="form-group{{ $errors->has('distance') ? 'has-error' : '' }}">                                    
-                                        <div class="{{ $data['form_data']['class']['input_cnt'] }}">
-                                            <input id="distance" type="number" class="{{ $data['form_data']['class']['input'] }}" name="distance" value="{{ !empty($data['form_data']['request_field']) ? $data['form_data']['request_field']->distance : null }}" placeholder="Raggio di ricerca in Km">   
+                                        <div class="">
+                                            <input id="distance" type="number" class="" name="distance" value="" placeholder="Raggio di ricerca in Km">   
                                         </div>
                                     </div>
                                 </div>
+
+                                
                                 
                             
                                 <div class="form-group checkbox_list_cnt{{ $errors->has('features') ? ' has-error' : '' }}">
                                     <ul class="checkbox_list">
-                                        @foreach($data['form_data']['chek_notcheck_feat'] as $feat) 
+                                        @foreach($check_not_check as $feat) 
                                             <li class="checkbox_item_cnt">
-                                                <label class="checkbox_item" for="{{ $feat['name'] }}">{{ $feat['name'] }}
+                                                {{-- <label class="checkbox_item" for="{{ $feat['name'] }}">{{ $feat['name'] }}
                                                     <input class="custom_checkbox" type="checkbox" name="features[]" id="{{ $feat['name'] }}" {{ $feat['isChecked'] ? 'checked' : null}}>
                                                     <span class="checkmark"></span>
-                                                </label>
-                                                {{-- <input type="checkbox" class="custom_checkbox{{ $data['form_data']['class']['check_input'] }}" name="features[]" id="{{ $feat['name'] }}" value="{{ $feat['id'] }}" {{ $feat['isChecked'] ? 'checked' : null}} autofocus> 
-                                                <label class="{{ $data['form_data']['class']['check_label'] }}" for="{{ $feat['name'] }}">{{ $feat['name'] }}</label> --}}
+                                                </label> --}}
+                                                <input type="checkbox" class="custom_checkbox" name="features[]" id="{{ $feat['name'] }}" value="{{ $feat['id'] }}" {{ $feat['isChecked'] ? 'checked' : null}} autofocus> 
+                                                <label class="" for="{{ $feat['name'] }}">{{ $feat['name'] }}</label>
                                             </li>
                                         @endforeach
                                     </ul>
-                                </div>                            
+                                </div>                           
                                 
                             </div>
 
@@ -182,11 +183,7 @@
                             <button type="submit" class="btn btn-primary">
                                 Cerca
                             </button>
-                                
-                            
-
-
-                        {!! Form::close() !!}                   
+                        </form>                  
                     </div>
                 </div>
             </div>

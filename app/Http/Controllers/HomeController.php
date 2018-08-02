@@ -31,27 +31,11 @@ class HomeController extends Controller
         $apartments = $apartments->whereHas('advertisements', function($query){
             $query->where('valid_until', '>', Carbon::now());
         })->get();
-        /* dd($apartments); */
-        $data = [
-            'form_data' => [
-                'id' => 'apartment_search_form',
-                'class' => [
-                    'form' => '',
-                    'field_cnt' => '',
-                    'label' => '',
-                    'input_cnt' => '',
-                    'input' => '',
-                    'filter_cnt' => '',
-                    'check_label' => '',
-                    'check_input' => ''
-                ],
-                'action' => route('apartments.results'),
-                'method' => 'GET',
-                'request_field' => [],
-                'chek_notcheck_feat' => $checked_and_notChecked,
-            ]
-        ];
+        /* dd($checked_and_notChecked); */
 
-        return view('publicViews.welcome', ['data' => $data]);
+        return view('publicViews.welcome', [
+            'check_not_check' => $checked_and_notChecked,
+            'apartments_advertised' => $apartments
+        ]);
     }
 }

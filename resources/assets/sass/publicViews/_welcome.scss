@@ -41,11 +41,13 @@ div.top_cnt {
                 div.menu_items {
                     display: none;
                     width: 130px;       
-                    a {
-                        color: $color_primary;
-                        text-decoration: none;
-                    }
+                    
                 }
+            }
+
+            a {
+                color: $color_primary;
+                text-decoration: none;
             }
         }
     
@@ -122,6 +124,10 @@ div.top_cnt {
                             width: 100%;
                             height: $checkbox_height;
                             margin-bottom: 5px;
+
+                            label {
+                                color: $color_primary;
+                            }
     
                             label.checkbox_item {
                                 display: block;

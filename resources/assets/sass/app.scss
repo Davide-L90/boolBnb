@@ -20,10 +20,16 @@
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
  
 //Import partials
+@import 'layouts/_app';
+
 @import '_userPanel';
 @import '_apartmentFinder';
 @import '_showApartment';
 @import '_inbox';
 @import 'publicViews/_welcome';
+@import 'publicViews/_apartmentFinder';
+
+@import 'components/_apartments_cards';
+
 
 
