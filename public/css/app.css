@@ -8459,26 +8459,51 @@ div.detail_cnt {
   margin-top: 20px;
 }
 
-div.detail_cnt div.features_cnt h1.title {
+div.detail_cnt h1.title {
   margin-top: 0;
   font-size: 50px;
+}
+
+div.detail_cnt div.info_cnt.address_cnt {
   border-bottom: 1px solid lightgrey;
+  font-size: 25px;
 }
 
-div.detail_cnt div.features_cnt span.info_type {
-  font-size: 28px;
+div.detail_cnt div.features_cnt {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
-div.detail_cnt div.features_cnt span.info_values {
+div.detail_cnt div.features_cnt div.info_cnt {
+  width: 100%;
+  text-align: center;
+}
+
+div.detail_cnt div.features_cnt div.info_cnt div.icons_field {
+  font-size: 25px;
+}
+
+div.detail_cnt div.features_cnt div.info_cnt div.info_type {
   font-size: 22px;
 }
 
-div.detail_cnt div.features_cnt div.info_cnt.services {
+div.detail_cnt div.features_cnt div.info_cnt div.info_values {
+  font-size: 18px;
+}
+
+div.detail_cnt div.info_cnt.services {
   border-top: 1px solid lightgrey;
   padding: 10px 0;
 }
 
-div.detail_cnt div.features_cnt div.info_cnt.services ul {
+div.detail_cnt div.info_cnt.services span.info_type {
+  font-size: 22px;
+}
+
+div.detail_cnt div.info_cnt.services ul {
   list-style: none;
   padding: 0;
   display: -webkit-box;
@@ -8488,7 +8513,7 @@ div.detail_cnt div.features_cnt div.info_cnt.services ul {
       flex-wrap: wrap;
 }
 
-div.detail_cnt div.features_cnt div.info_cnt.services ul li {
+div.detail_cnt div.info_cnt.services ul li {
   width: 50%;
   font-size: 22px;
 }
@@ -8528,8 +8553,13 @@ div.map_wrapper .map_cnt #map {
 }
 
 @media (min-width: 576px) {
-  div.detail_cnt div.features_cnt div.info_cnt.services ul li {
+  div.detail_cnt div.features_cnt div.info_cnt {
+    width: 50%;
+  }
+
+  div.detail_cnt div.info_cnt.services ul li {
     width: 33%;
+    text-align: center;
   }
 }
 
@@ -9223,7 +9253,6 @@ a.thumbnail.apartment_card div.caption.info_section p.apartment_title {
   margin: 5px 0 7px;
   font-size: 18px;
   line-height: 18px;
-  height: 18px;
   text-transform: uppercase;
   font-weight: 500;
 }

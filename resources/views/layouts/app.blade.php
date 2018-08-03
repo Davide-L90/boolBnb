@@ -23,6 +23,7 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">        
         <link rel="stylesheet" href="{{ asset('css/libs/dropzone.css') }}"> {{-- Dropzone --}}
         <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:100,300,400,600,700" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     </head>
     <body>
         <div id="app">

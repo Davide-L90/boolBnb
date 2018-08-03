@@ -37,40 +37,44 @@
         <div class="row">
             <div class="detail_cnt col-xs-12">
                 <div class="detail_cnt_left {{ ($user_logged_id == $apartment->user_id) ? "col-xs-12" : "col-xs-12 col-md-6" }}"> 
+                    <div class="info_cnt">
+                        <h1 class="title info_values">{{$apartment->title}}</h1>      
+                    </div>
+                    <div class="info_cnt address_cnt">
+                        <div class="info_type">Indirizzo: </div>
+                        <div class="address info_values">{{$apartment->address}}</div>      
+                    </div>
                     <div class="features_cnt">
                         <div class="info_cnt">
-                            <h1 class="title info_values">{{$apartment->title}}</h1>      
+                            <div class="icons_field"><i class="fas fa-bed"></i></div>
+                            <div class="info_type">Posti letto: </div>
+                            <div class="beds_number info_values">{{$apartment->beds_number}}</div>      
                         </div>
                         <div class="info_cnt">
-                            <span class="info_type">Indirizzo: </span>
-                            <span class="address info_values">{{$apartment->address}}</span>      
+                            <div class="icons_field"><i class="fas fa-shower"></i></div>
+                            <div class="info_type">Bagni: </div>
+                            <div class="bathrooms_number info_values">{{$apartment->bathrooms_number}}</div>      
                         </div>
                         <div class="info_cnt">
-                            <span class="info_type">Posti letto: </span>
-                            <span class="beds_number info_values">{{$apartment->beds_number}}</span>      
+                            <div class="icons_field"><i class="fas fa-home"></i></div>
+                            <div class="info_type">Superficie: </div>
+                            <div class="area info_values">{{$apartment->area}} mq.</div>      
                         </div>
                         <div class="info_cnt">
-                            <span class="info_type">Bagni: </span>
-                            <span class="bathrooms_number info_values">{{$apartment->bathrooms_number}}</span>      
+                            <div class="icons_field"><i class="fas fa-money-bill-alt"></i></div>
+                            <div class="info_type">Prezzo/notte: </div>
+                            <div class="price info_values">{{$apartment->price}} €</div>      
                         </div>
-                        <div class="info_cnt">
-                            <span class="info_type">Superficie: </span>
-                            <span class="area info_values">{{$apartment->area}} mq.</span>      
-                        </div>
-                        <div class="info_cnt">
-                            <span class="info_type">Prezzo: </span>
-                            <span class="price info_values">{{$apartment->price}} €</span>      
-                        </div>
-                        <div class="info_cnt services">
-                            <span class="info_type">Servizi: </span>
-                            <ul class="features-list">
-                                @foreach($features as $feature)
-                                    <li class="feature">
-                                        <span>{{$feature->name}}</span>
-                                    </li>
-                                @endforeach    
-                            </ul>               
-                        </div>
+                    </div>
+                    <div class="info_cnt services">
+                        <span class="info_type">Servizi: </span>
+                        <ul class="features-list">
+                            @foreach($features as $feature)
+                                <li class="feature">
+                                    <span>{{$feature->name}}</span>
+                                </li>
+                            @endforeach    
+                        </ul>               
                     </div>
                 </div>
                 {{-- Form to send message --}}

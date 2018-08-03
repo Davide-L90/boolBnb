@@ -28,39 +28,58 @@ div.gallery-wrapper{
         }
     }
 }
+
 div.detail_cnt{
     margin-top: 20px;
 
-    div.features_cnt{
+    h1.title{
+        margin-top: 0;
+        font-size: 50px;
+    }
+    div.info_cnt.address_cnt{
+        border-bottom: 1px solid lightgrey;
+        font-size: 25px;
+    }
 
-        h1.title{
-            margin-top: 0;
-            font-size: 50px;
-            border-bottom: 1px solid lightgrey;
+    div.features_cnt{
+        display: flex;
+        flex-wrap: wrap;
+
+        div.info_cnt{
+            width: 100%;
+            text-align: center;
+
+            div.icons_field{
+                font-size: 25px;
+            }
+
+            div.info_type{
+                font-size: 22px;
+            }
+    
+            div.info_values{
+                font-size: 18px;
+            }
         }
+    }
+
+    div.info_cnt.services{
+        border-top: 1px solid lightgrey;
+        padding: 10px 0;
 
         span.info_type{
-            font-size: 28px;
-        }
-
-        span.info_values{
             font-size: 22px;
         }
 
-        div.info_cnt.services{
-            border-top: 1px solid lightgrey;
-            padding: 10px 0;
+        ul{
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
 
-            ul{
-                list-style: none;
-                padding: 0;
-                display: flex;
-                flex-wrap: wrap;
-
-                li{
-                    width: 50%;
-                    font-size: 22px;
-                }
+            li{
+                width: 50%;
+                font-size: 22px;
             }
         }
     }
@@ -102,16 +121,21 @@ div.map_wrapper{
 @media (min-width: 576px) {
    
     div.detail_cnt{
-    
-        div.features_cnt{
-    
-            div.info_cnt.services{
 
-                ul{
-                
-                    li{
-                        width: 33%;
-                    }
+        div.features_cnt{
+ 
+            div.info_cnt{
+                width: 50%;
+            }
+        }
+    
+        div.info_cnt.services{
+
+            ul{
+
+                li{
+                    width: 33%;
+                    text-align: center;
                 }
             }
         }

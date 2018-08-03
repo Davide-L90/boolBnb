@@ -4,7 +4,8 @@
             <img src="{{ asset('storage/'.$apartment['thumbnail']) }}" alt="...">
         </div>
         <div class="caption info_section">
-            <p class="apartment_title"> {{ $apartment['apartment']->title }} </p>
+            <p class="apartment_title"> {{ $apartment['apartment']->title }}</p>
+            {{-- <p class="apartment_title"> {{ strlen($apartment['apartment']->title) > 18 ? substr($apartment['apartment']->title, 0, 15).'...' : $apartment['apartment']->title  }} </p> --}}
             <p class="apartment_price"> {{ $apartment['apartment']->price }} &euro;/mese </p>
             @if($apartment['distance'] < 0)
                 <p class="apartment_distance hidden"> </p>
