@@ -192,54 +192,22 @@
             <div class="row bottom_cnt">
                 
                 @if( !empty($apartmentsToShow[0]['apartment']) )
-                    <div id="apartments_advertised_cnt" class="">
-                        @foreach($apartmentsToShow as $apartment)
-                            @include('components.apartments_cards')
-                        @endforeach
+                    <div id="apartments_advertised_cnt" class="results-cnt">
+                        @include('components.apartments_cards')                        
                     </div>
                 @else 
                     <div class="alert_message col-md-8 col-md-offset-2">
                         Non ci sono appartamenti sponsorizzati    
                     </div>   
                 @endif
+
             </div>
         </div>
 
         
 
         
-        {{-- <div class="flex-center position-ref full-height">
-   
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ route('home') }}">{{ Auth::user()->name }} </a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-            @endif
-
-            <div class="container content">
-                <div class="row">
-
-                    <div class="title col-md-12">
-                        BoolBnb
-                    </div>
-
-                    <div class="form_cnt col-md-6">
-                        @include('components.search_form')                    
-                    </div>
-                    
-                    <div id="sponsored_apart" class="col-md-6">
-
-                    </div>
-                    
-                </div>
-               
-            </div>
-        </div> --}}
+        
     </body>
     <script>
         $(document).ready(function() {
