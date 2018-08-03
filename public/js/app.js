@@ -16427,7 +16427,8 @@
 
 __webpack_require__(125);
 __webpack_require__(128);
-module.exports = __webpack_require__(129);
+__webpack_require__(129);
+module.exports = __webpack_require__(130);
 
 
 /***/ }),
@@ -17152,6 +17153,12 @@ Dropzone.options.dropzone = {
 
 /***/ }),
 /* 129 */
+/***/ (function(module, exports) {
+
+throw new Error("Module build failed: Error: ENOENT: no such file or directory, open '/home/alessandro/softwaredev/webdev/boolean_/boolBnb/resources/assets/js/publicViews/welcome.js'");
+
+/***/ }),
+/* 130 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
