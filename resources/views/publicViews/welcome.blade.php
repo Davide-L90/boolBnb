@@ -130,7 +130,7 @@
                                 </div>
                             </div>                            
 
-                            <div class="filter_cnt">
+                            <div class="filter_cnt hidden">
 
                                 <div class="input_wrapper">
 

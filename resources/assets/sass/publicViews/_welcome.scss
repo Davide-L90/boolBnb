@@ -28,6 +28,7 @@ div.top_cnt {
     div.image_background {
         height: $top_cnt_height; 
         background-image: url('/images/home_background.jpg');
+        filter: alpha(opacity=20);
         background-size: cover;
         background-position: 50%;
         
@@ -233,33 +234,8 @@ div.bottom_cnt {
 
             div.caption.info_section {
                 padding: 0;
-                margin-top: 8px;       
-
-                /* p.apartment_title {
-                    margin: 5px 0 7px;
-                    font-size: $apartment_title;
-                    line-height: $apartment_title;
-                    height: $apartment_title;
-                    text-transform: uppercase;
-                    font-weight: 500;
-                }
-
-                p.apartment_price {
-                    margin: 0 0 7px;
-                    font-size: $apartment_title - 3px;
-                    line-height: $apartment_title - 3px;
-                    height: $apartment_title - 3px;
-                    font-weight: 400;
-                }
-
-                p.apartment_distance {
-                    margin: 0 0 7px;
-                    font-size: $apartment_title - 5px;
-                    line-height: $apartment_title - 5px;
-                    height: $apartment_title - 5px;
-                    color: rgb(50, 205, 50);
-                    font-weight: 400;
-                } */
+                margin-top: 8px; 
+                
             }
         }
     }
