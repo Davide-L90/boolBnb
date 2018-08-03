@@ -11,7 +11,7 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.js([        
+mix.js([       
         'resources/assets/js/main.js',
         'resources/assets/js/userLogged/apartmentDetail.js',
     ], 'public/js/app.js')
@@ -20,5 +20,6 @@ mix.js([
        'resources/assets/js/lib/jquery-3.3.1.js',
         'resources/assets/js/lib/geocomplete/jquery.geocomplete.js',
         'resources/assets/js/lib/moment.js',
-        'resources/assets/js/lib/dropzone.js'
+        'resources/assets/js/lib/dropzone.js',
+        'resources/assets/js/lib/bootstrap.min.js'
     ],'public/js/libraries.js');
