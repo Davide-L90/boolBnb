@@ -22,6 +22,8 @@
 //Import partials
 @import 'layouts/_app';
 
+
+
 @import '_userPanel';
 @import '_apartmentFinder';
 @import '_showApartment';
@@ -30,6 +32,9 @@
 @import 'publicViews/_apartmentFinder';
 
 @import 'components/_apartments_cards';
+@import 'components/_buttons';
+@import 'components/_slide_menu';
+
 
 
 

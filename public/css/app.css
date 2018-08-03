@@ -8489,9 +8489,16 @@ div.delete-popup form#delete_form {
 div.top_cnt div.image_background {
   height: 78vh;
   background-image: url("/images/home_background.jpg");
-  filter: alpha(opacity=20);
   background-size: cover;
   background-position: 50%;
+  position: relative;
+}
+
+div.top_cnt div.image_background div.overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 div.top_cnt div.image_background nav {
@@ -8516,17 +8523,31 @@ div.top_cnt div.image_background nav div.auth_cnt div.menu_items {
   width: 130px;
 }
 
+div.top_cnt div.image_background nav div.auth_cnt div#hamburger_icon {
+  cursor: pointer;
+}
+
 div.top_cnt div.image_background nav a {
   color: #fff;
   text-decoration: none;
 }
 
-div.top_cnt div.image_background form#apartment_search_form {
-  padding: 5px;
-  background-color: rgba(0, 0, 0, 0.5);
+div.top_cnt div.image_background div.form_cnt {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 }
 
-div.top_cnt div.image_background form#apartment_search_form input#address {
+div.top_cnt div.image_background div.form_cnt form#apartment_search_form {
+  padding: 5px;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: block;
+  margin-top: 20px;
+}
+
+div.top_cnt div.image_background div.form_cnt form#apartment_search_form input#address {
   width: 100%;
   height: 40px;
   border: none;
@@ -8538,39 +8559,43 @@ div.top_cnt div.image_background form#apartment_search_form input#address {
   outline: none;
 }
 
-div.top_cnt div.image_background form#apartment_search_form input#address::-webkit-input-placeholder {
+div.top_cnt div.image_background div.form_cnt form#apartment_search_form input#address::-webkit-input-placeholder {
   color: #fff;
   font-size: 20px;
   font-weight: 200;
 }
 
-div.top_cnt div.image_background form#apartment_search_form input#address:-ms-input-placeholder {
+div.top_cnt div.image_background div.form_cnt form#apartment_search_form input#address:-ms-input-placeholder {
   color: #fff;
   font-size: 20px;
   font-weight: 200;
 }
 
-div.top_cnt div.image_background form#apartment_search_form input#address::-ms-input-placeholder {
+div.top_cnt div.image_background div.form_cnt form#apartment_search_form input#address::-ms-input-placeholder {
   color: #fff;
   font-size: 20px;
   font-weight: 200;
 }
 
-div.top_cnt div.image_background form#apartment_search_form input#address::placeholder {
+div.top_cnt div.image_background div.form_cnt form#apartment_search_form input#address::placeholder {
   color: #fff;
   font-size: 20px;
   font-weight: 200;
 }
 
-div.top_cnt div.image_background form#apartment_search_form div.filter_cnt {
+div.top_cnt div.image_background div.form_cnt form#apartment_search_form div.filter_cnt {
   width: 100%;
 }
 
-div.top_cnt div.image_background form#apartment_search_form div.filter_cnt div.input_wrapper {
+div.top_cnt div.image_background div.form_cnt form#apartment_search_form div.filter_cnt.d_none {
+  display: none;
+}
+
+div.top_cnt div.image_background div.form_cnt form#apartment_search_form div.filter_cnt div.input_wrapper {
   width: 100%;
 }
 
-div.top_cnt div.image_background form#apartment_search_form div.filter_cnt div.input_wrapper input {
+div.top_cnt div.image_background div.form_cnt form#apartment_search_form div.filter_cnt div.input_wrapper input {
   width: 100%;
   height: 30px;
   border: none;
@@ -8582,31 +8607,31 @@ div.top_cnt div.image_background form#apartment_search_form div.filter_cnt div.i
   outline: none;
 }
 
-div.top_cnt div.image_background form#apartment_search_form div.filter_cnt div.input_wrapper input::-webkit-input-placeholder {
+div.top_cnt div.image_background div.form_cnt form#apartment_search_form div.filter_cnt div.input_wrapper input::-webkit-input-placeholder {
   color: #fff;
   font-size: 18px;
   font-weight: 200;
 }
 
-div.top_cnt div.image_background form#apartment_search_form div.filter_cnt div.input_wrapper input:-ms-input-placeholder {
+div.top_cnt div.image_background div.form_cnt form#apartment_search_form div.filter_cnt div.input_wrapper input:-ms-input-placeholder {
   color: #fff;
   font-size: 18px;
   font-weight: 200;
 }
 
-div.top_cnt div.image_background form#apartment_search_form div.filter_cnt div.input_wrapper input::-ms-input-placeholder {
+div.top_cnt div.image_background div.form_cnt form#apartment_search_form div.filter_cnt div.input_wrapper input::-ms-input-placeholder {
   color: #fff;
   font-size: 18px;
   font-weight: 200;
 }
 
-div.top_cnt div.image_background form#apartment_search_form div.filter_cnt div.input_wrapper input::placeholder {
+div.top_cnt div.image_background div.form_cnt form#apartment_search_form div.filter_cnt div.input_wrapper input::placeholder {
   color: #fff;
   font-size: 18px;
   font-weight: 200;
 }
 
-div.top_cnt div.image_background form#apartment_search_form div.filter_cnt div.input_wrapper div.flex_input_cnt {
+div.top_cnt div.image_background div.form_cnt form#apartment_search_form div.filter_cnt div.input_wrapper div.flex_input_cnt {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -8615,30 +8640,30 @@ div.top_cnt div.image_background form#apartment_search_form div.filter_cnt div.i
           justify-content: space-between;
 }
 
-div.top_cnt div.image_background form#apartment_search_form div.filter_cnt div.input_wrapper div.flex_input_cnt div.form_group.flex_input {
+div.top_cnt div.image_background div.form_cnt form#apartment_search_form div.filter_cnt div.input_wrapper div.flex_input_cnt div.form_group.flex_input {
   width: 30%;
 }
 
-div.top_cnt div.image_background form#apartment_search_form div.filter_cnt div.checkbox_list_cnt {
+div.top_cnt div.image_background div.form_cnt form#apartment_search_form div.filter_cnt div.checkbox_list_cnt {
   width: 100%;
 }
 
-div.top_cnt div.image_background form#apartment_search_form div.filter_cnt div.checkbox_list_cnt ul.checkbox_list {
+div.top_cnt div.image_background div.form_cnt form#apartment_search_form div.filter_cnt div.checkbox_list_cnt ul.checkbox_list {
   list-style: none;
   padding-left: 0;
 }
 
-div.top_cnt div.image_background form#apartment_search_form div.filter_cnt div.checkbox_list_cnt ul.checkbox_list li.checkbox_item_cnt {
+div.top_cnt div.image_background div.form_cnt form#apartment_search_form div.filter_cnt div.checkbox_list_cnt ul.checkbox_list li.checkbox_item_cnt {
   width: 100%;
   height: 25px;
   margin-bottom: 5px;
 }
 
-div.top_cnt div.image_background form#apartment_search_form div.filter_cnt div.checkbox_list_cnt ul.checkbox_list li.checkbox_item_cnt label {
+div.top_cnt div.image_background div.form_cnt form#apartment_search_form div.filter_cnt div.checkbox_list_cnt ul.checkbox_list li.checkbox_item_cnt label {
   color: #fff;
 }
 
-div.top_cnt div.image_background form#apartment_search_form div.filter_cnt div.checkbox_list_cnt ul.checkbox_list li.checkbox_item_cnt label.checkbox_item {
+div.top_cnt div.image_background div.form_cnt form#apartment_search_form div.filter_cnt div.checkbox_list_cnt ul.checkbox_list li.checkbox_item_cnt label.checkbox_item {
   display: block;
   position: relative;
   padding-left: 35px;
@@ -8652,13 +8677,13 @@ div.top_cnt div.image_background form#apartment_search_form div.filter_cnt div.c
   /* Style the checkmark/indicator */
 }
 
-div.top_cnt div.image_background form#apartment_search_form div.filter_cnt div.checkbox_list_cnt ul.checkbox_list li.checkbox_item_cnt label.checkbox_item input {
+div.top_cnt div.image_background div.form_cnt form#apartment_search_form div.filter_cnt div.checkbox_list_cnt ul.checkbox_list li.checkbox_item_cnt label.checkbox_item input {
   position: absolute;
   opacity: 0;
   cursor: pointer;
 }
 
-div.top_cnt div.image_background form#apartment_search_form div.filter_cnt div.checkbox_list_cnt ul.checkbox_list li.checkbox_item_cnt label.checkbox_item span.checkmark {
+div.top_cnt div.image_background div.form_cnt form#apartment_search_form div.filter_cnt div.checkbox_list_cnt ul.checkbox_list li.checkbox_item_cnt label.checkbox_item span.checkmark {
   position: absolute;
   top: 0;
   left: 0;
@@ -8667,25 +8692,25 @@ div.top_cnt div.image_background form#apartment_search_form div.filter_cnt div.c
   background-color: #eee;
 }
 
-div.top_cnt div.image_background form#apartment_search_form div.filter_cnt div.checkbox_list_cnt ul.checkbox_list li.checkbox_item_cnt label.checkbox_item:hover input ~ span.checkmark {
+div.top_cnt div.image_background div.form_cnt form#apartment_search_form div.filter_cnt div.checkbox_list_cnt ul.checkbox_list li.checkbox_item_cnt label.checkbox_item:hover input ~ span.checkmark {
   background-color: #ccc;
 }
 
-div.top_cnt div.image_background form#apartment_search_form div.filter_cnt div.checkbox_list_cnt ul.checkbox_list li.checkbox_item_cnt label.checkbox_item input:checked ~ span.checkmark {
+div.top_cnt div.image_background div.form_cnt form#apartment_search_form div.filter_cnt div.checkbox_list_cnt ul.checkbox_list li.checkbox_item_cnt label.checkbox_item input:checked ~ span.checkmark {
   background-color: #2196F3;
 }
 
-div.top_cnt div.image_background form#apartment_search_form div.filter_cnt div.checkbox_list_cnt ul.checkbox_list li.checkbox_item_cnt label.checkbox_item span.checkmark:after {
+div.top_cnt div.image_background div.form_cnt form#apartment_search_form div.filter_cnt div.checkbox_list_cnt ul.checkbox_list li.checkbox_item_cnt label.checkbox_item span.checkmark:after {
   content: "";
   position: absolute;
   display: none;
 }
 
-div.top_cnt div.image_background form#apartment_search_form div.filter_cnt div.checkbox_list_cnt ul.checkbox_list li.checkbox_item_cnt label.checkbox_item input:checked ~ span.checkmark:after {
+div.top_cnt div.image_background div.form_cnt form#apartment_search_form div.filter_cnt div.checkbox_list_cnt ul.checkbox_list li.checkbox_item_cnt label.checkbox_item input:checked ~ span.checkmark:after {
   display: block;
 }
 
-div.top_cnt div.image_background form#apartment_search_form div.filter_cnt div.checkbox_list_cnt ul.checkbox_list li.checkbox_item_cnt label.checkbox_item span.checkmark:after {
+div.top_cnt div.image_background div.form_cnt form#apartment_search_form div.filter_cnt div.checkbox_list_cnt ul.checkbox_list li.checkbox_item_cnt label.checkbox_item span.checkmark:after {
   top: 1px;
   left: 6px;
   width: 8px;
@@ -8694,6 +8719,28 @@ div.top_cnt div.image_background form#apartment_search_form div.filter_cnt div.c
   border-width: 0 3px 3px 0;
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
+}
+
+div.top_cnt div.image_background div.form_cnt form#apartment_search_form div.buttons_cnt {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  position: relative;
+}
+
+div.top_cnt div.image_background div.form_cnt form#apartment_search_form div.buttons_cnt i {
+  color: red;
+  cursor: pointer;
+}
+
+div.top_cnt div.image_background div.form_cnt form#apartment_search_form div.buttons_cnt i::before {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
 }
 
 div.bottom_cnt div#apartments_advertised_cnt {
@@ -8770,24 +8817,20 @@ div.bottom_cnt div.alert_message {
   }
 
   div.top_cnt div.image_background div.form_cnt {
-    position: relative;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
   }
 
   div.top_cnt div.image_background div.form_cnt form#apartment_search_form {
     padding: 10px;
   }
 
-  div.top_cnt div.image_background div.form_cnt form#apartment_search_form div.filter_cnt {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-  }
-
   div.top_cnt div.image_background div.form_cnt form#apartment_search_form div.filter_cnt div.input_wrapper {
     width: 48%;
+    float: left;
   }
 
   div.top_cnt div.image_background div.form_cnt form#apartment_search_form div.filter_cnt div.input_wrapper div.flex_input_cnt {
@@ -8801,7 +8844,9 @@ div.bottom_cnt div.alert_message {
   }
 
   div.top_cnt div.image_background div.form_cnt form#apartment_search_form div.filter_cnt div.checkbox_list_cnt {
-    width: 50%;
+    width: 48%;
+    float: left;
+    padding-left: 20px;
   }
 
   div.top_cnt div.image_background div.form_cnt form#apartment_search_form div.filter_cnt div.checkbox_list_cnt ul.checkbox_list {
@@ -8820,6 +8865,12 @@ div.bottom_cnt div.alert_message {
 
   div.top_cnt div.image_background div.form_cnt form#apartment_search_form div.filter_cnt div.checkbox_list_cnt ul.checkbox_list li.checkbox_item_cnt label.checkbox_item {
     font-size: 13px;
+  }
+
+  div.top_cnt div.image_background div.form_cnt form#apartment_search_form div.filter_cnt::after {
+    content: "";
+    display: table;
+    clear: both;
   }
 
   div.bottom_cnt div#apartments_advertised_cnt {
@@ -8864,17 +8915,7 @@ div.bottom_cnt div.alert_message {
             justify-content: space-between;
   }
 
-  div.top_cnt div.image_background div.form_cnt {
-    position: relative;
-  }
-
   div.top_cnt div.image_background div.form_cnt form#apartment_search_form {
-    width: 70%;
-    margin: 0 auto;
-    position: absolute;
-    left: 50%;
-    -webkit-transform: translate(-50%, 15%);
-            transform: translate(-50%, 15%);
     padding: 25px;
   }
 
@@ -8937,10 +8978,8 @@ div.bottom_cnt div.alert_message {
   }
 
   div.top_cnt div.image_background div.form_cnt form#apartment_search_form {
-    max-width: 55%;
+    max-width: 75%;
     margin: 0 auto;
-    -webkit-transform: translate(-50%, 45%);
-            transform: translate(-50%, 45%);
   }
 
   div.top_cnt div.image_background div.form_cnt form#apartment_search_form div.filter_cnt {
@@ -9186,5 +9225,48 @@ a.thumbnail.apartment_card div.caption.info_section p.apartment_distance {
     font-size: 13px;
     font-weight: 400;
   }
+}
+
+.custom_button {
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px solid #fff;
+  border-radius: 5px;
+  padding: 10px  15px;
+  color: #fff;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.custom_button:hover {
+  background-color: #fff;
+  color: black;
+  border: 1px solid #fff;
+  text-decoration: none;
+}
+
+div.slide_menu {
+  position: absolute;
+  right: 0;
+  width: 150px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+div.slide_menu a {
+  font-size: 23px;
+  font-weight: 300;
+  text-align: right;
+  padding: 5px 0;
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+  color: #3097D1 !important;
+}
+
+div.slide_menu a:not(:last-of-type) {
+  border-bottom: 1px solid #fff;
+}
+
+.d_none {
+  display: none;
 }
 

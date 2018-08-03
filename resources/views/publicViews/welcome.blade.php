@@ -80,13 +80,15 @@
         <div class="container-fluid">
             <div class="row top_cnt">
                 <div class="image_background">
+                    <div class="overlay"></div>
                     <nav class="col-xs-12">
                         <div class="heading">
                             <a href="{{ route('welcome') }}">BoolBnb</a>
                         </div>
                         <div class="auth_cnt">
-                            <div class="hamburger_menu">
+                            <div id="hamburger_icon" class="hamburger_menu">
                                 <i class="fas fa-2x fa-bars"></i>
+                                @include('components.slide_menu')
                             </div>
                             <div class="menu_items">
                                 @if (Route::has('login'))
@@ -110,7 +112,7 @@
                         </div>
                     </nav>
 
-                    <div class="form_cnt col-xs-12">                        
+                    <div class="form_cnt col-xs-12 col-sm-10">                        
                         <form id="apartment_search_form" class="filter_form_validation" action="{{ route('apartments.results') }}" method="GET">
                             <div class="form-group{{ $errors->has('address') ? 'has-error' : '' }}">                                
                                 <div class="">
@@ -130,7 +132,7 @@
                                 </div>
                             </div>                            
 
-                            <div class="filter_cnt hidden">
+                            <div class="filter_cnt d_none">
 
                                 <div class="input_wrapper">
 
@@ -177,13 +179,18 @@
                                 
                             </div>
 
-                            <button class="btn btn-primary show_filter">
-                                Ricerca avanzata
-                            </button>
+                            <div class="buttons_cnt">
                                 
-                            <button type="submit" class="btn btn-primary">
-                                Cerca
-                            </button>
+                                <i id="hide_filters" class="far fa-2x fa-times-circle hidden"></i>
+                                
+                                <a id="show_filters" class="show_filter custom_button">
+                                    Ricerca avanzata
+                                </a>
+                                    
+                                <button type="submit" class="custom_button">
+                                    Cerca
+                                </button>
+                            </div>
                         </form>                  
                     </div>
                 </div>
