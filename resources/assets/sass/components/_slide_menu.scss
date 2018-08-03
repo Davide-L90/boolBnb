@@ -1,0 +1,25 @@
+div.slide_menu {
+    position: absolute;
+    right: 0;
+    width: 150px;
+    background-color: rgba(0, 0, 0, 0.5);
+
+    a {
+        font-size: 23px;
+        font-weight: 300;
+        text-align: right;
+        padding: 5px 0;
+        display: block;
+        width: 80%;
+        margin: 0 auto;
+        
+        color: #3097D1 !important;
+        &:not(:last-of-type) {
+            border-bottom: 1px solid #fff;
+        }
+    }
+}
+
+.d_none {
+    display: none;
+}

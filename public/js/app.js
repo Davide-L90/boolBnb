@@ -17172,6 +17172,10 @@ $(document).ready(function () {
         $(this).siblings("#show_filters").removeClass("hidden");
         $(".filter_cnt").slideToggle("slow", function () {});
     });
+
+    $("#hamburger_icon").click(function () {
+        $(".slide_menu").slideToggle(200, function () {});
+    });
 });
 
 /***/ }),

@@ -86,8 +86,9 @@
                             <a href="{{ route('welcome') }}">BoolBnb</a>
                         </div>
                         <div class="auth_cnt">
-                            <div class="hamburger_menu">
+                            <div id="hamburger_icon" class="hamburger_menu">
                                 <i class="fas fa-2x fa-bars"></i>
+                                @include('components.slide_menu')
                             </div>
                             <div class="menu_items">
                                 @if (Route::has('login'))

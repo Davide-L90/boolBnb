@@ -16,4 +16,9 @@ $(document).ready(function() {
         $(".filter_cnt").slideToggle("slow", function () {
         });
     });
+
+    $("#hamburger_icon").click(function() {
+        $(".slide_menu").slideToggle(200, function () {
+        });
+    })
 });

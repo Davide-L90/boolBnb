@@ -8523,6 +8523,10 @@ div.top_cnt div.image_background nav div.auth_cnt div.menu_items {
   width: 130px;
 }
 
+div.top_cnt div.image_background nav div.auth_cnt div#hamburger_icon {
+  cursor: pointer;
+}
+
 div.top_cnt div.image_background nav a {
   color: #fff;
   text-decoration: none;
@@ -9238,5 +9242,31 @@ a.thumbnail.apartment_card div.caption.info_section p.apartment_distance {
   color: black;
   border: 1px solid #fff;
   text-decoration: none;
+}
+
+div.slide_menu {
+  position: absolute;
+  right: 0;
+  width: 150px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+div.slide_menu a {
+  font-size: 23px;
+  font-weight: 300;
+  text-align: right;
+  padding: 5px 0;
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+  color: #3097D1 !important;
+}
+
+div.slide_menu a:not(:last-of-type) {
+  border-bottom: 1px solid #fff;
+}
+
+.d_none {
+  display: none;
 }
 
