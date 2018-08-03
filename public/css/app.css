@@ -8563,6 +8563,19 @@ div.map_wrapper .map_cnt #map {
   }
 }
 
+div#inbox_title {
+  background-color: lightgrey;
+  padding: 10px;
+}
+
+div#inbox_title h1 {
+  margin-top: 0;
+}
+
+div#inbox_title select.selected_apartment_id {
+  outline: none;
+}
+
 .message_cnt {
   border: 1px solid #002CF9 !important;
   margin: 5px 0;
@@ -8591,8 +8604,26 @@ div.map_wrapper .map_cnt #map {
   text-align: left;
 }
 
+.message_cnt .info_msg span.apartment-title {
+  font-size: 22px;
+}
+
 .message_cnt .info_msg span {
   width: 100%;
+}
+
+.message_cnt div.content_msg {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+div.notFound_cnt {
+  font-size: 30px;
+}
+
+.spinner {
+  font-size: 28px;
+  text-align: center;
 }
 
 @media screen and (min-width: 768px) {

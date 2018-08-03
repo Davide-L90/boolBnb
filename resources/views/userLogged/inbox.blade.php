@@ -4,18 +4,23 @@
 
     <div class="container">
         <div class="row">
-            <span class="filter_name">Filtra per Appartamento: </span>
-            <select class="selected_apartment_id" name="" id="">
-                <option value="-1">Tutti</option>
-                @foreach($user_apartments as $ua)
-                    <option class="selected_apartment_id" value="{{ $ua->id }}">{{ $ua->title }}</option>
-                @endforeach
-            </select>
+            <div id="inbox_title">
+                <h1>Messaggi ricevuti</h1>
+                <span class="filter_name">Filtra per Appartamento: </span>
+                <select class="selected_apartment_id" name="" id="">
+                    <option value="-1">Tutti</option>
+                    @foreach($user_apartments as $ua)
+                        <option class="selected_apartment_id" value="{{ $ua->id }}">{{ $ua->title }}</option>
+                    @endforeach
+                </select>
+            </div>
         </div>
     </div>
 
     <div class="container">
         <div class="row msg_section">
+            <div class="spinner hidden"><i class="fas fa-spinner fa-spin"></i></div>
+                
             @foreach($filtered_messages as $fm)
                 
                 <div class="message_cnt">
@@ -49,14 +54,19 @@
                     data : {
                         "apartment_id" : option_value,
                     },
-                    beforeSend:function() {
-                        $('body').css('backgroundColor', 'red');                        
+                    beforeSend:function() { 
+                        $('.spinner').removeClass('hidden');                         
                     },          
                     success:function(data, stato) {
-                        console.log( data.filtered_message );
-                        $('body').css('background', 'transparent');
-                        
+                        $('.spinner').addClass('hidden');                         
                         $('.message_cnt').remove();
+                        $('.notFound_cnt').remove();
+                        if((data.filtered_message).length == 0) {
+                            $('.msg_section').append(
+                                    '<div class="notFound_cnt"> Nessun messaggio da visualizzare per l\'appartamento selezionato </div>'
+                                );
+                        }
+                        else{
                             //On success, the old html will be changed with result of ajax call's response
                             $.each(data.filtered_message, function(k, v) {
                                 $('.msg_section').append(
@@ -73,6 +83,7 @@
                                     '</div>'
                                 );
                             });
+                        }
                     },
                     error:function(richiesta,stato,errori) {
                         alert( "E' avvenuto un errore. ");
