@@ -16427,7 +16427,8 @@
 
 __webpack_require__(125);
 __webpack_require__(128);
-module.exports = __webpack_require__(129);
+__webpack_require__(129);
+module.exports = __webpack_require__(130);
 
 
 /***/ }),
@@ -17152,6 +17153,29 @@ Dropzone.options.dropzone = {
 
 /***/ }),
 /* 129 */
+/***/ (function(module, exports) {
+
+$(document).ready(function () {
+    $("#show_filters").click(function () {
+        $(this).addClass("hidden");
+        $(this).siblings("#hide_filters").removeClass("hidden");
+
+        $(".filter_cnt").slideToggle("slow", function () {
+            /* $(this).removeClass("d_none"); */
+            /* $(".filter_cnt").css("display", "flex"); */
+            /* $(".filter_cnt").css("display", "flex"); */
+        });
+    });
+
+    $("#hide_filters").click(function () {
+        $(this).addClass("hidden");
+        $(this).siblings("#show_filters").removeClass("hidden");
+        $(".filter_cnt").slideToggle("slow", function () {});
+    });
+});
+
+/***/ }),
+/* 130 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

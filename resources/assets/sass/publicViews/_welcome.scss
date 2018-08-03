@@ -23,15 +23,22 @@ $form_padding : 5px;
     font-family: 'Josefin Sans', sans-serif;
 }
 
+
 div.top_cnt {
 
     div.image_background {
         height: $top_cnt_height; 
         background-image: url('/images/home_background.jpg');
-        filter: alpha(opacity=20);
         background-size: cover;
         background-position: 50%;
+        position: relative;
         
+        div.overlay {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.3);
+        }
         nav {
             height: $nav_height;
             display: flex;
@@ -46,8 +53,7 @@ div.top_cnt {
                 
                 div.menu_items {
                     display: none;
-                    width: 130px;       
-                    
+                    width: 130px; 
                 }
             }
 
@@ -56,153 +62,185 @@ div.top_cnt {
                 text-decoration: none;
             }
         }
-    
-        form#apartment_search_form {
-            
-            padding: $form_padding;
-            background-color: rgba(0, 0, 0, 0.5);
-            
-            input#address {
-                width: 100%;
-                height: $main_input_height;
-                border: none;
-                border-bottom: 2px solid $color_primary;
-                background-color: rgba(255, 255, 255, 0);
-                color: $color_primary;
-                font-size: $main_input_font_size;
-                font-weight: 600;
-                outline: none;
-    
-                &::placeholder {
+        
+        div.form_cnt{
+
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); 
+
+            form#apartment_search_form {
+                 
+                padding: $form_padding;
+                background-color: rgba(0, 0, 0, 0.5);
+                display: block;
+                margin-top: 20px;
+
+                input#address {
+                    width: 100%;
+                    height: $main_input_height;
+                    border: none;
+                    border-bottom: 2px solid $color_primary;
+                    background-color: rgba(255, 255, 255, 0);
                     color: $color_primary;
                     font-size: $main_input_font_size;
-                    font-weight: 200;
-                }
-            }
-    
-            div.filter_cnt {
-    
-                width: 100%; 
-    
-                div.input_wrapper {
-    
-                    width: 100%; 
-    
-                    & input {
-                        width: 100%;
-                        height: $secondary_input_height;
-                        border: none;
-                        border-bottom: 1px solid $color_primary;
-                        background-color: rgba(255, 255, 255, 0);
+                    font-weight: 600;
+                    outline: none;
+        
+                    &::placeholder {
                         color: $color_primary;
                         font-size: $main_input_font_size;
-                        font-weight: 500;
-                        outline: none;
-    
-                        &::placeholder {
-                            color: $color_primary;
-                            font-size: $secondary_input_font_size;
-                            font-weight: 200;
-                        }
+                        font-weight: 200;
                     }
-    
-                    div.flex_input_cnt {
-                        display: flex;
-                        justify-content: space-between;
-        
-                        div.form_group.flex_input {
-                            width: 30%;
-                        }
-                    }
-                
                 }
-    
-                div.checkbox_list_cnt {
-    
-                    width: 100%;
-    
-                    ul.checkbox_list {
-                        list-style: none;
-                        padding-left: 0;
-    
-                        li.checkbox_item_cnt {
-    
+        
+                div.filter_cnt {
+                    
+                    &.d_none {
+                        display: none;
+                    }
+                    
+                    width: 100%; 
+        
+                    div.input_wrapper {
+        
+                        width: 100%; 
+        
+                        & input {
                             width: 100%;
-                            height: $checkbox_height;
-                            margin-bottom: 5px;
+                            height: $secondary_input_height;
+                            border: none;
+                            border-bottom: 1px solid $color_primary;
+                            background-color: rgba(255, 255, 255, 0);
+                            color: $color_primary;
+                            font-size: $main_input_font_size;
+                            font-weight: 500;
+                            outline: none;
+        
+                            &::placeholder {
+                                color: $color_primary;
+                                font-size: $secondary_input_font_size;
+                                font-weight: 200;
+                            }
+                        }
+        
+                        div.flex_input_cnt {
+                            display: flex;
+                            justify-content: space-between;
+            
+                            div.form_group.flex_input {
+                                width: 30%;
+                            }
+                        }
+                    
+                    }
+        
+                    div.checkbox_list_cnt {
+        
+                        width: 100%;
+        
+                        ul.checkbox_list {
 
-                            label {
-                                color: $color_primary;
-                            }
+                            list-style: none;
+                            padding-left: 0;
+        
+                            li.checkbox_item_cnt {
+        
+                                width: 100%;
+                                height: $checkbox_height;
+                                margin-bottom: 5px;
     
-                            label.checkbox_item {
-                                display: block;
-                                position: relative;
-                                padding-left: 35px;                            
-                                //margin-bottom: 12px;
-                                cursor: pointer;
-                                font-size: $font_size_sm;
-                                color: $color_primary;
-                                -webkit-user-select: none;
-                                -moz-user-select: none;
-                                -ms-user-select: none;
-                                user-select: none;
-    
-                                input {
-                                    position: absolute;
-                                    opacity: 0;
-                                    cursor: pointer;
+                                label {
+                                    color: $color_primary;
                                 }
-    
-                                span.checkmark {
-                                    position: absolute;
-                                    top: 0;
-                                    left: 0;
-                                    height: 20px;
-                                    width: 20px;
-                                    background-color: #eee;
-                                }
-    
-                                &:hover input ~ span.checkmark {
-                                    background-color: #ccc;
-                                }
-    
-                                input:checked ~ span.checkmark {
-                                    background-color: #2196F3;
-                                }
-    
-                                span.checkmark:after {
-                                    content: "";
-                                    position: absolute;
-                                    display: none;
-                                }
-    
-                                input:checked ~ span.checkmark:after {
+        
+                                label.checkbox_item {
                                     display: block;
-                                }
-    
-                                /* Style the checkmark/indicator */
-                                span.checkmark:after {
-                                    top: 1px;
-                                    left: 6px;
-                                    width: 8px;
-                                    height: 15px;
-                                    border: solid white;
-                                    border-width: 0 3px 3px 0;
-                                    -webkit-transform: rotate(45deg);
-                                    -ms-transform: rotate(45deg);
-                                    transform: rotate(45deg);
-                                }
+                                    position: relative;
+                                    padding-left: 35px;                            
+                                    //margin-bottom: 12px;
+                                    cursor: pointer;
+                                    font-size: $font_size_sm;
+                                    color: $color_primary;
+                                    -webkit-user-select: none;
+                                    -moz-user-select: none;
+                                    -ms-user-select: none;
+                                    user-select: none;
+        
+                                    input {
+                                        position: absolute;
+                                        opacity: 0;
+                                        cursor: pointer;
+                                    }
+        
+                                    span.checkmark {
+                                        position: absolute;
+                                        top: 0;
+                                        left: 0;
+                                        height: 20px;
+                                        width: 20px;
+                                        background-color: #eee;
+                                    }
+        
+                                    &:hover input ~ span.checkmark {
+                                        background-color: #ccc;
+                                    }
+        
+                                    input:checked ~ span.checkmark {
+                                        background-color: #2196F3;
+                                    }
+        
+                                    span.checkmark:after {
+                                        content: "";
+                                        position: absolute;
+                                        display: none;
+                                    }
+        
+                                    input:checked ~ span.checkmark:after {
+                                        display: block;
+                                    }
+        
+                                    /* Style the checkmark/indicator */
+                                    span.checkmark:after {
+                                        top: 1px;
+                                        left: 6px;
+                                        width: 8px;
+                                        height: 15px;
+                                        border: solid white;
+                                        border-width: 0 3px 3px 0;
+                                        -webkit-transform: rotate(45deg);
+                                        -ms-transform: rotate(45deg);
+                                        transform: rotate(45deg);
+                                    }
+                                }        
+                                
                             }
-    
+                        }
+                    }
+                    
+                    
+                }
+
+                div.buttons_cnt {
+                    display: flex;
+                    justify-content: space-between;
+                    position: relative;
+
+                    i {
+                        color: red;  
+                        cursor: pointer;
+                        
+                        &::before {
+                            position: absolute;
+                            top: 50%;
+                            transform: translateY(-50%);
                             
                         }
                     }
                 }
-                
-                
+        
             }
-    
         }
     }
 
@@ -260,13 +298,13 @@ div.bottom_cnt {
 @media (min-width: 576px) {
 
     div.top_cnt {
-
         
         div.image_background {
             
             height: $top_cnt_height - 10vh;             
             
             nav {
+
                 height: $nav_height + 30px;            
                 font-size: $font_size_sm + 3px;            
                 
@@ -286,21 +324,21 @@ div.bottom_cnt {
             
             div.form_cnt {
                 
-                position: relative;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%); 
+                
                 
                 form#apartment_search_form {
-                    
                     padding: $form_padding * 2;
         
-                    div.filter_cnt {
-                        
-                        display: flex;
-                        
-                        justify-content: space-between;
+                    div.filter_cnt {          
         
                         div.input_wrapper {
         
                             width: 48%;
+                            float: left;
         
                             div.flex_input_cnt {
                                 flex-wrap: wrap;
@@ -315,7 +353,9 @@ div.bottom_cnt {
         
                         div.checkbox_list_cnt {
         
-                            width: 50%;
+                            width: 48%;
+                            float: left;
+                            padding-left: 20px;
         
                             ul.checkbox_list {                        
         
@@ -336,6 +376,12 @@ div.bottom_cnt {
                                     
                                 }
                             }
+                        }
+
+                        &::after {
+                            content: "";
+                            display: table;
+                            clear: both;
                         }
                         
                     }
@@ -393,16 +439,9 @@ div.bottom_cnt {
             }
     
             div.form_cnt {
-                    
-                position: relative;
     
-                form#apartment_search_form {
-        
-                    width: 70%;
-                    margin: 0 auto;
-                    position: absolute;
-                    left: 50%;
-                    transform: translate(-50%, +15%);
+                form#apartment_search_form {        
+                                   
                     padding: $form_padding * 5;
                     
         
@@ -484,9 +523,8 @@ div.bottom_cnt {
 
                 form#apartment_search_form {
         
-                    max-width: 55%;
-                    margin: 0 auto;
-                    transform: translate(-50%, +45%);
+                    max-width: 75%;
+                    margin: 0 auto;                
         
                     div.filter_cnt {
                         
