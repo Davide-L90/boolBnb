@@ -73,19 +73,19 @@ div.row {
 
 @media (min-width: 992px) {
     div.row {
+        div.filters-cnt{
+            border-right: 1px solid lightgrey;
+            height: 100vh;
 
-        form#form_search_ajax{
-
-            ul.features_list{
-
-                li{
-                    width: 100%;
+            form#form_search_ajax{
+    
+                ul.features_list{
+    
+                    li{
+                        width: 100%;
+                    }
                 }
             }
-        }
-        div.results-cnt {
-            border-left: 1px solid lightgrey;
-
         }
     }
 }

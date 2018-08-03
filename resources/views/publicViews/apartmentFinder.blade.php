@@ -18,7 +18,7 @@
                 <div class="col-md-3 filters-cnt">
                    <form action="{{ route('apartments.results') }}" id="form_search_ajax" class="form-horizontal filter_form_validation" method="GET">
                         <div class="field_cnt form-group{{ $errors->has('address') ? 'has-error' : '' }}">
-                            <div class="col-md-12 col-lg-10">
+                            <div class="col-md-12">
                                 <input id="address" type="text" class="col-xs-12" name="address" value="{{$request->address }}" placeholder="Indirizzo">   
                             </div>
                         </div>
@@ -38,24 +38,24 @@
                         <div class="filter_cnt">
                             
                             <div class="field_cnt form-group{{ $errors->has('beds_number') ? ' has-error' : '' }}">
-                                <div class="col-md-12 col-lg-10">
+                                <div class="col-md-12">
                                     <input id="beds_number" type="text" class="col-xs-12" name="beds_number" value="{{ !empty($request) ? $request->beds_number : null }}" placeholder="Numero letti">   
                                 </div>
                             </div>
                         
                             <div class="field_cnt form-group{{ $errors->has('bathrooms_number') ? ' has-error' : '' }}">
-                                <div class="col-md-12 col-lg-10">
+                                <div class="col-md-12">
                                     <input id="bathrooms_number" type="text" class="col-xs-12" name="bathrooms_number" value="{{ !empty($request) ? $request->bathrooms_number : null }}" placeholder="Numero bagni">   
                                 </div>
                             </div>
                         
                             <div class="field_cnt form-group{{ $errors->has('distance') ? ' has-error' : '' }}">
-                                <div class="col-md-12 col-lg-10">
+                                <div class="col-md-12">
                                     <input id="distance" type="text" class="col-xs-12" name="distance" value="{{ !empty($request) ? $request->distance : null }}" placeholder="Distanza">   
                                 </div>
                             </div>
                         
-                            <div class="col-md-12 col-lg-10 field_cnt form-group{{ $errors->has('features') ? ' has-error' : '' }}">
+                            <div class="col-md-12 field_cnt form-group{{ $errors->has('features') ? ' has-error' : '' }}">
                                 <ul class="features_list">
                                     @foreach($check_notcheck_feat as $feat)
                                         <li>
