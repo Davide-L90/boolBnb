@@ -140,13 +140,13 @@
     
                                         <div class="form-group flex_input{{ $errors->has('beds_number') ? 'has-error' : '' }}">                                    
                                             <div class="">
-                                                <input id="beds_number" type="number" class="" name="beds_number" value="" placeholder="Quanti posti letto">   
+                                                <input id="beds_number" type="text" class="" name="beds_number" value="" placeholder="Quanti posti letto">   
                                             </div>
                                         </div>
                                     
                                         <div class="form-group flex_input{{ $errors->has('bathrooms_number') ? 'has-error' : '' }}">                                    
                                             <div class="">
-                                                <input id="bathrooms_number" type="number" class="" name="bathrooms_number" value="" placeholder="Quanti bagni">   
+                                                <input id="bathrooms_number" type="text" class="" name="bathrooms_text" value="" placeholder="Quanti bagni">   
                                             </div>
                                         </div>
     
@@ -154,7 +154,7 @@
                                 
                                     <div class="form-group{{ $errors->has('distance') ? 'has-error' : '' }}">                                    
                                         <div class="">
-                                            <input id="distance" type="number" class="" name="distance" value="" placeholder="Raggio di ricerca in Km">   
+                                            <input id="distance" type="text" class="" name="distance" value="" placeholder="Raggio di ricerca in Km">   
                                         </div>
                                     </div>
                                 </div>
