@@ -8416,18 +8416,6 @@ div.delete-popup form#delete_form {
   float: left;
 }
 
-#ajax_spinner {
-  position: absolute;
-  top: 10%;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-  z-index: 10;
-  /* &.hide {
-        display: none;
-    } */
-}
-
 div.gallery-wrapper {
   padding: 0;
   height: 700px;
@@ -9181,23 +9169,35 @@ div.bottom_cnt div.alert_message {
   }
 }
 
-div.row h1#search_title {
-  text-align: center;
+div.row.finder_view {
+  margin-top: -22px;
 }
 
-div.row div.filters-cnt {
+div.row.finder_view h1#search_title {
+  text-align: center;
+  font-size: 24px;
+  margin: 25px 0;
+}
+
+div.row.finder_view h1#search_title span#address_searched {
+  color: rgba(36, 74, 97, 0.75);
+}
+
+div.row.finder_view div.filters-cnt {
   background-color: rgba(36, 74, 97, 0.75);
   padding-top: 10px;
   padding-bottom: 10px;
 }
 
-div.row div.filters-cnt form#form_search_ajax {
+div.row.finder_view div.filters-cnt form#form_search_ajax {
   max-width: 500px;
   margin: 0 auto;
   color: #fff;
 }
 
-div.row div.filters-cnt form#form_search_ajax input {
+div.row.finder_view div.filters-cnt form#form_search_ajax input {
+  height: 40px;
+  font-size: 23px;
   border-style: none;
   border-bottom: 1px solid #fff;
   background-color: rgba(0, 0, 0, 0);
@@ -9205,35 +9205,39 @@ div.row div.filters-cnt form#form_search_ajax input {
   padding-left: 0;
 }
 
-div.row div.filters-cnt form#form_search_ajax input#address {
+div.row.finder_view div.filters-cnt form#form_search_ajax input[type="checkbox"] {
+  height: 13px;
+}
+
+div.row.finder_view div.filters-cnt form#form_search_ajax input#address {
   border-bottom-width: 2px;
 }
 
-div.row div.filters-cnt form#form_search_ajax input::-webkit-input-placeholder {
+div.row.finder_view div.filters-cnt form#form_search_ajax input::-webkit-input-placeholder {
   font-weight: 200;
   color: #fff;
 }
 
-div.row div.filters-cnt form#form_search_ajax input:-ms-input-placeholder {
+div.row.finder_view div.filters-cnt form#form_search_ajax input:-ms-input-placeholder {
   font-weight: 200;
   color: #fff;
 }
 
-div.row div.filters-cnt form#form_search_ajax input::-ms-input-placeholder {
+div.row.finder_view div.filters-cnt form#form_search_ajax input::-ms-input-placeholder {
   font-weight: 200;
   color: #fff;
 }
 
-div.row div.filters-cnt form#form_search_ajax input::placeholder {
+div.row.finder_view div.filters-cnt form#form_search_ajax input::placeholder {
   font-weight: 200;
   color: #fff;
 }
 
-div.row div.filters-cnt form#form_search_ajax div.filter_cnt input {
+div.row.finder_view div.filters-cnt form#form_search_ajax div.filter_cnt input {
   color: #fff;
 }
 
-div.row div.filters-cnt form#form_search_ajax ul.features_list {
+div.row.finder_view div.filters-cnt form#form_search_ajax ul.features_list {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -9243,15 +9247,16 @@ div.row div.filters-cnt form#form_search_ajax ul.features_list {
   padding-left: 0;
 }
 
-div.row div.filters-cnt form#form_search_ajax ul.features_list li {
+div.row.finder_view div.filters-cnt form#form_search_ajax ul.features_list li {
   width: 50%;
 }
 
-div.row div.filters-cnt form#form_search_ajax ul.features_list label.features_name {
+div.row.finder_view div.filters-cnt form#form_search_ajax ul.features_list label.features_name {
   margin-left: 10px;
 }
 
-div.row div.results-cnt {
+div.row.finder_view div.results-cnt {
+  margin-top: 20px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -9263,7 +9268,7 @@ div.row div.results-cnt {
   padding-right: 0;
 }
 
-div.row div#not_found_msg_cnt {
+div.row.finder_view div#not_found_msg_cnt {
   text-align: center;
 }
 
@@ -9275,22 +9280,28 @@ div.row div#not_found_msg_cnt {
   }
 }
 
-@media (min-width: 626px) {
-  div.row div.results-cnt {
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: start;
-  }
-}
-
 @media (min-width: 992px) {
+  div.row h1#search_title {
+    text-align: center;
+    font-size: 28px;
+    margin: 30px 0;
+  }
+
   div.row div.filters-cnt {
     border-right: 1px solid lightgrey;
     height: 100vh;
   }
 
+  div.row div.filters-cnt form#form_search_ajax input {
+    font-size: 18px;
+  }
+
   div.row div.filters-cnt form#form_search_ajax ul.features_list li {
     width: 100%;
+  }
+
+  div.row div.results-cnt {
+    margin-top: 0;
   }
 }
 
@@ -9424,10 +9435,35 @@ a.thumbnail.apartment_card div.caption.info_section p.apartment_distance {
   cursor: pointer;
 }
 
+.custom_button.large {
+  width: 100%;
+}
+
 .custom_button:hover {
   background-color: #fff;
   color: black;
   border: 1px solid #fff;
+  text-decoration: none;
+}
+
+.custom_button_invert {
+  background-color: rgba(36, 74, 97, 0.75);
+  border: 1px solid rgba(36, 74, 97, 0.75);
+  border-radius: 5px;
+  padding: 10px  15px;
+  color: #fff;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.custom_button_invert.large {
+  width: 100%;
+}
+
+.custom_button_invert:hover {
+  background-color: rgba(36, 74, 97, 0.75);
+  color: #fff;
+  border: 1px solid rgba(36, 74, 97, 0.75);
   text-decoration: none;
 }
 

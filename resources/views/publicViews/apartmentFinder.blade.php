@@ -9,7 +9,7 @@
     </div> --}}
 
     <div class="container-fluid">
-        <div class="row">
+        <div class="row finder_view">
             
             @if( !(empty($apartmentsToShow)) )
                 
@@ -67,8 +67,8 @@
                             </div>    
                         
                             <div class="form-group">
-                                <div class="col-md-6 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary">
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn custom_button large">
                                         Filtra Risultati
                                     </button>
                                 </div>
@@ -89,7 +89,7 @@
                     <div id="not_found_msg_cnt">
                         <h1> Non sono stati trovati appartamenti in questa zona: </h1>        
                         <h3> {{ $address_searched }} </h3> 
-                        <a href=" {{ route('welcome') }} " class="btn btn-primary" role="button">Cerca in un'altra zona</a>
+                        <a href=" {{ route('welcome') }} " class="btn custom_button" role="button">Cerca in un'altra zona</a>
                     </div>
                 @endif
 
