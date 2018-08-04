@@ -9185,19 +9185,55 @@ div.row h1#search_title {
   text-align: center;
 }
 
-div.row form#form_search_ajax {
-  max-width: 500px;
-  margin: 0 auto;
+div.row div.filters-cnt {
+  background-color: rgba(36, 74, 97, 0.75);
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
-div.row form#form_search_ajax input {
+div.row div.filters-cnt form#form_search_ajax {
+  max-width: 500px;
+  margin: 0 auto;
+  color: #fff;
+}
+
+div.row div.filters-cnt form#form_search_ajax input {
   border-style: none;
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid #fff;
+  background-color: rgba(0, 0, 0, 0);
   outline: none;
   padding-left: 0;
 }
 
-div.row form#form_search_ajax ul.features_list {
+div.row div.filters-cnt form#form_search_ajax input#address {
+  border-bottom-width: 2px;
+}
+
+div.row div.filters-cnt form#form_search_ajax input::-webkit-input-placeholder {
+  font-weight: 200;
+  color: #fff;
+}
+
+div.row div.filters-cnt form#form_search_ajax input:-ms-input-placeholder {
+  font-weight: 200;
+  color: #fff;
+}
+
+div.row div.filters-cnt form#form_search_ajax input::-ms-input-placeholder {
+  font-weight: 200;
+  color: #fff;
+}
+
+div.row div.filters-cnt form#form_search_ajax input::placeholder {
+  font-weight: 200;
+  color: #fff;
+}
+
+div.row div.filters-cnt form#form_search_ajax div.filter_cnt input {
+  color: #fff;
+}
+
+div.row div.filters-cnt form#form_search_ajax ul.features_list {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -9207,11 +9243,11 @@ div.row form#form_search_ajax ul.features_list {
   padding-left: 0;
 }
 
-div.row form#form_search_ajax ul.features_list li {
+div.row div.filters-cnt form#form_search_ajax ul.features_list li {
   width: 50%;
 }
 
-div.row form#form_search_ajax ul.features_list label.features_name {
+div.row div.filters-cnt form#form_search_ajax ul.features_list label.features_name {
   margin-left: 10px;
 }
 
@@ -9284,6 +9320,7 @@ a.thumbnail.apartment_card div.caption.info_section p.apartment_title {
   margin: 5px 0 7px;
   font-size: 18px;
   line-height: 18px;
+  color: #244a61;
   text-transform: uppercase;
   font-weight: 500;
 }
