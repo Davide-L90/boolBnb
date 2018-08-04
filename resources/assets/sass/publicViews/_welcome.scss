@@ -39,33 +39,7 @@ div.top_cnt {
             position: absolute;
             background-color: rgba(0, 0, 0, 0.3);
         }
-        nav {
-            height: $nav_height;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: $font_size_sm;
-            font-weight: 500;
-            color: $color_primary;
-            background-color: rgba(0, 0, 0, 0.3);
-    
-            div.auth_cnt {
-                
-                div.menu_items {
-                    display: none;
-                    width: 130px; 
-                }
-
-                div#hamburger_icon {
-                    cursor: pointer;
-                }
-            }
-
-            a {
-                color: $color_primary;
-                text-decoration: none;
-            }
-        }
+        
         
         div.form_cnt{
 
@@ -309,24 +283,7 @@ div.bottom_cnt {
             
             height: $top_cnt_height - 10vh;             
             
-            nav {
-
-                height: $nav_height + 30px;            
-                font-size: $font_size_sm + 3px;            
-                
-                div.auth_cnt {
-                    
-                    div.hamburger_menu {
-                        display: none; 
-                    }
-    
-                    div.menu_items {
-                        width: 230px;       
-                        display: flex;
-                        justify-content: space-between;                    
-                    }
-                }
-            }
+            
             
             div.form_cnt {
                 
@@ -430,19 +387,7 @@ div.bottom_cnt {
         div.image_background {
             height: $top_cnt_height + 15vh;             
             
-            nav {
-                height: $nav_height + 30px;            
-                font-size: $font_size_sm + 3px;            
-                
-                div.auth_cnt {    
-    
-                    div.menu_items {
-                        max-width: 230px;       
-                        display: flex;
-                        justify-content: space-between;                    
-                    }
-                }
-            }
+            
     
             div.form_cnt {
     
@@ -509,21 +454,8 @@ div.bottom_cnt {
     div.top_cnt {
 
         div.image_background {
-            height: $top_cnt_height + 15vh;             
             
-            nav {
-                height: $nav_height + 30px;            
-                font-size: $font_size_sm + 3px;            
-                
-                div.auth_cnt {    
-    
-                    div.menu_items {
-                        width: 230px;       
-                        display: flex;
-                        justify-content: space-between;                    
-                    }
-                }
-            }
+            height: $top_cnt_height + 15vh;     
 
             div.form_cnt {
 

@@ -1,0 +1,125 @@
+$nav_height: 40px;
+$font_size_sm: 18px;
+
+
+nav {
+    
+    height: $nav_height + 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: $font_size_sm;
+    font-weight: 500;
+    color: black;
+    background-color: rgba(0, 0, 0, 0.3);
+    margin-bottom: 30px;
+    padding-left: 80px;
+    position: relative;
+
+    &.invert {
+        background-color:#fff;
+        border-bottom: 1px solid rgba(36, 74, 97, 0.75);
+
+        a {
+            color: rgba(36, 74, 97, 0.75);
+
+            &:hover {
+                color: rgba(36, 74, 97, 0.75);
+            }
+        }
+    }
+
+    div.auth_cnt {
+        
+        div.menu_items {
+            display: none;
+            width: 130px;
+            
+        }
+
+        div#hamburger_icon {
+            cursor: pointer;
+            color: #fff;
+
+            &.hamburger_invert {
+                color: rgba(36, 74, 97, 0.75);
+            }
+        }
+    }
+
+    a {
+        color: $color_primary;
+
+        &:hover {
+            text-decoration: none;
+            color: #fff;
+        }
+    }
+}
+
+
+@media (min-width: 576px) {        
+            
+    nav {
+
+        height: $nav_height + 30px;            
+        font-size: $font_size_sm;                     
+        padding: 0 80px;       
+        
+        div.auth_cnt {
+            
+            div.hamburger_menu {
+                display: none; 
+            }
+            
+            div.menu_items {
+                width: 230px;       
+                display: flex;
+                justify-content: flex-end;
+
+                a {
+                    font-weight: 300; 
+                    margin-left: 20px;                    
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+       
+    nav {
+        height: $nav_height + 30px;            
+        font-size: $font_size_sm;            
+        
+        div.auth_cnt {    
+
+            div.menu_items {
+                display: flex;
+                justify-content: flex-end;
+                
+            }
+        }
+    }
+
+}
+
+@media (min-width: 992px) { 
+   
+    nav {
+        height: $nav_height + 30px;            
+        font-size: $font_size_sm + 3px;            
+        
+        div.auth_cnt {    
+
+            div.menu_items {
+                
+                a {
+                    font-weight: 300;     
+                    margin-left: 30px;                    
+                }
+            }
+        }
+    }
+
+}

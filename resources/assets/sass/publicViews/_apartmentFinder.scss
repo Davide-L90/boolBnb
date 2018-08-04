@@ -10,6 +10,7 @@ div.row.finder_view {
             color: rgba(36, 74, 97, 0.75);
         }
     }
+    
     div.filters-cnt {
 
         background-color: rgba(36, 74, 97, 0.75);
@@ -85,7 +86,7 @@ div.row.finder_view {
 
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) {
-    div.row {
+    div.row.finder_view {
 
         div.results-cnt {
             justify-content: start;
@@ -94,9 +95,20 @@ div.row.finder_view {
     }
 }
 
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 798px) {
+    div.row.finder_view {
+
+        div.results-cnt {
+            justify-content: start;
+            margin-top: 0;
+        }
+    }
+}
+
 
 @media (min-width: 992px) {
-    div.row {
+    div.row.finder_view {
 
         h1#search_title{
             text-align: center;

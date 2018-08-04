@@ -25,14 +25,16 @@
 
 
 @import '_userPanel';
-@import 'publicViews/_showApartment';
 @import '_inbox';
+
+@import 'publicViews/_showApartment';
 @import 'publicViews/_welcome';
 @import 'publicViews/_apartmentFinder';
 
 @import 'components/_apartments_cards';
 @import 'components/_buttons';
 @import 'components/_slide_menu';
+@import 'components/_navbar';
 
 
 

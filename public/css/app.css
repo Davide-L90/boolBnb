@@ -8416,6 +8416,75 @@ div.delete-popup form#delete_form {
   float: left;
 }
 
+div#inbox_title {
+  background-color: lightgrey;
+  padding: 10px;
+}
+
+div#inbox_title h1 {
+  margin-top: 0;
+}
+
+div#inbox_title select.selected_apartment_id {
+  outline: none;
+}
+
+.message_cnt {
+  border: 1px solid #002CF9 !important;
+  margin: 5px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 0 10px;
+}
+
+.message_cnt .info_msg {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: left;
+}
+
+.message_cnt .info_msg span.apartment-title {
+  font-size: 22px;
+}
+
+.message_cnt .info_msg span {
+  width: 100%;
+}
+
+.message_cnt div.content_msg {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+div.notFound_cnt {
+  font-size: 30px;
+}
+
+.spinner {
+  font-size: 28px;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .message_cnt .info_msg span {
+    width: 25%;
+  }
+}
+
 div.gallery-wrapper {
   padding: 0;
   height: 700px;
@@ -8551,75 +8620,6 @@ div.map_wrapper .map_cnt #map {
   }
 }
 
-div#inbox_title {
-  background-color: lightgrey;
-  padding: 10px;
-}
-
-div#inbox_title h1 {
-  margin-top: 0;
-}
-
-div#inbox_title select.selected_apartment_id {
-  outline: none;
-}
-
-.message_cnt {
-  border: 1px solid #002CF9 !important;
-  margin: 5px 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  padding: 0 10px;
-}
-
-.message_cnt .info_msg {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  text-align: left;
-}
-
-.message_cnt .info_msg span.apartment-title {
-  font-size: 22px;
-}
-
-.message_cnt .info_msg span {
-  width: 100%;
-}
-
-.message_cnt div.content_msg {
-  margin-top: 10px;
-  font-size: 16px;
-}
-
-div.notFound_cnt {
-  font-size: 30px;
-}
-
-.spinner {
-  font-size: 28px;
-  text-align: center;
-}
-
-@media screen and (min-width: 768px) {
-  .message_cnt .info_msg span {
-    width: 25%;
-  }
-}
-
 * {
   font-family: 'Josefin Sans', sans-serif;
 }
@@ -8637,37 +8637,6 @@ div.top_cnt div.image_background div.overlay {
   height: 100%;
   position: absolute;
   background-color: rgba(0, 0, 0, 0.3);
-}
-
-div.top_cnt div.image_background nav {
-  height: 40px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  font-size: 18px;
-  font-weight: 500;
-  color: #fff;
-  background-color: rgba(0, 0, 0, 0.3);
-}
-
-div.top_cnt div.image_background nav div.auth_cnt div.menu_items {
-  display: none;
-  width: 130px;
-}
-
-div.top_cnt div.image_background nav div.auth_cnt div#hamburger_icon {
-  cursor: pointer;
-}
-
-div.top_cnt div.image_background nav a {
-  color: #fff;
-  text-decoration: none;
 }
 
 div.top_cnt div.image_background div.form_cnt {
@@ -8935,25 +8904,6 @@ div.bottom_cnt div.alert_message {
     height: 68vh;
   }
 
-  div.top_cnt div.image_background nav {
-    height: 70px;
-    font-size: 21px;
-  }
-
-  div.top_cnt div.image_background nav div.auth_cnt div.hamburger_menu {
-    display: none;
-  }
-
-  div.top_cnt div.image_background nav div.auth_cnt div.menu_items {
-    width: 230px;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-  }
-
   div.top_cnt div.image_background div.form_cnt {
     position: absolute;
     top: 50%;
@@ -9038,21 +8988,6 @@ div.bottom_cnt div.alert_message {
     height: 93vh;
   }
 
-  div.top_cnt div.image_background nav {
-    height: 70px;
-    font-size: 21px;
-  }
-
-  div.top_cnt div.image_background nav div.auth_cnt div.menu_items {
-    max-width: 230px;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-  }
-
   div.top_cnt div.image_background div.form_cnt form#apartment_search_form {
     padding: 25px;
   }
@@ -9098,21 +9033,6 @@ div.bottom_cnt div.alert_message {
 @media (min-width: 992px) {
   div.top_cnt div.image_background {
     height: 93vh;
-  }
-
-  div.top_cnt div.image_background nav {
-    height: 70px;
-    font-size: 21px;
-  }
-
-  div.top_cnt div.image_background nav div.auth_cnt div.menu_items {
-    width: 230px;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
   }
 
   div.top_cnt div.image_background div.form_cnt form#apartment_search_form {
@@ -9273,34 +9193,43 @@ div.row.finder_view div#not_found_msg_cnt {
 }
 
 @media (min-width: 576px) {
-  div.row div.results-cnt {
+  div.row.finder_view div.results-cnt {
     -webkit-box-pack: start;
         -ms-flex-pack: start;
             justify-content: start;
   }
 }
 
+@media (min-width: 798px) {
+  div.row.finder_view div.results-cnt {
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: start;
+    margin-top: 0;
+  }
+}
+
 @media (min-width: 992px) {
-  div.row h1#search_title {
+  div.row.finder_view h1#search_title {
     text-align: center;
     font-size: 28px;
     margin: 30px 0;
   }
 
-  div.row div.filters-cnt {
+  div.row.finder_view div.filters-cnt {
     border-right: 1px solid lightgrey;
     height: 100vh;
   }
 
-  div.row div.filters-cnt form#form_search_ajax input {
+  div.row.finder_view div.filters-cnt form#form_search_ajax input {
     font-size: 18px;
   }
 
-  div.row div.filters-cnt form#form_search_ajax ul.features_list li {
+  div.row.finder_view div.filters-cnt form#form_search_ajax ul.features_list li {
     width: 100%;
   }
 
-  div.row div.results-cnt {
+  div.row.finder_view div.results-cnt {
     margin-top: 0;
   }
 }
@@ -9469,27 +9398,143 @@ a.thumbnail.apartment_card div.caption.info_section p.apartment_distance {
 
 div.slide_menu {
   position: absolute;
+  top: 65px;
   right: 0;
-  width: 150px;
-  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  background-color: rgba(36, 74, 97, 0.8);
+  border: 1px solid #fff;
+  padding: 12px 0;
 }
 
 div.slide_menu a {
   font-size: 23px;
   font-weight: 300;
-  text-align: right;
-  padding: 5px 0;
-  display: block;
-  width: 80%;
+  text-align: center;
+  height: 25px;
+  line-height: 25px;
+  color: #fff !important;
+  /* padding: 5px 0; */
+  float: left;
+  width: 33.3%;
   margin: 0 auto;
-  color: #3097D1 !important;
 }
 
 div.slide_menu a:not(:last-of-type) {
-  border-bottom: 1px solid #fff;
+  border-right: 1px solid #fff;
 }
 
 .d_none {
   display: none;
+}
+
+nav {
+  height: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 18px;
+  font-weight: 500;
+  color: black;
+  background-color: rgba(0, 0, 0, 0.3);
+  margin-bottom: 30px;
+  padding-left: 80px;
+  position: relative;
+}
+
+nav.invert {
+  background-color: #fff;
+  border-bottom: 1px solid rgba(36, 74, 97, 0.75);
+}
+
+nav.invert a {
+  color: rgba(36, 74, 97, 0.75);
+}
+
+nav.invert a:hover {
+  color: rgba(36, 74, 97, 0.75);
+}
+
+nav div.auth_cnt div.menu_items {
+  display: none;
+  width: 130px;
+}
+
+nav div.auth_cnt div#hamburger_icon {
+  cursor: pointer;
+  color: #fff;
+}
+
+nav div.auth_cnt div#hamburger_icon.hamburger_invert {
+  color: rgba(36, 74, 97, 0.75);
+}
+
+nav a {
+  color: #fff;
+}
+
+nav a:hover {
+  text-decoration: none;
+  color: #fff;
+}
+
+@media (min-width: 576px) {
+  nav {
+    height: 70px;
+    font-size: 18px;
+    padding: 0 80px;
+  }
+
+  nav div.auth_cnt div.hamburger_menu {
+    display: none;
+  }
+
+  nav div.auth_cnt div.menu_items {
+    width: 230px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+  }
+
+  nav div.auth_cnt div.menu_items a {
+    font-weight: 300;
+    margin-left: 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  nav {
+    height: 70px;
+    font-size: 18px;
+  }
+
+  nav div.auth_cnt div.menu_items {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+  }
+}
+
+@media (min-width: 992px) {
+  nav {
+    height: 70px;
+    font-size: 21px;
+  }
+
+  nav div.auth_cnt div.menu_items a {
+    font-weight: 300;
+    margin-left: 30px;
+  }
 }
 

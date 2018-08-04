@@ -26,67 +26,37 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     </head>
     <body>
-        <div id="app">
-            <nav class="navbar navbar-default navbar-static-top">
-                <div class="container">
-                    <div class="navbar-header">
-
-                        <!-- Collapsed Hamburger -->
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
-                            <span class="sr-only">Toggle Navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-
-                        <!-- Branding Image -->
-                        <a class="navbar-brand" href="{{ url('/') }}">
-                            {{ config('app.name', 'Laravel') }}
-                        </a>
+        <div id="app">            
+            <nav class="col-xs-12 invert">
+                <div class="heading">
+                    <a href="{{ route('welcome') }}">BoolBnb</a>
+                </div>
+                <div class="auth_cnt">
+                    <div id="hamburger_icon" class="hamburger_menu hamburger_invert">
+                        @include('components.slide_menu')
+                        <i class="fas fa-2x fa-bars"></i>
                     </div>
-
-                    <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                        <!-- Left Side Of Navbar -->
-                        <ul class="nav navbar-nav">
-                            &nbsp;
-                        </ul>
-
-                        <!-- Right Side Of Navbar -->
-                        <ul class="nav navbar-nav navbar-right">
-                            <!-- Authentication Links -->
-                            @guest
-                                <li><a href="{{ route('login') }}">Login</a></li>
-                                <li><a href="{{ route('register') }}">Register</a></li>
+                    <div class="menu_items">
+                        @if (Route::has('login'))
+                            @auth
+                                <a href="{{ route('home') }}">Profile</a>
+                                <a href="{{ route('inbox.show') }}">Inbox</a>  
+                                <a href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                                    Logout
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
                             @else
-                                <li>
-                                    <a href="{{ route('home') }}" class="dropdown-toggle">
-                                        {{ Auth::user()->name }} 
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('inbox.show') }}">
-                                        Inbox
-                                    </a>                                        
-                                </li>
-                                <li>
-                                    <a href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                                document.getElementById('logout-form').submit();">
-                                        Logout
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        {{ csrf_field() }}
-                                    </form>
-                                </li>                                     
-
-                            @endguest
-                            
-                        </ul>
+                                <a href="{{ route('login') }}">Login</a>
+                                <a href="{{ route('register') }}">Register</a>
+                            @endauth
+                        @endif
                     </div>
                 </div>
             </nav>
-
             @yield('content')
         </div>
         
