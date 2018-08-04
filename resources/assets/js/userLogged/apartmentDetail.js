@@ -1,5 +1,5 @@
 Dropzone.options.dropzone = {
-    maxFilesize: 12,
+
     renameFile: function (file) {
         var dt = new Date();
         console.log(dt);
@@ -41,3 +41,34 @@ Dropzone.options.dropzone = {
         return false;
     }
 };
+
+$(document).ready(function(){
+
+    $('.fa-times').click(function(){
+
+        var imgId = $(this).parents('.images_min').children('.img-gallery-preview').attr('id');
+
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: "/user-logged-apartment-detail/image-delete",
+            method: "POST",
+            data: {
+                filename: imgId
+            },
+            success: function(data){
+                console.log(data.filename);
+                var container = $('.img-gallery-preview');
+                console.log(container);
+                var imageToDelete = $('#' + data.filename);
+                console.log(imageToDelete);
+                imageToDelete.remove();
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        });
+    });
+
+});

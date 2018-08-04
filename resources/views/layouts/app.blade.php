@@ -60,7 +60,7 @@
             @yield('content')
         </div>
         
-        @yield('additional-scripts')
         
+        @yield('additional-scripts')
     </body>
 </html>
