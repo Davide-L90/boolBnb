@@ -41,93 +41,119 @@ div.wrapper {
     div.detail_cnt{
         margin-top: 20px;
         overflow-x: hidden;
-    
-        h1.title{
-            text-transform: uppercase;
-            margin-top: 0;
-            font-size: 50px;
-            color: rgba(36, 74, 97, 0.75);
-        }
-        div.info_cnt.address_cnt{
-            border-bottom: 1px solid lightgrey;
-            font-size: 23px;
 
-            div.info_type {
-                font-weight: 500;
-                font-size: 20px;
-                color: $color_secondary;
+        div.detail_cnt_left {
+            
+            div.info_cnt {
 
-            }
-        }
-    
-        div.features_cnt{
-            display: flex;
-            flex-wrap: wrap;
-    
-            div.info_cnt{
-                width: 100%;
-                text-align: center;
-    
-                div.icons_field{
-                    font-size: 25px;
+                h1.title{
+                    text-transform: uppercase;
+                    margin-top: 0;
+                    text-align: center;
+                    font-size: 40px;
                     color: $color_secondary;
                 }
-    
-                div.info_type{
-                    font-size: 22px;
-                }
-        
-                div.info_values{
-                    font-size: 18px;
+
+                &.address_cnt{
+                    text-align: center;
+                    border-bottom: 1px solid lightgrey;
+                    margin-bottom: 10px;
+
+                    div.info_type {
+                        font-weight: 500;
+                        font-size: 20px;
+                        color: $color_secondary;        
+                    }
                 }
             }
-        }
-    
-        div.info_cnt.services{
-            border-top: 1px solid lightgrey;
-            padding: 10px 0;
             
-    
-            span.info_type{
-                font-size: 22px;
-            }
-    
-            ul{
-                list-style: none;
-                padding: 0;
+            div.features_cnt{
                 display: flex;
                 flex-wrap: wrap;
+        
+                div.info_cnt{
+                    width: 100%;
+                    text-align: center;
+                    display: flex;
+                    justify-content: space-between;
+                    flex-wrap: wrap;
+                    margin-bottom: 15px;
     
-                li{
-                    width: 50%;
-                    font-size: 22px;
-                }
-            }
-        }
-    
-        div.send_message_cnt{
-    
-            input{
-                border-radius: 0;
-                border-style: none;
-                border-bottom: 1px solid #000;
-                outline: none;
-                box-shadow: none;
-                margin-bottom: 10px;
-                &.btn_no_border{
-                    border: none;
-                }
-            }
+                    div.icons_field{
+                        width: 20%;
+                        font-size: 25px;
+                        color: $color_secondary;
+                    }
+        
+                    div.info_type{
+                        width: 60%;
+                        font-size: 22px;
+                        font-weight: 300;
+                        text-align: left;
+                    }
             
-            input[type="submit"] {
-                margin-top: 10px;
+                    div.info_values{
+                        width: 20%;
+                        text-align: right;
+                        font-size: 20px;
+                        font-weight: 800;
+                    }
+                }
             }
-    
-            textarea:focus{
-                outline: none;
+        
+            div.info_cnt.services{
+                border-top: 1px solid lightgrey;
+                padding: 10px 0;
+                
+        
+                span.info_type{
+                    display: block;
+                    text-align: center;
+                    font-size: 22px;
+                    font-weight: 500;
+                    color: $color_secondary; 
+                }
+        
+                ul{
+                    list-style: none;
+                    padding: 0;
+                    display: flex;
+                    justify-content: space-between;
+                    flex-wrap: wrap;
+        
+                    li{
+                        font-weight: 300;
+                        width: 33.3%;
+                        font-size: 18px;
+                    }
+                }
             }
-    
         }
+        div.send_message_cnt{
+        
+                input{
+                    border-radius: 0;
+                    border-style: none;
+                    border-bottom: 1px solid #000;
+                    outline: none;
+                    box-shadow: none;
+                    margin: 1px 0 10px 0;
+                    &.btn_no_border{
+                        border: none;
+                    }
+                }
+                
+                input[type="submit"] {
+                    margin-top: 10px;
+                }
+        
+                textarea:focus{
+                    outline: none;
+                }
+        
+            }
+    
+    
     }
     .send_message_cnt * {
         padding-left: 0;
@@ -188,25 +214,59 @@ div.wrapper {
                 }
             }
         }
+
         div.detail_cnt{
-    
-            div.features_cnt{
-     
-                div.info_cnt{
-                    width: 50%;
-                }
-            }
-        
-            div.info_cnt.services{
-    
-                ul{
-    
-                    li{
-                        width: 33%;
-                        text-align: center;
+            margin-top: 20px;
+            overflow-x: hidden;
+
+            div.detail_cnt_left {
+                
+                div.info_cnt {
+
+                    &.address_cnt{
+                        
+                        div.info_type {
+                            font-weight: 500;
+                            color: $color_secondary;        
+                            font-size: 28px;
+                        }
+
+                        div.address.info_values {
+                            font-size: 22px;
+                        }
                     }
                 }
+                
+                div.info_cnt.services{
+                    border-top: 1px solid lightgrey;
+                    padding: 10px 0;
+                    
+            
+                    span.info_type{
+                        display: block;
+                        text-align: center;
+                        font-size: 22px;
+                        font-weight: 500;
+                        color: $color_secondary; 
+                    }
+            
+                    ul{
+                        list-style: square;
+                        padding: 0;
+                        display: flex;
+                        justify-content: space-around;
+                        flex-wrap: wrap;
+            
+                        li{
+                            font-weight: 300;
+                            width: 23%;
+                            font-size: 20px;
+                        }
+                    }
+                }   
+
             }
+        
         }
     }
 }
@@ -249,24 +309,90 @@ div.wrapper {
             }
         }
         div.detail_cnt{
-    
-            div.features_cnt{
-     
-                div.info_cnt{
-                    width: 50%;
-                }
-            }
-        
-            div.info_cnt.services{
-    
-                ul{
-    
-                    li{
-                        width: 33%;
+
+            div.detail_cnt_left {
+                
+                div.info_cnt {
+
+                    &.address_cnt{
                         text-align: center;
+                        border-bottom: 1px solid lightgrey;
+                        margin-bottom: 10px;
+
+                        div.info_type {
+                            font-weight: 500;
+                            font-size: 20px;
+                            color: $color_secondary;        
+                        }
                     }
                 }
+
+                div.features_cnt{
+                    display: flex;
+                    flex-wrap: wrap;
+            
+                    div.info_cnt{
+                        width: 100%;
+                        text-align: center;
+                        display: flex;
+                        justify-content: space-between;
+                        flex-wrap: wrap;
+                        margin-bottom: 15px;
+    
+                        div.icons_field{
+                            width: 20%;
+                            font-size: 25px;
+                            color: $color_secondary;
+                        }
+            
+                        div.info_type{
+                            width: 60%;
+                            font-size: 22px;
+                            font-weight: 300;
+                            text-align: left;
+                        }
+                
+                        div.info_values{
+                            width: 20%;
+                            text-align: right;
+                            font-size: 20px;
+                            font-weight: 800;
+                        }
+                    }
+                }
+            
+                div.info_cnt.services{
+                    border-top: 1px solid lightgrey;
+                    padding: 10px 0;
+                    
+            
+                    span.info_type{
+                        display: block;
+                        text-align: center;
+                        font-size: 22px;
+                        font-weight: 500;
+                        color: $color_secondary; 
+                    }
+            
+                    ul{
+                        list-style: square;
+                        padding: 0;
+                        display: flex;
+                        justify-content: space-around;
+                        flex-wrap: wrap;
+            
+                        li{
+                            font-weight: 300;
+                            width: 25%;
+                            font-size: 18px;
+                        }
+                    }
+                }
+                
             }
+        
+        
+            
         }
     }
 }
@@ -307,26 +433,37 @@ div.wrapper {
                 }
             }
         }
+
         div.detail_cnt{
-    
-            div.features_cnt{
-     
-                div.info_cnt{
-                    width: 50%;
-                }
-            }
-        
-            div.info_cnt.services{
-    
-                ul{
-    
-                    li{
-                        width: 33%;
+
+            div.detail_cnt_left {
+            
+                div.info_cnt.services{
+                    border-top: 1px solid lightgrey;
+                    padding: 10px 0;
+                    
+            
+                    span.info_type{
+                        display: block;
                         text-align: center;
+                        font-size: 22px;
+                        font-weight: 500;
+                        color: $color_secondary; 
+                    }
+            
+                    ul{
+                        
+                        li{
+                            width: 30%;
+                            font-size: 20px;
+                        }
                     }
                 }
+                
             }
+            
         }
+        
     }
 }
 

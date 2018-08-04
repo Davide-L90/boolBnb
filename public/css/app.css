@@ -8526,25 +8526,27 @@ div.wrapper div.detail_cnt {
   overflow-x: hidden;
 }
 
-div.wrapper div.detail_cnt h1.title {
+div.wrapper div.detail_cnt div.detail_cnt_left div.info_cnt h1.title {
   text-transform: uppercase;
   margin-top: 0;
-  font-size: 50px;
-  color: rgba(36, 74, 97, 0.75);
+  text-align: center;
+  font-size: 40px;
+  color: #244a61;
 }
 
-div.wrapper div.detail_cnt div.info_cnt.address_cnt {
+div.wrapper div.detail_cnt div.detail_cnt_left div.info_cnt.address_cnt {
+  text-align: center;
   border-bottom: 1px solid lightgrey;
-  font-size: 23px;
+  margin-bottom: 10px;
 }
 
-div.wrapper div.detail_cnt div.info_cnt.address_cnt div.info_type {
+div.wrapper div.detail_cnt div.detail_cnt_left div.info_cnt.address_cnt div.info_type {
   font-weight: 500;
   font-size: 20px;
   color: #244a61;
 }
 
-div.wrapper div.detail_cnt div.features_cnt {
+div.wrapper div.detail_cnt div.detail_cnt_left div.features_cnt {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -8552,46 +8554,70 @@ div.wrapper div.detail_cnt div.features_cnt {
       flex-wrap: wrap;
 }
 
-div.wrapper div.detail_cnt div.features_cnt div.info_cnt {
+div.wrapper div.detail_cnt div.detail_cnt_left div.features_cnt div.info_cnt {
   width: 100%;
   text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-bottom: 15px;
 }
 
-div.wrapper div.detail_cnt div.features_cnt div.info_cnt div.icons_field {
+div.wrapper div.detail_cnt div.detail_cnt_left div.features_cnt div.info_cnt div.icons_field {
+  width: 20%;
   font-size: 25px;
   color: #244a61;
 }
 
-div.wrapper div.detail_cnt div.features_cnt div.info_cnt div.info_type {
+div.wrapper div.detail_cnt div.detail_cnt_left div.features_cnt div.info_cnt div.info_type {
+  width: 60%;
   font-size: 22px;
+  font-weight: 300;
+  text-align: left;
 }
 
-div.wrapper div.detail_cnt div.features_cnt div.info_cnt div.info_values {
-  font-size: 18px;
+div.wrapper div.detail_cnt div.detail_cnt_left div.features_cnt div.info_cnt div.info_values {
+  width: 20%;
+  text-align: right;
+  font-size: 20px;
+  font-weight: 800;
 }
 
-div.wrapper div.detail_cnt div.info_cnt.services {
+div.wrapper div.detail_cnt div.detail_cnt_left div.info_cnt.services {
   border-top: 1px solid lightgrey;
   padding: 10px 0;
 }
 
-div.wrapper div.detail_cnt div.info_cnt.services span.info_type {
+div.wrapper div.detail_cnt div.detail_cnt_left div.info_cnt.services span.info_type {
+  display: block;
+  text-align: center;
   font-size: 22px;
+  font-weight: 500;
+  color: #244a61;
 }
 
-div.wrapper div.detail_cnt div.info_cnt.services ul {
+div.wrapper div.detail_cnt div.detail_cnt_left div.info_cnt.services ul {
   list-style: none;
   padding: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
 
-div.wrapper div.detail_cnt div.info_cnt.services ul li {
-  width: 50%;
-  font-size: 22px;
+div.wrapper div.detail_cnt div.detail_cnt_left div.info_cnt.services ul li {
+  font-weight: 300;
+  width: 33.3%;
+  font-size: 18px;
 }
 
 div.wrapper div.detail_cnt div.send_message_cnt input {
@@ -8601,7 +8627,7 @@ div.wrapper div.detail_cnt div.send_message_cnt input {
   outline: none;
   -webkit-box-shadow: none;
           box-shadow: none;
-  margin-bottom: 10px;
+  margin: 1px 0 10px 0;
 }
 
 div.wrapper div.detail_cnt div.send_message_cnt input.btn_no_border {
@@ -8673,13 +8699,50 @@ div.wrapper div.map_wrapper div.row .map_cnt #map {
     max-height: 100%;
   }
 
-  div.wrapper div.detail_cnt div.features_cnt div.info_cnt {
-    width: 50%;
+  div.wrapper div.detail_cnt {
+    margin-top: 20px;
+    overflow-x: hidden;
   }
 
-  div.wrapper div.detail_cnt div.info_cnt.services ul li {
-    width: 33%;
+  div.wrapper div.detail_cnt div.detail_cnt_left div.info_cnt.address_cnt div.info_type {
+    font-weight: 500;
+    color: #244a61;
+    font-size: 28px;
+  }
+
+  div.wrapper div.detail_cnt div.detail_cnt_left div.info_cnt.address_cnt div.address.info_values {
+    font-size: 22px;
+  }
+
+  div.wrapper div.detail_cnt div.detail_cnt_left div.info_cnt.services {
+    border-top: 1px solid lightgrey;
+    padding: 10px 0;
+  }
+
+  div.wrapper div.detail_cnt div.detail_cnt_left div.info_cnt.services span.info_type {
+    display: block;
     text-align: center;
+    font-size: 22px;
+    font-weight: 500;
+    color: #244a61;
+  }
+
+  div.wrapper div.detail_cnt div.detail_cnt_left div.info_cnt.services ul {
+    list-style: square;
+    padding: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+
+  div.wrapper div.detail_cnt div.detail_cnt_left div.info_cnt.services ul li {
+    font-weight: 300;
+    width: 23%;
+    font-size: 20px;
   }
 }
 
@@ -8716,13 +8779,89 @@ div.wrapper div.map_wrapper div.row .map_cnt #map {
     max-height: 100%;
   }
 
-  div.wrapper div.detail_cnt div.features_cnt div.info_cnt {
-    width: 50%;
+  div.wrapper div.detail_cnt div.detail_cnt_left div.info_cnt.address_cnt {
+    text-align: center;
+    border-bottom: 1px solid lightgrey;
+    margin-bottom: 10px;
   }
 
-  div.wrapper div.detail_cnt div.info_cnt.services ul li {
-    width: 33%;
+  div.wrapper div.detail_cnt div.detail_cnt_left div.info_cnt.address_cnt div.info_type {
+    font-weight: 500;
+    font-size: 20px;
+    color: #244a61;
+  }
+
+  div.wrapper div.detail_cnt div.detail_cnt_left div.features_cnt {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+
+  div.wrapper div.detail_cnt div.detail_cnt_left div.features_cnt div.info_cnt {
+    width: 100%;
     text-align: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    margin-bottom: 15px;
+  }
+
+  div.wrapper div.detail_cnt div.detail_cnt_left div.features_cnt div.info_cnt div.icons_field {
+    width: 20%;
+    font-size: 25px;
+    color: #244a61;
+  }
+
+  div.wrapper div.detail_cnt div.detail_cnt_left div.features_cnt div.info_cnt div.info_type {
+    width: 60%;
+    font-size: 22px;
+    font-weight: 300;
+    text-align: left;
+  }
+
+  div.wrapper div.detail_cnt div.detail_cnt_left div.features_cnt div.info_cnt div.info_values {
+    width: 20%;
+    text-align: right;
+    font-size: 20px;
+    font-weight: 800;
+  }
+
+  div.wrapper div.detail_cnt div.detail_cnt_left div.info_cnt.services {
+    border-top: 1px solid lightgrey;
+    padding: 10px 0;
+  }
+
+  div.wrapper div.detail_cnt div.detail_cnt_left div.info_cnt.services span.info_type {
+    display: block;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 500;
+    color: #244a61;
+  }
+
+  div.wrapper div.detail_cnt div.detail_cnt_left div.info_cnt.services ul {
+    list-style: square;
+    padding: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+
+  div.wrapper div.detail_cnt div.detail_cnt_left div.info_cnt.services ul li {
+    font-weight: 300;
+    width: 25%;
+    font-size: 18px;
   }
 }
 
@@ -8759,13 +8898,22 @@ div.wrapper div.map_wrapper div.row .map_cnt #map {
     max-height: 100%;
   }
 
-  div.wrapper div.detail_cnt div.features_cnt div.info_cnt {
-    width: 50%;
+  div.wrapper div.detail_cnt div.detail_cnt_left div.info_cnt.services {
+    border-top: 1px solid lightgrey;
+    padding: 10px 0;
   }
 
-  div.wrapper div.detail_cnt div.info_cnt.services ul li {
-    width: 33%;
+  div.wrapper div.detail_cnt div.detail_cnt_left div.info_cnt.services span.info_type {
+    display: block;
     text-align: center;
+    font-size: 22px;
+    font-weight: 500;
+    color: #244a61;
+  }
+
+  div.wrapper div.detail_cnt div.detail_cnt_left div.info_cnt.services ul li {
+    width: 30%;
+    font-size: 20px;
   }
 }
 
@@ -9552,6 +9700,7 @@ div.slide_menu {
   top: 65px;
   right: 0;
   width: 100%;
+  z-index: 50;
   background-color: rgba(36, 74, 97, 0.8);
   border: 1px solid #fff;
   padding: 12px 0;

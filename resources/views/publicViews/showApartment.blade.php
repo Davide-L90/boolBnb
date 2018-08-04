@@ -59,13 +59,13 @@
                             </div>
                             <div class="info_cnt">
                                 <div class="icons_field"><i class="fas fa-home"></i></div>
-                                <div class="info_type">Superficie: </div>
-                                <div class="area info_values">{{$apartment->area}} mq.</div>      
+                                <div class="info_type">Superficie (mq.): </div>
+                                <div class="area info_values">{{$apartment->area}}</div>      
                             </div>
                             <div class="info_cnt">
                                 <div class="icons_field"><i class="fas fa-money-bill-alt"></i></div>
-                                <div class="info_type">Prezzo/notte: </div>
-                                <div class="price info_values">{{$apartment->price}} €</div>      
+                                <div class="info_type">Prezzo/notte (€): </div>
+                                <div class="price info_values">{{$apartment->price}} </div>      
                             </div>
                         </div>
                         <div class="info_cnt services">

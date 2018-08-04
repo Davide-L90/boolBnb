@@ -1,11 +1,12 @@
 $nav_height: 40px;
 
 div.slide_menu {
+    
     position: absolute;
     top: $nav_height + 25px;
     right: 0;
     width: 100%;
-    
+    z-index: 50;
     background-color: rgba(36, 74, 97, 0.8);
     //background-color: rgba(0, 0, 0, 0.5); 
     border: 1px solid #fff;
