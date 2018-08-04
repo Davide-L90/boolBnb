@@ -1,0 +1,192 @@
+div.section_cnt {
+    
+    div#section_title {
+        width: 100%;
+        height: 60px;
+        line-height: 60px;
+        margin-top: 60px 0 30px 0;
+        text-align: center;
+        font-size: 25px;        
+    }
+
+    div.apartments-list-cnt {
+
+        margin-top: 90px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        div.card {
+            
+            margin: 10px;      
+            height: 250px;
+            width: 325px;
+            /* float: left; */
+            //change card background color and opacity of img depending on if it is active
+            &.disabled-card {
+                background-color: lightgrey !important;
+                border-radius: 8px;
+                z-index: 50;
+                img {
+                    opacity: 0.2;
+                }
+            }
+
+            div.img_cnt {
+                
+                width: 100%;
+                height: 180px;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    border-top-left-radius: 8px;
+                    border-top-right-radius: 8px;
+                }
+
+            }
+
+            div.card-body {
+
+                display: flex;
+                flex-wrap: wrap;
+                height: 70px;
+
+                h5.card-title {
+                    margin: 0;
+                    height: 35px;
+                    line-height: 35px;
+                    /* padding-left: 5px;
+                    border-left: 1px solid $color_secondary;
+                    border-right: 1px solid $color_secondary; */
+                    width: 100%;
+                    text-transform: uppercase;
+                    font-size: 18px;
+                    color: $color_secondary;
+                }
+
+                a.custom_btn_show {
+                    width: 40%;
+                    padding: 5px 5px;
+                    height: 35px;
+                    border-radius: 0;
+                    border-bottom-left-radius: 8px;
+                    border: 1px solid $color_secondary;
+                    color: $color_secondary;
+                    background-color: $color_primary;
+                    outline: none;
+                }
+
+                a.custom_btn_delete {
+                    width: 20%;
+                    height: 35px;
+                    padding: 5px 5px;
+                    border-radius: 0;
+                    border: none;
+                    border-top: 1px solid $color_secondary;
+                    border-bottom: 1px solid $color_secondary;
+                    color: red;
+                    background-color: $color_primary;
+                    outline: none;
+
+                }
+                
+                form {
+                    width: 40%;
+                    height: 35px;
+
+                    input.custom_btn_disable {
+                        width: 100%;
+                        padding: 5px 5px;
+                        border: 1px solid $color_secondary;
+                        color: $color_secondary;
+                        background-color: $color_primary;
+                        border-radius: 0;
+                        border-bottom-right-radius: 8px;
+                        outline: none;
+                    }
+                }
+
+            }
+
+        }
+
+        div.add_btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+
+            button#addApartment {
+
+                width: 200px;
+                height: 200px;
+                border-radius: 35%;
+                font-size: 200px;
+                line-height: 200px;
+                background-color: #fff;
+                border-width: 8px;
+                border-style: dashed;
+                outline: none;
+                /* display: flex;
+                justify-content: center;
+                align-items: center; */
+
+                span {
+                    display: block;   
+                    height: 100px;
+                    line-height: 100px;
+                }
+
+            }
+        }
+    }
+}
+
+
+@media (min-width: 576px) { 
+
+    div.section_cnt {
+
+        div.apartments-list-cnt {
+            
+            justify-content: start;
+            margin-top: 90px;            
+            /* display: flex;
+            flex-wrap: wrap;
+            justify-content: center; */
+
+            
+            
+        }
+    }
+}
+
+.apartments-add-form{
+    display: none;
+}
+
+
+
+
+div.delete-popup {
+    width: 350px;
+    height: 150px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border: 1px solid red;
+    border-radius: 10px;
+    z-index: 5;
+
+    h2 {
+        font-size: 18px;
+
+    }
+
+    form#delete_form {
+        width: 50px !important;
+        float: left;
+    }
+}
