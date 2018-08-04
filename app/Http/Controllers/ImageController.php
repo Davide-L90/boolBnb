@@ -41,10 +41,11 @@ class ImageController extends Controller
         if (file_exists($path)) {
             unlink($path);
         }
-        return $filename;       
+        if($request->ajax())
+        {
+            return response()->json(['filename' => $filename]);
+        }
         
+        return $filename;       
     }
-
-   
-
 }
