@@ -94,7 +94,8 @@ $(document).ready(function() {
 
             if (beds_value.length != 0 && isNaN(beds_value)  ) {
                 showError(beds_field, 'Devi inserire un numero');
-                canSubmit = false;            }
+                canSubmit = false;            
+            }
 
             if (beds_value.length != 0 && beds_value <= 0 ) {
                 showError(beds_field, 'Il numero di posti letto inserito deve essere maggiore o uguale a 0');
@@ -118,9 +119,9 @@ $(document).ready(function() {
                 showError(bathrooms_field, 'Il numero di bagni inserito deve essere maggiore o uguale a 0');
                 canSubmit = false;
             }
-
-            if (distance.length != 0 && isNaN(distance)) {
-                showError(distance, 'Devi inserire un numero');
+            
+            if (distance_value.length != 0 && isNaN(distance_value)) {
+                showError(distance_field, 'Devi inserire un numero');
                 canSubmit = false;
             }  
 
@@ -128,7 +129,7 @@ $(document).ready(function() {
                 showError(distance_field, 'Inserire un numero positivo');
                 canSubmit = false;
             }
-
+            
             return canSubmit;
 
         });    

@@ -16555,8 +16555,8 @@ $(document).ready(function () {
                 canSubmit = false;
             }
 
-            if (distance.length != 0 && isNaN(distance)) {
-                showError(distance, 'Devi inserire un numero');
+            if (distance_value.length != 0 && isNaN(distance_value)) {
+                showError(distance_field, 'Devi inserire un numero');
                 canSubmit = false;
             }
 
