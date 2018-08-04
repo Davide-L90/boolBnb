@@ -55,20 +55,10 @@ $(document).ready(function() {
         });
     }
 
-    /*
-        if the view has a children with apartments-add-form class, the following
-        if-statement will executed
-    */
-    var hasApartmentsAddForm = $('#app').children().children().hasClass('apartments-add-form');
-    var hasApartmentEditForm = $('#app').children().hasClass('apartment-detail');
-    console.log(hasApartmentsAddForm);
-    console.log(hasApartmentEditForm);
-
-    var hasApartmentSearchForm = $('body').find('.search_form_validation');
-    var hasResultsFilterForm = $('body').find('.filter_form_validation');
     
-    if (hasApartmentSearchForm.length != 0 ||
-        hasResultsFilterForm.length != 0) {
+    var hasApartmentSearchForm = $('body').find('.search_form_validation');
+    
+    if ( hasApartmentSearchForm.length != 0 ) {
 
         $('#apartment_search_form').submit(function (e) {
             var address_field = $('#address');
@@ -129,7 +119,7 @@ $(document).ready(function() {
                 showError(distance_field, 'Inserire un numero positivo');
                 canSubmit = false;
             }
-            
+
             return canSubmit;
 
         });    
@@ -139,10 +129,13 @@ $(document).ready(function() {
     
     
     console.log(hasApartmentSearchForm.length == 0);
-    console.log(hasResultsFilterForm.length == 0);
-
     
-
+    /*
+        if the view has a children with apartments-add-form class, the following
+        if-statement will executed
+    */
+    var hasApartmentsAddForm = $('#app').children().children().hasClass('apartments-add-form');
+    var hasApartmentEditForm = $('#app').children().hasClass('apartment-detail');
 
     if (hasApartmentsAddForm || hasApartmentEditForm) {
         

@@ -113,7 +113,7 @@
                     </nav>
 
                     <div class="form_cnt col-xs-12 col-sm-10">                        
-                        <form id="apartment_search_form" class="filter_form_validation" action="{{ route('apartments.results') }}" method="GET">
+                        <form id="apartment_search_form" class="search_form_validation" action="{{ route('apartments.results') }}" method="GET">
                             <div class="form-group{{ $errors->has('address') ? 'has-error' : '' }}">                                
                                 <div class="">
                                     <input id="address" type="text" class="" name="address" value="" >   
