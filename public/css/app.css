@@ -8485,48 +8485,66 @@ div.notFound_cnt {
   }
 }
 
-div.gallery-wrapper {
+div.wrapper {
+  width: 100%;
+}
+
+div.wrapper div.gallery-wrapper {
   padding: 0;
-  height: 700px;
-  margin-top: -22px;
+  height: 240px;
+  width: 100%;
+  /* margin-top: -22px; */
 }
 
-div.gallery-wrapper div.row {
+div.wrapper div.gallery-wrapper div.row {
+  width: 100vw;
   height: 100%;
 }
 
-div.gallery-wrapper div.row div.gallery_cnt {
-  height: 100%;
-}
-
-div.gallery-wrapper div.row div.gallery_cnt div.carousel.slide {
-  height: 100%;
-}
-
-div.gallery-wrapper div.row div.gallery_cnt div.carousel.slide div.carousel-inner {
-  height: 100%;
-}
-
-div.gallery-wrapper div.row div.gallery_cnt div.carousel.slide div.carousel-inner .item img {
+div.wrapper div.gallery-wrapper div.row div.gallery_cnt {
   width: 100%;
   height: 100%;
+  margin-top: -30px;
+  padding: 0;
 }
 
-div.detail_cnt {
+div.wrapper div.gallery-wrapper div.row div.gallery_cnt div.carousel.slide {
+  height: 100%;
+}
+
+div.wrapper div.gallery-wrapper div.row div.gallery_cnt div.carousel.slide div.carousel-inner {
+  height: 100%;
+}
+
+div.wrapper div.gallery-wrapper div.row div.gallery_cnt div.carousel.slide div.carousel-inner .item img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+div.wrapper div.detail_cnt {
   margin-top: 20px;
+  overflow-x: hidden;
 }
 
-div.detail_cnt h1.title {
+div.wrapper div.detail_cnt h1.title {
+  text-transform: uppercase;
   margin-top: 0;
   font-size: 50px;
+  color: rgba(36, 74, 97, 0.75);
 }
 
-div.detail_cnt div.info_cnt.address_cnt {
+div.wrapper div.detail_cnt div.info_cnt.address_cnt {
   border-bottom: 1px solid lightgrey;
-  font-size: 25px;
+  font-size: 23px;
 }
 
-div.detail_cnt div.features_cnt {
+div.wrapper div.detail_cnt div.info_cnt.address_cnt div.info_type {
+  font-weight: 500;
+  font-size: 20px;
+  color: #244a61;
+}
+
+div.wrapper div.detail_cnt div.features_cnt {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -8534,33 +8552,34 @@ div.detail_cnt div.features_cnt {
       flex-wrap: wrap;
 }
 
-div.detail_cnt div.features_cnt div.info_cnt {
+div.wrapper div.detail_cnt div.features_cnt div.info_cnt {
   width: 100%;
   text-align: center;
 }
 
-div.detail_cnt div.features_cnt div.info_cnt div.icons_field {
+div.wrapper div.detail_cnt div.features_cnt div.info_cnt div.icons_field {
   font-size: 25px;
+  color: #244a61;
 }
 
-div.detail_cnt div.features_cnt div.info_cnt div.info_type {
+div.wrapper div.detail_cnt div.features_cnt div.info_cnt div.info_type {
   font-size: 22px;
 }
 
-div.detail_cnt div.features_cnt div.info_cnt div.info_values {
+div.wrapper div.detail_cnt div.features_cnt div.info_cnt div.info_values {
   font-size: 18px;
 }
 
-div.detail_cnt div.info_cnt.services {
+div.wrapper div.detail_cnt div.info_cnt.services {
   border-top: 1px solid lightgrey;
   padding: 10px 0;
 }
 
-div.detail_cnt div.info_cnt.services span.info_type {
+div.wrapper div.detail_cnt div.info_cnt.services span.info_type {
   font-size: 22px;
 }
 
-div.detail_cnt div.info_cnt.services ul {
+div.wrapper div.detail_cnt div.info_cnt.services ul {
   list-style: none;
   padding: 0;
   display: -webkit-box;
@@ -8570,51 +8589,181 @@ div.detail_cnt div.info_cnt.services ul {
       flex-wrap: wrap;
 }
 
-div.detail_cnt div.info_cnt.services ul li {
+div.wrapper div.detail_cnt div.info_cnt.services ul li {
   width: 50%;
   font-size: 22px;
 }
 
-div.detail_cnt div.send_message_cnt input {
+div.wrapper div.detail_cnt div.send_message_cnt input {
   border-radius: 0;
   border-style: none;
   border-bottom: 1px solid #000;
   outline: none;
   -webkit-box-shadow: none;
           box-shadow: none;
+  margin-bottom: 10px;
 }
 
-div.detail_cnt div.send_message_cnt input.btn_no_border {
+div.wrapper div.detail_cnt div.send_message_cnt input.btn_no_border {
   border: none;
 }
 
-div.detail_cnt div.send_message_cnt textarea:focus {
+div.wrapper div.detail_cnt div.send_message_cnt input[type="submit"] {
+  margin-top: 10px;
+}
+
+div.wrapper div.detail_cnt div.send_message_cnt textarea:focus {
   outline: none;
 }
 
-.send_message_cnt * {
+div.wrapper .send_message_cnt * {
   padding-left: 0;
 }
 
-div.map_wrapper {
+div.wrapper div.map_wrapper {
+  padding: 0;
+  width: 100%;
+}
+
+div.wrapper div.map_wrapper div.row {
+  width: 100vw;
+}
+
+div.wrapper div.map_wrapper div.row .map_cnt {
+  width: 100vw;
+  height: 400px;
+  margin-top: 20px;
   padding: 0;
 }
 
-div.map_wrapper .map_cnt {
-  height: 400px;
-  margin-top: 20px;
-}
-
-div.map_wrapper .map_cnt #map {
+div.wrapper div.map_wrapper div.row .map_cnt #map {
   height: 100%;
 }
 
 @media (min-width: 576px) {
-  div.detail_cnt div.features_cnt div.info_cnt {
+  div.wrapper div.gallery-wrapper {
+    padding: 0;
+    height: 340px;
+    width: 100%;
+    /* margin-top: -22px; */
+  }
+
+  div.wrapper div.gallery-wrapper div.row {
+    width: 100vw;
+    height: 100%;
+  }
+
+  div.wrapper div.gallery-wrapper div.row div.gallery_cnt {
+    width: 100%;
+    height: 100%;
+    margin-top: -30px;
+    padding: 0;
+  }
+
+  div.wrapper div.gallery-wrapper div.row div.gallery_cnt div.carousel.slide {
+    height: 100%;
+  }
+
+  div.wrapper div.gallery-wrapper div.row div.gallery_cnt div.carousel.slide div.carousel-inner {
+    height: 100%;
+  }
+
+  div.wrapper div.gallery-wrapper div.row div.gallery_cnt div.carousel.slide div.carousel-inner .item img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  div.wrapper div.detail_cnt div.features_cnt div.info_cnt {
     width: 50%;
   }
 
-  div.detail_cnt div.info_cnt.services ul li {
+  div.wrapper div.detail_cnt div.info_cnt.services ul li {
+    width: 33%;
+    text-align: center;
+  }
+}
+
+@media (min-width: 768px) {
+  div.wrapper div.gallery-wrapper {
+    padding: 0;
+    height: 500px;
+    width: 100%;
+    /* margin-top: -22px; */
+  }
+
+  div.wrapper div.gallery-wrapper div.row {
+    width: 100vw;
+    height: 100%;
+  }
+
+  div.wrapper div.gallery-wrapper div.row div.gallery_cnt {
+    width: 100%;
+    height: 100%;
+    margin-top: -30px;
+    padding: 0;
+  }
+
+  div.wrapper div.gallery-wrapper div.row div.gallery_cnt div.carousel.slide {
+    height: 100%;
+  }
+
+  div.wrapper div.gallery-wrapper div.row div.gallery_cnt div.carousel.slide div.carousel-inner {
+    height: 100%;
+  }
+
+  div.wrapper div.gallery-wrapper div.row div.gallery_cnt div.carousel.slide div.carousel-inner .item img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  div.wrapper div.detail_cnt div.features_cnt div.info_cnt {
+    width: 50%;
+  }
+
+  div.wrapper div.detail_cnt div.info_cnt.services ul li {
+    width: 33%;
+    text-align: center;
+  }
+}
+
+@media (min-width: 992px) {
+  div.wrapper div.gallery-wrapper {
+    padding: 0;
+    height: 600px;
+    width: 100%;
+    /* margin-top: -22px; */
+  }
+
+  div.wrapper div.gallery-wrapper div.row {
+    width: 100vw;
+    height: 100%;
+  }
+
+  div.wrapper div.gallery-wrapper div.row div.gallery_cnt {
+    width: 100%;
+    height: 100%;
+    margin-top: -30px;
+    padding: 0;
+  }
+
+  div.wrapper div.gallery-wrapper div.row div.gallery_cnt div.carousel.slide {
+    height: 100%;
+  }
+
+  div.wrapper div.gallery-wrapper div.row div.gallery_cnt div.carousel.slide div.carousel-inner {
+    height: 100%;
+  }
+
+  div.wrapper div.gallery-wrapper div.row div.gallery_cnt div.carousel.slide div.carousel-inner .item img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  div.wrapper div.detail_cnt div.features_cnt div.info_cnt {
+    width: 50%;
+  }
+
+  div.wrapper div.detail_cnt div.info_cnt.services ul li {
     width: 33%;
     text-align: center;
   }
@@ -9358,6 +9507,7 @@ a.thumbnail.apartment_card div.caption.info_section p.apartment_distance {
   background-color: rgba(0, 0, 0, 0);
   border: 1px solid #fff;
   border-radius: 5px;
+  outline: none;
   padding: 10px  15px;
   color: #fff;
   font-weight: 400;
@@ -9380,6 +9530,7 @@ a.thumbnail.apartment_card div.caption.info_section p.apartment_distance {
   border: 1px solid rgba(36, 74, 97, 0.75);
   border-radius: 5px;
   padding: 10px  15px;
+  outline: none;
   color: #fff;
   font-weight: 400;
   cursor: pointer;
