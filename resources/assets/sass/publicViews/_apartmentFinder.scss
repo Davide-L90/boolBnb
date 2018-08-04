@@ -1,7 +1,14 @@
-div.row {
+div.row.finder_view {
+    margin-top: -22px;
 
     h1#search_title{
         text-align: center;
+        font-size: 24px;
+        margin: 25px 0;
+
+        span#address_searched {
+            color: rgba(36, 74, 97, 0.75);
+        }
     }
     div.filters-cnt {
 
@@ -15,11 +22,17 @@ div.row {
             color: #fff;
     
             input{
+                height: 40px;
+                font-size: 23px;
                 border-style: none;
                 border-bottom: 1px solid #fff;
                 background-color: rgba(0, 0, 0, 0);        
                 outline: none;
                 padding-left: 0;
+
+                &[type="checkbox"] {
+                    height: 13px;
+                }
 
                 &#address {
                     border-bottom-width: 2px;
@@ -55,6 +68,7 @@ div.row {
     }
 
     div.results-cnt {
+        margin-top: 20px;
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
@@ -80,28 +94,27 @@ div.row {
     }
 }
 
-// Small devices (landscape phones, 576px and up)
-@media (min-width: 626px) {
-    div.row {
-
-        div.results-cnt {
-            justify-content: start;
-        }
-    }
-}
-
-@media (min-width: 768px) {
-
-}
 
 @media (min-width: 992px) {
     div.row {
+
+        h1#search_title{
+            text-align: center;
+            font-size: 28px;
+            margin: 30px 0;
+        }
+
         div.filters-cnt{
             border-right: 1px solid lightgrey;
             height: 100vh;
 
+
             form#form_search_ajax{
-    
+                
+                input {
+                    font-size: 18px;
+                }
+
                 ul.features_list{
     
                     li{
@@ -109,6 +122,10 @@ div.row {
                     }
                 }
             }
+        }
+
+        div.results-cnt {
+            margin-top: 0;
         }
     }
 }
