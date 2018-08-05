@@ -16658,6 +16658,7 @@ $(document).ready(function () {
         when user click on addApartment button a form will appear
     */
     $('#addApartment').click(function () {
+        errorReset();
         $('.apartments-add-form').slideToggle(500, function () {});
     });
 
@@ -16737,110 +16738,6 @@ $(document).ready(function () {
         $('.form-group').removeClass('has-error');
     }
 });
-
-//Prova variabilizzazione errori
-/* var form_fields = {
-    'beds_number': {
-        'obj': $('#beds_number'),
-        'value': parseInt($('#beds_number').val()),
-        'error_msg': {
-            'numeric': 'Inserisci un numero plausibile, intero e maggiore di zero'
-        }
-    },
-    'bathrooms_number': {
-        'obj': $('#bathrooms_number'),
-        'value': parseInt($('#bathrooms_number').val()),
-        'error_msg': {
-            'numeric': 'Inserisci un numero plausibile, intero e maggiore di zero',
-            'compare': 'Inserisci un numero di bagni inferiore ai posti letto'
-        }
-    },
-    'area': {
-        'obj': $('#area'),
-        'value': parseInt($('#area').val()),
-        'error_msg': {
-            'numeric': 'Inserisci un valore di superficie plausibile, intero e maggiore di zero'
-        }
-    },
-    'price': {
-        'obj': $('#price'),
-        'value': parseInt($('#price').val()),
-        'error_msg': {
-            'numeric': 'Inserisci un prezzo plausibile, intero e maggiore di zero'
-        }
-    },
-};
-
-
-
-if (isNaN(form_fields.beds_number.value) ||
-    (form_fields.beds_number.value - Math.floor(form_fields.beds_number.value)) != 0 ||
-    (form_fields.beds_number.value <= 0)) {
-
-    form_fields.beds_number.obj.parents('.form-group').addClass('has-error');
-    form_fields.beds_number.obj.parent().append(
-        form_fields.error_show.html_error_init +
-        form_fields.beds_number.error_msg.numeric +
-        form_fields.error_show.html_error_end
-    );
-
-    canSubmit = false;
-
-}
-
-if (isNaN(form_fields.bathrooms_number.value) ||
-    (form_fields.bathrooms_number.value - Math.floor(form_fields.bathrooms_number.value)) != 0 ||
-    (form_fields.bathrooms_number.value <= 0)) {
-
-    form_fields.bathrooms_number.obj.parents('.form-group').addClass('has-error');
-    form_fields.bathrooms_number.obj.parent().append(
-        form_fields.error_show.html_error_init +
-        form_fields.bathrooms_number.error_msg.numeric +
-        form_fields.error_show.html_error_end
-    );
-
-    canSubmit = false;
-
-} else if (form_fields.bathrooms_number.value > form_fields.beds_number.value) {
-    form_fields.bathrooms_number.obj.parents('.form-group').addClass('has-error');
-    form_fields.bathrooms_number.obj.parent().append(
-        form_fields.error_show.html_error_init +
-        form_fields.bathrooms_number.error_msg.compare +
-        form_fields.error_show.html_error_end
-    );
-
-    canSubmit = false;
-}
-
-if (isNaN(form_fields.area.value) ||
-    (form_fields.area.value - Math.floor(form_fields.area.value)) != 0 ||
-    (form_fields.area.value <= 0)) {
-
-    form_fields.area.obj.parents('.form-group').addClass('has-error');
-    form_fields.area.obj.parent().append(
-        form_fields.error_show.html_error_init +
-        form_fields.area.error_msg.numeric +
-        form_fields.error_show.html_error_end
-    );
-
-    canSubmit = false;
-
-}
-
-if (isNaN(form_fields.price.value) ||
-    (form_fields.price.value - Math.floor(form_fields.price.value)) != 0 ||
-    (form_fields.price.value <= 0)) {
-
-    form_fields.price.obj.parents('.form-group').addClass('has-error');
-    form_fields.price.obj.parent().append(
-        form_fields.error_show.html_error_init +
-        form_fields.price.error_msg.numeric +
-        form_fields.error_show.html_error_end
-    );
-
-    canSubmit = false;
-
-} */
 
 /***/ }),
 /* 126 */
