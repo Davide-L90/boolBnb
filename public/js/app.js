@@ -17087,7 +17087,7 @@ $(document).ready(function () {
 
     $('.fa-times').click(function () {
 
-        var imgId = $(this).parents('.images_min').children('.img-gallery-preview').attr('id');
+        var imgId = $(this).parents('.images_min').children('.img-gallery-preview').data("filename");
 
         $.ajax({
             headers: {
@@ -17096,15 +17096,17 @@ $(document).ready(function () {
             url: "/user-logged-apartment-detail/image-delete",
             method: "POST",
             data: {
-                filename: imgId
+                'filename': imgId
             },
             success: function success(data) {
                 console.log(data.filename);
-                var container = $('.img-gallery-preview');
-                console.log(container);
+
+                console.log('#' + data.filename);
+
+                console.log($('#' + data.filename));
+
                 var imageToDelete = $('#' + data.filename);
-                console.log(imageToDelete);
-                imageToDelete.remove();
+                imageToDelete.parent(".images_min").remove();
             },
             error: function error(e) {
                 console.log(e);

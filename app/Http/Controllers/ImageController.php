@@ -32,8 +32,11 @@ class ImageController extends Controller
     
     public function fileDestroy(Request $request)
     {
+
+        
         $filename =  $request->get('filename');
-        Image::where('filename',$filename)->delete();
+        
+        Image::where('filename', $filename)->delete();
         
         //$path=public_path().'/images/'.$filename;
         $path=storage_path().'/app/public/'.$filename;        
@@ -41,8 +44,10 @@ class ImageController extends Controller
         if (file_exists($path)) {
             unlink($path);
         }
+        
         if($request->ajax())
         {
+            $filename = substr($filename, 0, strpos($filename, "."));
             return response()->json(['filename' => $filename]);
         }
         

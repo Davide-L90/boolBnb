@@ -17,7 +17,7 @@
                                 <div class="delete-img">
                                     <i class="fas fa-times"></i>
                                 </div>
-                                <img class="img-gallery-preview" id="{{ $image->filename }}" src="{{ asset('storage/'.$image->filename) }}" alt="">
+                                <img class="img-gallery-preview" id="{{ substr($image->filename, 0, strpos($image->filename, '.')) }}" data-filename = "{{ $image->filename }}" src="{{ asset('storage/'.$image->filename) }}" alt="">
                             </div>
                         @endforeach    
                     @endif
