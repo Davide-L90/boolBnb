@@ -143,6 +143,8 @@ $(document).ready(function() {
         $('#apartment_form').submit(function(e) {
             
             /* Value from input field */
+            var title_field = $('#title');
+            var title_value = title_field.val();
 
             var beds_field = $('#beds_number');
             var beds_value = parseInt(beds_field.val());
@@ -154,7 +156,10 @@ $(document).ready(function() {
             var area_value = parseInt(area_field.val());
 
             var price_field = $('#price');
-            var price_value = parseInt(price_field.val());          
+            var price_value = parseInt(price_field.val());    
+            
+            var address_field = $('#address');
+            var address_value = address_field.val();
 
             /*
                 if true, the post will submit else return an error message
@@ -162,6 +167,15 @@ $(document).ready(function() {
             var canSubmit = true;
             
             errorReset();
+
+            if (title_value.length == 0) {
+
+                showError(title_field, 'Inserisci il titolo dell\'appartamento');
+
+                canSubmit = false;
+            }
+
+
             
             /* If statment for check the number of apartment rooms */
             if( isNaN(beds_value)                              ||
@@ -202,6 +216,14 @@ $(document).ready(function() {
                 (price_value <= 0)) {
 
                 showError(price_field, 'Inserisci un prezzo plausibile, intero e maggiore di zero');
+
+                canSubmit = false;
+
+            } 
+
+            if (address_value.length == 0) {
+
+                showError(address_field, 'Inserisci l\'indirizzo');
 
                 canSubmit = false;
 

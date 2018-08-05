@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Model\Apartament;
 use App\Model\Feature;
 use App\Model\Image;
+use App\Model\Message;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
@@ -124,7 +125,8 @@ class ApartamentController extends Controller
                 }
             }
         }
-
+        $apartments = $apartments->where('is_active', 1);
+        
         $apartments = $apartments->get();       
         foreach ($apartments as $apartment) {
 
@@ -246,6 +248,8 @@ class ApartamentController extends Controller
         $new_apartment->user_id = $userId;
 
         $features = $request->features;
+
+        /* dd($features); */
 
         $new_apartment->save();
                 
@@ -369,18 +373,25 @@ class ApartamentController extends Controller
         $apartment_to_delete = Apartament::find($id);
 
         $apartment_to_delete->features()->detach(); //Reletions into pivot table will be delete
+        $apartment_to_delete->advertisements()->detach();
         
         $related_images = Image::where('apartament_id', $id)->get();
-
+        
         foreach ($related_images as $i) {
             $path = storage_path().'/app/public/'.$i->filename;        
             Image::where('filename',$i->filename)->delete();
-
+            
             if (file_exists($path)) {
                 unlink($path);
             }
         }
         
+        $related_messages = Message::where('apartament_id', $id)->get();
+        foreach ($related_messages as $m) {
+            Message::where('id', $m->id)->delete();
+        }
+         
+
         $apartment_to_delete->delete();
 
         return redirect()->route('home');

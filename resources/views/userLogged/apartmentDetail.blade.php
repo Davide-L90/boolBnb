@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container apartment-detail">
-    <div class="row"> 
+    <div class="row apart_detail"> 
         <div class="col-md-12">
             <div class="images-cnt col-md-5">
                 <form method="post" action="{{ route('image.store', $data['form_data']['apartment_details']->id) }}" enctype="multipart/form-data" class="dropzone" id="dropzone">

@@ -16428,7 +16428,8 @@
 __webpack_require__(125);
 __webpack_require__(128);
 __webpack_require__(129);
-module.exports = __webpack_require__(130);
+__webpack_require__(130);
+module.exports = __webpack_require__(131);
 
 
 /***/ }),
@@ -16573,6 +16574,8 @@ $(document).ready(function () {
         $('#apartment_form').submit(function (e) {
 
             /* Value from input field */
+            var title_field = $('#title');
+            var title_value = title_field.val();
 
             var beds_field = $('#beds_number');
             var beds_value = parseInt(beds_field.val());
@@ -16586,12 +16589,22 @@ $(document).ready(function () {
             var price_field = $('#price');
             var price_value = parseInt(price_field.val());
 
+            var address_field = $('#address');
+            var address_value = address_field.val();
+
             /*
                 if true, the post will submit else return an error message
             */
             var canSubmit = true;
 
             errorReset();
+
+            if (title_value.length == 0) {
+
+                showError(title_field, 'Inserisci il titolo dell\'appartamento');
+
+                canSubmit = false;
+            }
 
             /* If statment for check the number of apartment rooms */
             if (isNaN(beds_value) || beds_value - Math.floor(beds_value) != 0 || beds_value <= 0 || beds_value >= 255) {
@@ -16621,6 +16634,13 @@ $(document).ready(function () {
             if (isNaN(price_value) || price_value - Math.floor(price_value) != 0 || price_value <= 0) {
 
                 showError(price_field, 'Inserisci un prezzo plausibile, intero e maggiore di zero');
+
+                canSubmit = false;
+            }
+
+            if (address_value.length == 0) {
+
+                showError(address_field, 'Inserisci l\'indirizzo');
 
                 canSubmit = false;
             }
@@ -17225,6 +17245,21 @@ $(document).ready(function () {
 
 /***/ }),
 /* 130 */
+/***/ (function(module, exports) {
+
+$(document).ready(function () {
+    $('#sponsor_form').on('submit', function () {
+        var canSubmit = false;
+
+        if ($('.advertisement').is(':checked')) {
+            canSubmit = true;
+        }
+        return canSubmit;
+    });
+});
+
+/***/ }),
+/* 131 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
