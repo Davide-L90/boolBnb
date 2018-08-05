@@ -254,6 +254,10 @@ class ApartamentController extends Controller
         $new_apartment->save();
                 
         $new_apartment->features()->sync($features);
+
+        $request->session()->flash('status', 'L\'appartamento è stato aggiunto correttamente');
+        $request->session()->flash('error', 'Si è verificato un errore. Compila nuovamente il form');
+
         
         return redirect()->route('home');
 
@@ -357,6 +361,10 @@ class ApartamentController extends Controller
         $modified_apartment->save();
 
         $modified_apartment->features()->sync($features);
+
+        $request->session()->flash('status', 'L\'appartamento è stato modificato correttamente');
+        $request->session()->flash('error', 'Si è verificato un errore. Compila nuovamente il form');
+
 
         return redirect()->route('home');
 

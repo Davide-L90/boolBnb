@@ -317,6 +317,7 @@ $(document).ready(function() {
         return canSubmit;
     });
 
+    $('.flash_success').delay(1000).slideUp(300);
 
     function showError(field_obj, message) {
         field_obj.parents('.form-group').addClass('has-error');
@@ -331,4 +332,5 @@ $(document).ready(function() {
         $('.help-block').remove();
         $('.form-group').removeClass('has-error');
     }
+
 });

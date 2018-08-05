@@ -1,3 +1,10 @@
+@if(Session::has('status'))
+    @include('components.flash_success')
+@elseif(Session::has('error'))    
+    @include('components.flash_error')
+@endif
+
+
 @extends('layouts.app')
 
 

@@ -16728,6 +16728,8 @@ $(document).ready(function () {
         return canSubmit;
     });
 
+    $('.flash_success').delay(1000).slideUp(300);
+
     function showError(field_obj, message) {
         field_obj.parents('.form-group').addClass('has-error');
         field_obj.parent().append('<span class="help-block">' + '<strong class="error_showed">' + message + '</strong>' + '</span>');

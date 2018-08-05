@@ -12,6 +12,8 @@ class MessageController extends Controller
 {
     public function sendMessage(Request $request, $apartment_id)
     {
+        
+
         $request->validate([
             'name' => 'required|string|max:50',
             'surname' => 'required|string|max:255',
@@ -56,6 +58,9 @@ class MessageController extends Controller
         $new_message->sanding_date = $carbon;
         $new_message->save();
 
-        return back()->withInput();
+        $request->session()->flash('status', 'Il messaggio è stato inviato');
+        $request->session()->flash('error', 'Si è verificato un errore. Inviare un nuovo messaggio');
+
+        return back()->withInput([]);
     }
 }

@@ -1,0 +1,42 @@
+div.flash_success {
+    width: 300px;
+    height: 100px;
+    display: flex;
+    padding: 20px;
+    background-color: $color_secondary;
+    color: rgb(1, 174, 0);
+    font-size: 20px;
+    border: 3px solid rgb(1, 174, 0);
+    position: fixed;
+    top: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1100;
+    p {
+        margin: 0;
+        display: flex;
+        align-items: center;
+    }
+}
+
+div.flash_error {
+    width: 300px;
+    height: 100px;
+    display: flex;
+    padding: 20px;
+    background-color: $color_secondary;
+    color: rgb(222, 0, 0);
+    font-size: 20px;
+    border: 3px solid rgb(222, 0, 0);
+    position: fixed;
+    top: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1100;
+    p {
+        margin: 0;
+        display: flex;
+        align-items: center;
+    }
+    
+}

@@ -80,6 +80,8 @@ class AdvertisementController extends Controller
             
         }
         
+        $request->session()->flash('status', 'Il pagamento è stato effettuato correttamente');
+        $request->session()->flash('error', 'Si è verificato un errore. Esegui nuovamente il pagamaento');
 
         return response()->json($status);
     }
