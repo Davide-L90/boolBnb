@@ -5,7 +5,7 @@
 <div class="container apartment-detail">
     <div class="row"> 
         <div class="col-md-12">
-            <div class="images-cnt col-md-6">
+            <div class="images-cnt col-md-5">
                 <form method="post" action="{{ route('image.store', $data['form_data']['apartment_details']->id) }}" enctype="multipart/form-data" class="dropzone" id="dropzone">
                     {{ csrf_field() }}
                 </form>
@@ -23,16 +23,16 @@
                     @endif
                 </div>    
             </div>
-            <div class="details-cnt col-md-6">
-                <div class="panel-body">
+            <div class="details-cnt col-md-7">
+                <div class="panel-body edit_form_cnt">
                        
                     @include('components.add_edit_form')
                          
+                    <div id="apartment-sponsor-btn-cnt" class="col-xs-12 buttons-cnt">  
+                        <a href="{{ route('show.sponsors', $data['form_data']['apartment_details']->id) }}" class="custom_button">Sponsorizza appartamento</a>
+                    </div>
                 </div>
             </div>    
-        </div>
-        <div id="apartment-sponsor-btn-cnt" class="col-xs-12 buttons-cnt">  
-            <a href="{{ route('show.sponsors', $data['form_data']['apartment_details']->id) }}" class="btn btn-primary">Sponsorizza appartamento</a>
         </div>
     </div>
 

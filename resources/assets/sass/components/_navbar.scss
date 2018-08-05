@@ -26,6 +26,10 @@ nav {
             &:hover {
                 color: rgba(36, 74, 97, 0.75);
             }
+
+            &:active {
+                text-decoration: none;
+            }
         }
     }
 
@@ -53,6 +57,10 @@ nav {
         &:hover {
             text-decoration: none;
             color: #fff;
+        }
+        
+        &:active {
+            text-decoration: none;
         }
     }
 }
