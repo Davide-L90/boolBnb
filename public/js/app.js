@@ -16638,7 +16638,11 @@ $(document).ready(function () {
         when user click on addApartment button a form will appear
     */
     $('#addApartment').click(function () {
-        $('.apartments-add-form').toggle();
+        $('.apartments-add-form').slideToggle(500, function () {});
+    });
+
+    $('#hide_form').click(function () {
+        $('.apartments-add-form').hide();
     });
 
     /* 
@@ -16652,7 +16656,7 @@ $(document).ready(function () {
         $('#delete_form').attr('action', route);
 
         $('#no').click(function () {
-            $(this).parent().addClass('hidden');
+            $(this).parents('.delete-popup').addClass('hidden');
         });
     });
 

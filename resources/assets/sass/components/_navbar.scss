@@ -14,7 +14,7 @@ nav {
     background-color: rgba(0, 0, 0, 0.3);
     margin-bottom: 30px;
     padding-left: 80px;
-    
+    z-index: 1000;
 
     &.invert {
         background-color:#fff;

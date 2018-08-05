@@ -8447,7 +8447,15 @@ div.section_cnt div.apartments-list-cnt div.card div.card-body a.custom_btn_show
   outline: none;
 }
 
+div.section_cnt div.apartments-list-cnt div.card div.card-body a.custom_btn_show:hover {
+  text-decoration: none;
+  color: #fff;
+  background-color: #244a61;
+}
+
 div.section_cnt div.apartments-list-cnt div.card div.card-body a.custom_btn_delete {
+  text-align: center;
+  vertical-align: middle;
   width: 20%;
   height: 35px;
   padding: 5px 5px;
@@ -8460,6 +8468,12 @@ div.section_cnt div.apartments-list-cnt div.card div.card-body a.custom_btn_dele
   outline: none;
 }
 
+div.section_cnt div.apartments-list-cnt div.card div.card-body a.custom_btn_delete:hover {
+  text-decoration: none;
+  background-color: rgba(255, 0, 0, 0.82);
+  color: #fff;
+}
+
 div.section_cnt div.apartments-list-cnt div.card div.card-body form {
   width: 40%;
   height: 35px;
@@ -8467,6 +8481,7 @@ div.section_cnt div.apartments-list-cnt div.card div.card-body form {
 
 div.section_cnt div.apartments-list-cnt div.card div.card-body form input.custom_btn_disable {
   width: 100%;
+  height: 35px;
   padding: 5px 5px;
   border: 1px solid #244a61;
   color: #244a61;
@@ -8474,6 +8489,11 @@ div.section_cnt div.apartments-list-cnt div.card div.card-body form input.custom
   border-radius: 0;
   border-bottom-right-radius: 8px;
   outline: none;
+}
+
+div.section_cnt div.apartments-list-cnt div.card div.card-body form input.custom_btn_disable:hover {
+  color: #fff;
+  background-color: #244a61;
 }
 
 div.section_cnt div.apartments-list-cnt div.add_btn {
@@ -8509,32 +8529,18 @@ div.section_cnt div.apartments-list-cnt div.add_btn button#addApartment span {
   line-height: 100px;
 }
 
-@media (min-width: 576px) {
-  div.section_cnt div.apartments-list-cnt {
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: start;
-    margin-top: 90px;
-    /* display: flex;
-            flex-wrap: wrap;
-            justify-content: center; */
-  }
-}
-
-.apartments-add-form {
-  display: none;
-}
-
 div.delete-popup {
   width: 350px;
   height: 150px;
+  padding: 15px;
   position: absolute;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  background-color: #fff;
-  border: 1px solid red;
+  background-color: #244a61;
+  border: 1px solid #fff;
+  color: #fff;
   border-radius: 10px;
   z-index: 5;
 }
@@ -8544,8 +8550,146 @@ div.delete-popup h2 {
 }
 
 div.delete-popup form#delete_form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   width: 50px !important;
   float: left;
+}
+
+div.delete-popup form#delete_form input {
+  border-color: red;
+  color: red;
+  margin-right: 10px;
+}
+
+div.apartments-add-form {
+  display: none;
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  padding-bottom: 10px;
+  padding-top: 10px;
+  width: 340px;
+  margin: 0 auto;
+}
+
+div.apartments-add-form div.row {
+  width: 340px;
+  margin: 0 auto;
+}
+
+div.apartments-add-form div.row div.inner_cnt {
+  background-color: #244a61;
+  /* border: 1px solid $color_primary; */
+  border-radius: 10px;
+}
+
+div.apartments-add-form div.row div.inner_cnt div.form_title {
+  text-align: center;
+  font-size: 25px;
+  color: #fff;
+  margin: 8px 0;
+}
+
+div.apartments-add-form div.row div.inner_cnt div.form-group label {
+  color: #fff;
+}
+
+div.apartments-add-form div.row div.inner_cnt div.form-group div input {
+  outline: none;
+}
+
+div.apartments-add-form div.row div.inner_cnt div.form-group div.features_cnt div.feature {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+}
+
+div.apartments-add-form div.row div.inner_cnt div.btn_cnt {
+  margin-bottom: 0;
+}
+
+div.apartments-add-form div.row div.inner_cnt div.btn_cnt div {
+  padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+div.apartments-add-form div.row div.inner_cnt div.btn_cnt div button {
+  width: 70%;
+  border-radius: 0;
+  border-bottom-left-radius: 10px;
+}
+
+div.apartments-add-form div.row div.inner_cnt div.btn_cnt div button.cancel {
+  border-radius: 0;
+  width: 30%;
+  border-left: none;
+  border-bottom-right-radius: 10px;
+}
+
+div.apartments-add-form div.row div.inner_cnt div.btn_cnt div button.cancel:hover {
+  /* border: 1px solid $color_secondary; */
+  border-left: none;
+}
+
+div.apartments-add-form div.row div.inner_cnt div.btn_cnt div button:hover {
+  border: 1px solid #244a61;
+}
+
+@media (min-width: 576px) {
+  div.section_cnt div.apartments-list-cnt {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin-top: 100px;
+  }
+
+  div.apartments-add-form {
+    display: none;
+    position: absolute;
+    top: 70px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+    padding-bottom: 10px;
+    padding-top: 10px;
+    width: 500px;
+    margin: 0 auto;
+  }
+
+  div.apartments-add-form div.row {
+    width: 500px;
+  }
+}
+
+@media (min-width: 992px) {
+  div.section_cnt div#section_title {
+    height: 80px;
+    line-height: 80px;
+    margin-top: 80px 0 30px 0;
+    font-size: 35px;
+  }
+
+  div.section_cnt div.apartments-list-cnt {
+    margin-top: 40px;
+  }
+}
+
+@media (min-width: 1295px) {
+  div.section_cnt div.apartments-list-cnt {
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: start;
+  }
 }
 
 div#inbox_title {
@@ -9941,6 +10085,7 @@ nav {
   background-color: rgba(0, 0, 0, 0.3);
   margin-bottom: 30px;
   padding-left: 80px;
+  z-index: 1000;
 }
 
 nav.invert {

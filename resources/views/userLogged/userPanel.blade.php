@@ -18,13 +18,13 @@
                             </div>
                             <div class="card-body">
                                 <h5 class="card-title">{{ $apartment->title }}</h5>
-                                <a href=" {{ route('ownerApartmentDetails', $apartment->id) }} " class="btn custom_btn_show">Visualizza dettagli</a>
-                                <a class="btn btn-danger delete-id custom_btn_delete" data-route-delete="{{ route('apartaments.destroy', $apartment->id) }}" href="#">Elimina</a> 
+                                <a href=" {{ route('ownerApartmentDetails', $apartment->id) }} " class="custom_btn_show">Visualizza dettagli</a>
+                                <a class="delete-id custom_btn_delete" data-route-delete="{{ route('apartaments.destroy', $apartment->id) }}" href="#">Elimina</a> 
                                 <form action="{{ route('apartaments.update', $apartment->id) }}" method="post">
                                     {{ csrf_field() }}
                                     {{ method_field('PUT') }}
                                     <input type="hidden" name="isActive" value="{{ $apartment->is_active ? 1 : 0 }}" class="secret">    
-                                    <input type="submit" value="{{ $apartment->is_active ? 'Disattiva annuncio' : 'Attiva annuncio' }}" class="switch btn custom_btn_disable">
+                                    <input type="submit" value="{{ $apartment->is_active ? 'Disattiva annuncio' : 'Attiva annuncio' }}" class="switch custom_btn_disable">
                                 </form>
                             </div>
                         </div>   
@@ -45,24 +45,23 @@
         <form id="delete_form" action="" data-delete-id="" method="post">
             {{ csrf_field() }}
             {{ method_field('DELETE') }}
-            <input id="yes" class="btn btn-danger delete-btn" type="submit" value="Si">
+            <input id="yes" class="custom_button" type="submit" value="Si">
+            <a id="no" class="custom_button">No</a>
         </form>
-        <a id="no" class="btn btn-primary">No</a>
     {{-- {{ route('apartaments.destroy', $apartment->id) }} --}}
     </div>
 
     {{-- Hidden form for add an apartment --}}
-    <div class="container apartments-add-form">
+    <div class="apartments-add-form">
         <div class="row">
-            <div class="col-md-6 col-md-offset-3">
-                <div class="panel panel-default">                
-                    <div class="panel-heading">
-                        Add Apartments detail
-                    </div>
+            <div class="col-xs-12 {{-- col-md-offset-3 col-lg-6 col-lg-offset-3 --}} inner_cnt">
+                            
+                <div class="form_title">
+                    Add Apartments detail
+                </div>
 
-                    @include('components.add_edit_form')                        
-                    
-                </div>                
+                @include('components.add_edit_form')                        
+                                
             </div>    
         </div>
     </div>

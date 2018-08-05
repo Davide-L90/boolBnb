@@ -74,9 +74,17 @@ div.section_cnt {
                     color: $color_secondary;
                     background-color: $color_primary;
                     outline: none;
+                    
+                    &:hover{
+                        text-decoration: none;
+                        color: $color_primary;
+                        background-color: $color_secondary;
+                    }
                 }
 
                 a.custom_btn_delete {
+                    text-align: center;
+                    vertical-align: middle;
                     width: 20%;
                     height: 35px;
                     padding: 5px 5px;
@@ -88,6 +96,11 @@ div.section_cnt {
                     background-color: $color_primary;
                     outline: none;
 
+                    &:hover {
+                        text-decoration: none;
+                        background-color: rgba(255, 0, 0, 0.82);
+                        color: $color_primary;
+                    }
                 }
                 
                 form {
@@ -96,6 +109,7 @@ div.section_cnt {
 
                     input.custom_btn_disable {
                         width: 100%;
+                        height: 35px;
                         padding: 5px 5px;
                         border: 1px solid $color_secondary;
                         color: $color_secondary;
@@ -103,6 +117,11 @@ div.section_cnt {
                         border-radius: 0;
                         border-bottom-right-radius: 8px;
                         outline: none;
+
+                        &:hover{
+                            color: $color_primary;
+                            background-color: $color_secondary;
+                        }
                     }
                 }
 
@@ -142,41 +161,17 @@ div.section_cnt {
     }
 }
 
-
-@media (min-width: 576px) { 
-
-    div.section_cnt {
-
-        div.apartments-list-cnt {
-            
-            justify-content: start;
-            margin-top: 90px;            
-            /* display: flex;
-            flex-wrap: wrap;
-            justify-content: center; */
-
-            
-            
-        }
-    }
-}
-
-.apartments-add-form{
-    display: none;
-}
-
-
-
-
 div.delete-popup {
     width: 350px;
     height: 150px;
+    padding: 15px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #fff;
-    border: 1px solid red;
+    background-color: $color_secondary;
+    border: 1px solid $color_primary;
+    color: $color_primary;
     border-radius: 10px;
     z-index: 5;
 
@@ -186,7 +181,151 @@ div.delete-popup {
     }
 
     form#delete_form {
+        display: flex;
         width: 50px !important;
         float: left;
+        input {
+            border-color: red;
+            color: red;
+            margin-right: 10px;
+        }
     }
 }
+
+div.apartments-add-form{
+    display: none;
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding-bottom: 10px;
+    padding-top: 10px;
+    width: 340px;
+    margin: 0 auto;
+
+    div.row {
+        width: 340px;
+        margin: 0 auto;
+        div.inner_cnt {
+            background-color: $color_secondary;
+            /* border: 1px solid $color_primary; */
+            border-radius: 10px;
+
+            div.form_title {
+                text-align: center;
+                font-size: 25px;
+                color: $color_primary;
+                margin: 8px 0;        
+            }
+        
+            div.form-group {
+                label {
+                    color: $color_primary;
+                }
+                
+                div {
+                    input {
+                        outline: none;
+                    }
+                }
+        
+                div.features_cnt {
+                    div.feature {
+                        width: 100%;
+                        display: flex;
+                        justify-content: start;
+                    }
+                }
+            }
+
+            div.btn_cnt {
+                margin-bottom: 0;
+                div {
+                    padding: 0;
+                    display: flex;
+
+                    button {
+                        width: 70%;
+                        border-radius: 0;
+                        border-bottom-left-radius: 10px;
+                        
+                        &.cancel{
+                            border-radius: 0;
+                            width: 30%;
+                            border-left: none;
+                            border-bottom-right-radius: 10px;
+
+                            &:hover {
+                            /* border: 1px solid $color_secondary; */
+                            border-left: none;
+                            }
+                        }
+
+
+                        &:hover {
+                            border: 1px solid $color_secondary;
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+
+
+
+
+
+@media (min-width: 576px) { 
+    div.section_cnt {
+        div.apartments-list-cnt {            
+            justify-content: center;
+            margin-top: 100px;                   
+        }
+    }
+
+    div.apartments-add-form{
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding-bottom: 10px;
+        padding-top: 10px;
+        width: 500px;
+        margin: 0 auto;
+
+        div.row {
+            width: 500px;
+            
+        }
+
+    }
+}
+
+@media (min-width: 992px) { 
+    div.section_cnt {
+        div#section_title {            
+            height: 80px;
+            line-height: 80px;
+            margin-top: 80px 0 30px 0;            
+            font-size: 35px;        
+        }
+        div.apartments-list-cnt {            
+            margin-top: 40px;                   
+        }
+    }
+}
+
+@media (min-width: 1295px) { 
+    div.section_cnt {
+        div.apartments-list-cnt {            
+            justify-content: start;  
+        }
+    }
+}
+
+

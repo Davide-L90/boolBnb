@@ -8,21 +8,21 @@
     </div>
 
     <div class="form-group{{ $errors->has('beds_number') ? ' has-error' : '' }}">
-        <label for="beds_number" class="col-md-2 control-label">Posti Letto</label>
+        <label for="beds_number" class="col-md-2 control-label">P. Letto</label>
         <div class="col-md-9">
             <input id="beds_number" type="text" class="form-control" name="beds_number" value="{{ !empty($data['form_data']['apartment_details']) ? $data['form_data']['apartment_details']->beds_number : null }}" required autofocus>   
         </div>
     </div>
 
     <div class="form-group{{ $errors->has('bathrooms_number') ? ' has-error' : '' }}">
-        <label for="bathrooms_number" class="col-md-2 control-label">Numero bagni</label>
+        <label for="bathrooms_number" class="col-md-2 control-label">Bagni</label>
         <div class="col-md-9">
             <input id="bathrooms_number" type="text" class="form-control" name="bathrooms_number" value="{{ !empty($data['form_data']['apartment_details']) ? $data['form_data']['apartment_details']->bathrooms_number : null }}" required autofocus>   
         </div>
     </div>
 
     <div class="form-group{{ $errors->has('area') ? ' has-error' : '' }}">
-        <label for="area" class="col-md-2 control-label">Metri quadrati</label>
+        <label for="area" class="col-md-2 control-label">Mq.</label>
         <div class="col-md-9">
             <input id="area" type="text" class="form-control" name="area" value="{{ !empty($data['form_data']['apartment_details']) ? $data['form_data']['apartment_details']->area : null }}" required autofocus>   
         </div>
@@ -57,19 +57,24 @@
     <div class="form-group{{ $errors->has('features') ? ' has-error' : '' }}">
         <label for="features" class="col-md-2 control-label">Servizi Aggiuntivi</label>
 
-        <div class="col-md-9">
+        <div class="col-md-9 features_cnt">
             @foreach($data['form_data']['apartment_features'] as $feature)
-                <label class="col-md-8" for="{{ $feature['name'] }}">{{ $feature['name'] }}</label>
-                <input type="checkbox" class="col-md-4" name="features[]" id="{{ $feature['name'] }}" value="{{ $feature['id'] }}"  {{ $feature['isChecked'] ? 'checked' : '' }} autofocus> 
+                <div class="feature">
+                    <input type="checkbox" class="col-md-4" name="features[]" id="{{ $feature['name'] }}" value="{{ $feature['id'] }}"  {{ $feature['isChecked'] ? 'checked' : '' }} autofocus> 
+                    <label class="col-md-8" for="{{ $feature['name'] }}">{{ $feature['name'] }}</label>
+                </div>
             @endforeach      
         </div>
     </div>
 
 
-    <div class="form-group">
-        <div class="col-md-6 col-md-offset-4">
-            <button type="submit" class="btn btn-primary">
+    <div class="form-group btn_cnt">
+        <div class="col-xs-12">
+            <button type="submit" class="custom_button">
                 {{ !empty($data['form_data']['apartment_details']) ? 'Salva modifiche' : 'Salva appartamento' }}
+            </button>
+            <button id="hide_form" type="" class="custom_button cancel">
+                Annulla
             </button>
         </div>
     </div>  
