@@ -89,7 +89,7 @@
                     <div id="not_found_msg_cnt">
                         <h1> Non sono stati trovati appartamenti in questa zona: </h1>        
                         <h3> {{ $address_searched }} </h3> 
-                        <a href=" {{ route('welcome') }} " class="btn custom_button" role="button">Cerca in un'altra zona</a>
+                        <a href=" {{ route('welcome') }} " class="btn custom_button_invert" role="button">Cerca in un'altra zona</a>
                     </div>
                 @endif
 
