@@ -25,7 +25,10 @@ div.section_cnt {
             //change card background color and opacity of img depending on if it is active
             &.disabled-card {
                 background-color: lightgrey !important;
-                border-radius: 8px;                
+
+                border-radius: 8px;
+                
+
                 img {
                     opacity: 0.2;
                 }
