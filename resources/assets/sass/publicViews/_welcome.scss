@@ -1,5 +1,5 @@
 //dimension
-$top_cnt_height: 78vh;
+$top_cnt_height: 90vh;
 $nav_height: 40px;
 $checkbox_height: 25px;
 $main_input_height: 40px;
@@ -267,6 +267,7 @@ div.bottom_cnt {
         font-size: 25px;
         color: rgb(50, 205, 50);
         margin-top: 20px;
+        margin-bottom: 20px;
         border: 1px solid rgb(50, 205, 50);
         font-weight: 600;
         text-align: center;
@@ -281,7 +282,7 @@ div.bottom_cnt {
         
         div.image_background {
             
-            height: $top_cnt_height - 10vh;             
+            height: $top_cnt_height - 20vh;             
             
             
             
@@ -385,7 +386,7 @@ div.bottom_cnt {
     div.top_cnt {
 
         div.image_background {
-            height: $top_cnt_height + 15vh;             
+            height: $top_cnt_height - 10vh;             
             
             
     
@@ -455,7 +456,7 @@ div.bottom_cnt {
 
         div.image_background {
             
-            height: $top_cnt_height + 15vh;     
+            /* height: $top_cnt_height + 15vh; */     
 
             div.form_cnt {
 
