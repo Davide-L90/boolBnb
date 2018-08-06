@@ -8715,7 +8715,7 @@ div.row.apart_detail div.images-cnt div#gallery_cnt {
 
 div.row.apart_detail div.images-cnt div#gallery_cnt div.images_min {
   width: 100%;
-  min-height: 250px;
+  max-height: 300px;
   padding: 10px;
   position: relative;
 }
@@ -8788,8 +8788,14 @@ div#apartment-sponsor-btn-cnt {
 }
 
 @media (min-width: 576px) {
-  div.images-cnt div#gallery_cnt div.images_min {
-    width: 50%;
+  div.row.apart_detail div.images-cnt div#gallery_cnt div.images_min {
+    max-height: 400px;
+  }
+}
+
+@media (min-width: 992px) {
+  div.row.apart_detail div.images-cnt div#gallery_cnt div.images_min {
+    max-height: 300px;
   }
 }
 
