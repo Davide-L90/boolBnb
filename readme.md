@@ -23,7 +23,7 @@ $ DB_PASSWORD=your_password
 Next generate your key:
 
 ```sh
-$ php artisan generate:key
+$ php artisan key:generate
 ```
 
 Create a symlink form storage dir to public dir to link the images:
