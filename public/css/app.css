@@ -8388,13 +8388,11 @@ div.section_cnt div.apartments-list-cnt div.card {
   margin: 10px;
   height: 250px;
   width: 325px;
-  /* float: left; */
 }
 
 div.section_cnt div.apartments-list-cnt div.card.disabled-card {
   background-color: lightgrey !important;
   border-radius: 8px;
-  z-index: 50;
 }
 
 div.section_cnt div.apartments-list-cnt div.card.disabled-card img {
@@ -8594,15 +8592,20 @@ div.apartments-add-form div.row div.inner_cnt div.form_title {
   margin: 8px 0;
 }
 
-div.apartments-add-form div.row div.inner_cnt div.form-group label {
+div.apartments-add-form div.row div.inner_cnt form {
+  margin-bottom: 0;
+  z-index: 500;
+}
+
+div.apartments-add-form div.row div.inner_cnt form div.form-group label {
   color: #fff;
 }
 
-div.apartments-add-form div.row div.inner_cnt div.form-group div input {
+div.apartments-add-form div.row div.inner_cnt form div.form-group div input {
   outline: none;
 }
 
-div.apartments-add-form div.row div.inner_cnt div.form-group div.features_cnt div.feature {
+div.apartments-add-form div.row div.inner_cnt form div.form-group div.features_cnt div.feature {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -8612,36 +8615,36 @@ div.apartments-add-form div.row div.inner_cnt div.form-group div.features_cnt di
           justify-content: start;
 }
 
-div.apartments-add-form div.row div.inner_cnt div.btn_cnt {
+div.apartments-add-form div.row div.inner_cnt form div.btn_cnt {
   margin-bottom: 0;
 }
 
-div.apartments-add-form div.row div.inner_cnt div.btn_cnt div {
+div.apartments-add-form div.row div.inner_cnt form div.btn_cnt div {
   padding: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-div.apartments-add-form div.row div.inner_cnt div.btn_cnt div button {
+div.apartments-add-form div.row div.inner_cnt form div.btn_cnt div button {
   width: 70%;
   border-radius: 0;
   border-bottom-left-radius: 10px;
 }
 
-div.apartments-add-form div.row div.inner_cnt div.btn_cnt div button.cancel {
+div.apartments-add-form div.row div.inner_cnt form div.btn_cnt div button.cancel {
   border-radius: 0;
   width: 30%;
   border-left: none;
   border-bottom-right-radius: 10px;
 }
 
-div.apartments-add-form div.row div.inner_cnt div.btn_cnt div button.cancel:hover {
+div.apartments-add-form div.row div.inner_cnt form div.btn_cnt div button.cancel:hover {
   /* border: 1px solid $color_secondary; */
   border-left: none;
 }
 
-div.apartments-add-form div.row div.inner_cnt div.btn_cnt div button:hover {
+div.apartments-add-form div.row div.inner_cnt form div.btn_cnt div button:hover {
   border: 1px solid #244a61;
 }
 

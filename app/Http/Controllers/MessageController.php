@@ -58,7 +58,7 @@ class MessageController extends Controller
         $new_message->sanding_date = $carbon;
         $new_message->save();
 
-        $request->session()->flash('status', 'Il messaggio è stato inviato');
+        $request->session()->flash('status', 'Il messaggio è stato inviato correttamente');
         $request->session()->flash('error', 'Si è verificato un errore. Inviare un nuovo messaggio');
 
         return back()->withInput([]);

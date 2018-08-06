@@ -21,12 +21,11 @@ div.section_cnt {
             margin: 10px;      
             height: 250px;
             width: 325px;
-            /* float: left; */
+            
             //change card background color and opacity of img depending on if it is active
             &.disabled-card {
                 background-color: lightgrey !important;
-                border-radius: 8px;
-                z-index: 50;
+                border-radius: 8px;                
                 img {
                     opacity: 0.2;
                 }
@@ -106,6 +105,7 @@ div.section_cnt {
                 form {
                     width: 40%;
                     height: 35px;
+
 
                     input.custom_btn_disable {
                         width: 100%;
@@ -206,6 +206,7 @@ div.apartments-add-form{
     div.row {
         width: 340px;
         margin: 0 auto;
+
         div.inner_cnt {
             background-color: $color_secondary;
             /* border: 1px solid $color_primary; */
@@ -217,55 +218,60 @@ div.apartments-add-form{
                 color: $color_primary;
                 margin: 8px 0;        
             }
-        
-            div.form-group {
-                label {
-                    color: $color_primary;
-                }
-                
-                div {
-                    input {
-                        outline: none;
-                    }
-                }
-        
-                div.features_cnt {
-                    div.feature {
-                        width: 100%;
-                        display: flex;
-                        justify-content: start;
-                    }
-                }
-            }
-
-            div.btn_cnt {
+            
+            form {
                 margin-bottom: 0;
-                div {
-                    padding: 0;
-                    display: flex;
+                z-index: 500;
 
-                    button {
-                        width: 70%;
-                        border-radius: 0;
-                        border-bottom-left-radius: 10px;
-                        
-                        &.cancel{
+                div.form-group {
+                    label {
+                        color: $color_primary;
+                    }
+                    
+                    div {
+                        input {
+                            outline: none;
+                        }
+                    }
+            
+                    div.features_cnt {
+                        div.feature {
+                            width: 100%;
+                            display: flex;
+                            justify-content: start;
+                        }
+                    }
+                }
+    
+                div.btn_cnt {
+                    margin-bottom: 0;
+                    div {
+                        padding: 0;
+                        display: flex;
+    
+                        button {
+                            width: 70%;
                             border-radius: 0;
-                            width: 30%;
-                            border-left: none;
-                            border-bottom-right-radius: 10px;
-
-                            &:hover {
-                            /* border: 1px solid $color_secondary; */
-                            border-left: none;
+                            border-bottom-left-radius: 10px;
+                            
+                            &.cancel{
+                                border-radius: 0;
+                                width: 30%;
+                                border-left: none;
+                                border-bottom-right-radius: 10px;
+    
+                                &:hover {
+                                /* border: 1px solid $color_secondary; */
+                                border-left: none;
+                                }
                             }
+    
+    
+                            &:hover {
+                                border: 1px solid $color_secondary;
+                            }
+    
                         }
-
-
-                        &:hover {
-                            border: 1px solid $color_secondary;
-                        }
-
                     }
                 }
             }
