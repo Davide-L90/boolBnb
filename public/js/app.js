@@ -17048,10 +17048,11 @@ Dropzone.options.dropzone = {
         console.log(dt);
 
         console.log(file);
-
+        var extension = file.name;
+        extension = extension.split('.').pop();
         var time = dt.getTime();
 
-        return time + file.name;
+        return time + '.' + extension;
     },
     acceptedFiles: ".jpeg,.jpg,.png,.gif",
     addRemoveLinks: true,

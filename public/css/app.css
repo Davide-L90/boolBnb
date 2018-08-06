@@ -8712,7 +8712,7 @@ div.row.apart_detail div.images-cnt div#gallery_cnt {
 
 div.row.apart_detail div.images-cnt div#gallery_cnt div.images_min {
   width: 100%;
-  height: auto;
+  min-height: 250px;
   padding: 10px;
   position: relative;
 }
