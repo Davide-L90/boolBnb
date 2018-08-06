@@ -17043,11 +17043,26 @@ webpackContext.id = 127;
 
 Dropzone.options.dropzone = {
 
-    renameFile: function renameFile(file) {
-        var dt = new Date();
-        console.log(dt);
+    init: function init() {
+        this.on("thumbnail", function (file) {
+            if (file.width < 1000 || file.height < 600) {
+                file.rejectDimensions();
+            } else {
+                file.acceptDimensions();
+            }
+        });
+    },
+    accept: function accept(file, done) {
+        file.acceptDimensions = done;
+        file.rejectDimensions = function () {
+            alert('inserire immagine  1000x800');done("Image too small.");
+        };
+    },
 
-        console.log(file);
+    renameFile: function renameFile(file) {
+
+        var dt = new Date();
+
         var extension = file.name;
         extension = extension.split('.').pop();
         var time = dt.getTime();

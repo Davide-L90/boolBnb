@@ -1,10 +1,26 @@
 Dropzone.options.dropzone = {
 
-    renameFile: function (file) {
-        var dt = new Date();
-        console.log(dt);
+    init: function() {
+        this.on("thumbnail", function(file) {
+            if (file.width < 1000 || file.height < 600)
+            {
+                file.rejectDimensions();
+            }
+            else 
+            {
+                file.acceptDimensions();    
+            }
+        })
+    },
+    accept: function(file, done) {
+        file.acceptDimensions = done;
+        file.rejectDimensions = function() {  alert('inserire immagine  1000x800'); done("Image too small."); };
+    },
 
-        console.log(file);
+    renameFile: function (file) {
+    
+        var dt = new Date();
+
         var extension = file.name;
         extension = extension.split('.').pop();
         var time = dt.getTime();
