@@ -48,4 +48,10 @@ last, run the migrations
 $ php artisan migrate
 ```
 
+### Usage
+
+The credentials to log in are:
+
+- email: admin.admin@gmail.com
+- pw: laravel
 
