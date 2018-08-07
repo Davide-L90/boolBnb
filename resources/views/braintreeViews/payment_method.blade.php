@@ -41,7 +41,7 @@
                             method : "GET",
                             data : {
                                 'payload' : payload,
-                                'amount' : amount,
+                                'amount' : "10", //amount
                                 'advertisement_id' : parseInt(advertisement_id)
                             },
                             success : function (data) {

@@ -61,6 +61,11 @@
 
         </div>
         
+<<<<<<< HEAD
+=======
+        
+        
+>>>>>>> e04240a11ca298c1033ab0f76bec817a1b0fc57c
         @yield('additional-scripts')
     </body>
 </html>

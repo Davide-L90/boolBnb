@@ -8382,6 +8382,7 @@ div.section_cnt div.apartments-list-cnt {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  min-height: 80vh;
 }
 
 div.section_cnt div.apartments-list-cnt div.card {
@@ -9653,10 +9654,10 @@ div.bottom_cnt div.alert_message {
           align-items: center;
   height: 150px;
   font-size: 25px;
-  color: limegreen;
+  color: #244a61;
   margin-top: 20px;
   margin-bottom: 20px;
-  border: 1px solid limegreen;
+  border: 1px solid #244a61;
   font-weight: 600;
   text-align: center;
   padding: 5px;

@@ -25,8 +25,7 @@ class AdvertisementController extends Controller
     public function tokenGen(Request $request, $apartment_id)
     {
         $advertisement_id = $request->sponsor;
-        $advertisement_price = Advertisement::where('id', $advertisement_id)->first()->price;
-        
+        $advertisement_price = Advertisement::where('id', $advertisement_id)->first()->price;        
         
         // get current logged in customer
         $customer = Auth::user();
@@ -57,7 +56,11 @@ class AdvertisementController extends Controller
 
     public function process(Request $request, $apartment_id)
     {   
+<<<<<<< HEAD
         /* dd($request); */
+=======
+        
+>>>>>>> e04240a11ca298c1033ab0f76bec817a1b0fc57c
         $payload = $request->input('payload', false);
         $nonce = $payload['nonce'];
 
@@ -74,15 +77,16 @@ class AdvertisementController extends Controller
             $advertisement = Advertisement::find($request->advertisement_id); 
 
             $date_now = new Carbon();
+<<<<<<< HEAD
             $end_date = $date_now->addHour(20);
+=======
+            $end_date = $date_now->addHours(20); //Change with validity from request
+>>>>>>> e04240a11ca298c1033ab0f76bec817a1b0fc57c
 
             $apartment->advertisements()->attach($advertisement->id, ['valid_until' => $end_date]);
             
         }
         
-        $request->session()->flash('status', 'Il pagamento è stato effettuato correttamente');
-        $request->session()->flash('error', 'Si è verificato un errore. Esegui nuovamente il pagamaento');
-
         return response()->json($status);
     }
 }

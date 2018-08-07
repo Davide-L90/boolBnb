@@ -31,18 +31,14 @@ Route::middleware('isLogged')->group(function (){
     
     Route::resource('apartaments', 'ApartamentController');
     
-    //Manage images
-    /* Route::get('image/upload','ImageController@fileCreate'); */
+    //Manage images    
     Route::post('/user-logged-apartment-detail/{apartment_id}/image-store','ImageController@fileStore')->name('image.store');
     Route::post('/user-logged-apartment-detail/image-delete','ImageController@fileDestroy')->name('image.delete');
     
     //Manage payment
     Route::get('/user-logged-apartment-detail/{apartment_id}/sponsor', 'AdvertisementController@index')->name('show.sponsors');
     Route::get('/user-logged-apartment-detail/{apartment_id}/sponsor/payment', 'AdvertisementController@tokenGen')->name('payment.tokenGen');
-    Route::get('/user-logged-apartment-detail/{apartment_id}/sponsor/payment/process', 'AdvertisementController@process')->name('payment.process');
-    
-
-    
+    Route::get('/user-logged-apartment-detail/{apartment_id}/sponsor/payment/process', 'AdvertisementController@process')->name('payment.process');   
 });
 
 
