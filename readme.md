@@ -20,6 +20,17 @@ DB_USERNAME=your_user
 DB_PASSWORD=your_password
 ```
 
+Or import DB bool.sql from repo, and insert its data in .env file as follow:
+
+```sh
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=bool
+DB_USERNAME=your_user
+DB_PASSWORD=your_password
+```
+
 Next generate your key:
 
 ```sh
