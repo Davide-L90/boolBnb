@@ -24,10 +24,7 @@ class ApartamentController extends Controller
         $request->validate([
             'address' => 'required|string|max:255'
         ]);
-        // $indirizzo = $request->address;
-        // $latitudine = $request->lat;
-        // $longitudine = $request->lng;        
-        
+            
         $featuresDB = Feature::all();
     
         //This variable will show on the result page the address searched
@@ -47,8 +44,10 @@ class ApartamentController extends Controller
             $distanceToSearch = $request->distance;
         }
 
+        //This array will contain all apartments will show as results
         $apartmentsToShow = [];
 
+        //This statment add the apartments advertised in first position in apartmentsToShow array 
         if ($apartments_advertised->isNotEmpty()) {
             
             foreach ($apartments_advertised as $apartment) {
@@ -125,9 +124,11 @@ class ApartamentController extends Controller
                 }
             }
         }
+
         $apartments = $apartments->where('is_active', 1);
         
         $apartments = $apartments->get();       
+
         foreach ($apartments as $apartment) {
 
             $distance = $this->distance($request->lat, $request->lng, $apartment->latitude, $apartment->longitude);
@@ -170,6 +171,8 @@ class ApartamentController extends Controller
         usort($apartmentsToShow, function($a, $b) {
             return $a['distance'] <=> $b['distance'];
         });
+
+        //Check of the request is an ajax request
         if($request->ajax()){ 
             $html = view('components.apartments_cards', ['apartmentsToShow' => $apartmentsToShow])->render();
             return response()->json([
@@ -177,28 +180,7 @@ class ApartamentController extends Controller
                 /* 'res' => $results, */
                 'html' => $html      
             ]);
-        }
-        
-        $data = [
-            'form_data' => [
-                'id' => 'form_search_ajax',
-                'class' => [
-                    'form' => 'form-horizontal filter_form_validation',
-                    'field_cnt' => '',
-                    'label' => 'col-md-12 text-left',
-                    'input_cnt' => 'col-md-12',
-                    'input' => 'col-xs-12',
-                    'filter_cnt' => '',
-                    'check_label' => 'col-md-8',
-                    'check_input' => 'col-md-4'
-                ],
-                'action' => route('apartments.results'),
-                'method' => 'GET',
-                'request_field' => $request,
-                'chek_notcheck_feat' => $checked_and_notChecked,
-
-            ]
-        ];
+        }       
 
         return view('publicViews.apartmentFinder', [
             'apartmentsToShow' => $apartmentsToShow,
@@ -206,7 +188,6 @@ class ApartamentController extends Controller
             'request' => $request,
             'features' => $featuresDB,
             'check_notcheck_feat' => $checked_and_notChecked,
-            'data' => $data
         ]);
     }
 
@@ -241,8 +222,7 @@ class ApartamentController extends Controller
 
         $new_apartment = new Apartament();
         $new_apartment->fill($requestArray);  
-        $new_apartment->is_active = 1;
-        $new_apartment->is_advertised = 0;
+        $new_apartment->is_active = 1;        
         $new_apartment->latitude = $request->lat;
         $new_apartment->longitude = $request->lng;
         $new_apartment->user_id = $userId;
@@ -273,7 +253,7 @@ class ApartamentController extends Controller
     {   
         /*
             If user is logged the form on his apartments notice 
-            will be set hiddes. The control below return the id or -1
+            will be set disabled. The control below return the id or -1
             at showApartment view
         */
         $userId = Auth::user();
@@ -347,8 +327,7 @@ class ApartamentController extends Controller
             
             $requestArray = $request->toArray();
             
-            $modified_apartment->fill($requestArray);  
-            $modified_apartment->is_advertised = 0;
+            $modified_apartment->fill($requestArray);              
             $modified_apartment->latitude = $request->lat;
             $modified_apartment->longitude = $request->lng;
 
@@ -362,9 +341,8 @@ class ApartamentController extends Controller
 
         $modified_apartment->features()->sync($features);
 
-        $request->session()->flash('status', 'L\'appartamento è stato modificato correttamente');
+        $request->session()->flash('status', 'Le modifiche sono state eseguite correttamente');
         $request->session()->flash('error', 'Si è verificato un errore. Compila nuovamente il form');
-
 
         return redirect()->route('home');
 
@@ -426,7 +404,7 @@ class ApartamentController extends Controller
         return $km;
     }
 
-    //Method to find the apartment thumbnail.
+    //Method to find and set the apartment thumbnail.
     private function setThumbnail($apartment_id){
         $thumbnail = Image::where('apartament_id', $apartment_id)->first();
     

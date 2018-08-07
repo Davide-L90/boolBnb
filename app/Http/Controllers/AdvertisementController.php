@@ -25,8 +25,7 @@ class AdvertisementController extends Controller
     public function tokenGen(Request $request, $apartment_id)
     {
         $advertisement_id = $request->sponsor;
-        $advertisement_price = Advertisement::where('id', $advertisement_id)->first()->price;
-        
+        $advertisement_price = Advertisement::where('id', $advertisement_id)->first()->price;        
         
         // get current logged in customer
         $customer = Auth::user();
@@ -58,7 +57,6 @@ class AdvertisementController extends Controller
     public function process(Request $request, $apartment_id)
     {   
         
-        /* dd($request); */
         $payload = $request->input('payload', false);
         $nonce = $payload['nonce'];
 
@@ -80,6 +78,7 @@ class AdvertisementController extends Controller
             $apartment->advertisements()->attach($advertisement->id, ['valid_until' => $end_date]);
             
         }
+        
         return response()->json($status);
     }
 }

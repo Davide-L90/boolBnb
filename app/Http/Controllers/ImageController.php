@@ -47,6 +47,7 @@ class ImageController extends Controller
         
         if($request->ajax())
         {
+            //This statment set the filename as filename without exstension
             $filename = substr($filename, 0, strpos($filename, "."));
             return response()->json(['filename' => $filename]);
         }

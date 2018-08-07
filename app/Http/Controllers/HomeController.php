@@ -33,8 +33,7 @@ class HomeController extends Controller
         $apartments = $apartments->where('is_active', 1);
         $apartments = $apartments->whereHas('advertisements', function($query){
             $query->where('valid_until', '>', Carbon::now());
-        })->get();
-        /* dd($checked_and_notChecked); */
+        })->get();        
 
         $aprtmentsToShow = [];
 
@@ -55,8 +54,7 @@ class HomeController extends Controller
                 'distance' => 0,
                 'thumbnail' => []
             ];
-        }
-        /* dd($apartmentsToShow); */
+        }        
 
         return view('publicViews.welcome', [
             'check_not_check' => $checked_and_notChecked,
