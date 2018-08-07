@@ -61,32 +61,7 @@
 
         </div>
         
-        <div class="container-fluid footer_cnt">
-
-            <div class="row footer">
-                <footer class="col-xs-12">
-                    <div class="content_cnt">
-                        <div class="content_heading">made by</div>
-                        <div class="content_authors">
-                            
-                            <p class="author"> 
-                                <span class="name a_right"><span class="initial">A</span>lessandro</span> 
-                                <span class="name a_right"><span class="initial"> L</span>ausdei</span>
-                            </p>
-                            <p class="bind">
-                                <span>&amp;</span>
-                            </p>
-                            <p class="author"> 
-                                <span class="name a_left"><span class="initial">D</span>avide</span> 
-                                <span class="name a_left"><span class="initial"> L</span>ecci</span>
-                            </p>    
-                            
-                        </p>
-                    </div>
-    
-                </footer>
-            </div>
-        </div>
+        
         
         @yield('additional-scripts')
     </body>

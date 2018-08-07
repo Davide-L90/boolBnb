@@ -57,7 +57,7 @@ class AdvertisementController extends Controller
 
     public function process(Request $request, $apartment_id)
     {   
-        dd($request);
+        
         /* dd($request); */
         $payload = $request->input('payload', false);
         $nonce = $payload['nonce'];
@@ -75,15 +75,11 @@ class AdvertisementController extends Controller
             $advertisement = Advertisement::find($request->advertisement_id); 
 
             $date_now = new Carbon();
-            $end_date = $date_now->addHours($request->validity);
+            $end_date = $date_now->addHours(20); //Change with validity from request
 
             $apartment->advertisements()->attach($advertisement->id, ['valid_until' => $end_date]);
             
         }
-        
-        $request->session()->flash('status', 'Il pagamento è stato effettuato correttamente');
-        $request->session()->flash('error', 'Si è verificato un errore. Esegui nuovamente il pagamaento');
-
         return response()->json($status);
     }
 }
