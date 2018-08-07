@@ -196,6 +196,7 @@
             <div class="row bottom_cnt">
                 
                 @if( !empty($apartmentsToShow[0]['apartment']) )
+                    <h1 class="evidence">In evidenza, </h1>
                     <div id="apartments_advertised_cnt" class="results-cnt">
                         @include('components.apartments_cards')                        
                     </div>

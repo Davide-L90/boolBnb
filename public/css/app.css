@@ -9779,9 +9779,15 @@ div.bottom_cnt div.alert_message {
     width: 100%;
   }
 
+  div.bottom_cnt h1.evidence {
+    margin: 20px 10px;
+  }
+
   div.bottom_cnt div#apartments_advertised_cnt {
     width: 100%;
     margin-top: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
   }
 
   div.bottom_cnt div#apartments_advertised_cnt a.thumbnail.apartment_card {
