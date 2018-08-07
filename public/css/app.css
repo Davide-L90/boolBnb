@@ -9104,6 +9104,10 @@ div.wrapper div.detail_cnt div.send_message_cnt input[type="submit"] {
   margin-top: 10px;
 }
 
+div.wrapper div.detail_cnt div.send_message_cnt textarea {
+  padding: 10px;
+}
+
 div.wrapper div.detail_cnt div.send_message_cnt textarea:focus {
   outline: none;
 }
