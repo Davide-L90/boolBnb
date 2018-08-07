@@ -9393,7 +9393,7 @@ div.wrapper div.map_wrapper div.row .map_cnt #map {
 
 div.top_cnt div.image_background {
   height: 90vh;
-  background-image: url("/images/home_background.jpg");
+  background-image: url("/images/home_bg.jpg");
   background-size: cover;
   background-position: 50%;
   position: relative;
