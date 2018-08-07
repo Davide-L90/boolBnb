@@ -56,11 +56,7 @@ class AdvertisementController extends Controller
 
     public function process(Request $request, $apartment_id)
     {   
-<<<<<<< HEAD
-        /* dd($request); */
-=======
         
->>>>>>> e04240a11ca298c1033ab0f76bec817a1b0fc57c
         $payload = $request->input('payload', false);
         $nonce = $payload['nonce'];
 
@@ -77,11 +73,7 @@ class AdvertisementController extends Controller
             $advertisement = Advertisement::find($request->advertisement_id); 
 
             $date_now = new Carbon();
-<<<<<<< HEAD
-            $end_date = $date_now->addHour(20);
-=======
             $end_date = $date_now->addHours(20); //Change with validity from request
->>>>>>> e04240a11ca298c1033ab0f76bec817a1b0fc57c
 
             $apartment->advertisements()->attach($advertisement->id, ['valid_until' => $end_date]);
             

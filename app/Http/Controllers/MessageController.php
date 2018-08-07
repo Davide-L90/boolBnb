@@ -11,8 +11,7 @@ use Carbon\Carbon;
 class MessageController extends Controller
 {
     public function sendMessage(Request $request, $apartment_id)
-    {        
-
+    {
         $request->validate([
             'name' => 'required|string|max:50',
             'surname' => 'required|string|max:255',
