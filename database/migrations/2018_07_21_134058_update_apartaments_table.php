@@ -16,6 +16,7 @@ class UpdateApartamentsTable extends Migration
         Schema::table('apartaments', function (Blueprint $table) {
             $table->decimal('latitude', 11, 8)->change();
             $table->decimal('longitude', 11, 8)->change();
+            $table->unsignedSmallInteger('area')->change();
         });
     }
 
@@ -29,6 +30,7 @@ class UpdateApartamentsTable extends Migration
         Schema::table('apartaments', function (Blueprint $table) {
             $table->decimal('latitude', 10, 8)->change();
             $table->decimal('longitude', 10, 8)->change();
+            $table->unsignedTinyInteger('area')->change();
         });
     }
 }

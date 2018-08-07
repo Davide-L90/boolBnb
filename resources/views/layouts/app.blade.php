@@ -58,8 +58,8 @@
                 </div>
             </nav>
             @yield('content')
+
         </div>
-        
         
         @yield('additional-scripts')
     </body>

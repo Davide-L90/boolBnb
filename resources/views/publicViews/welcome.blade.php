@@ -28,7 +28,6 @@
                 color: #636b6f;
                 font-family: 'Raleway', sans-serif;
                 font-weight: 100;
-                height: 100vh;
                 margin: 0;
             }
 
@@ -70,9 +69,9 @@
                 text-transform: uppercase;
             }
 
-            .m-b-md {
+            /* .m-b-md {
                 margin-bottom: 30px;
-            }
+            } */
         </style>
     </head>
     <body>
@@ -159,9 +158,6 @@
                                     </div>
                                 </div>
 
-                                
-                                
-                            
                                 <div class="form-group checkbox_list_cnt{{ $errors->has('features') ? ' has-error' : '' }}">
                                     <ul class="checkbox_list">
                                         @foreach($check_not_check as $feat) 
@@ -208,6 +204,30 @@
                     </div>   
                 @endif
 
+            </div>
+
+            <div class="row footer">
+                <footer class="col-xs-12">
+                    <div class="content_cnt">
+                        <div class="content_heading">made by</div>
+                        <div class="content_authors">
+                            
+                            <p class="author"> 
+                                <span class="name a_right"><span class="initial">A</span>lessandro</span> 
+                                <span class="name a_right"><span class="initial"> L</span>ausdei</span>
+                            </p>
+                            <p class="bind">
+                                <span>&amp;</span>
+                            </p>
+                            <p class="author"> 
+                                <span class="name a_left"><span class="initial">D</span>avide</span> 
+                                <span class="name a_left"><span class="initial"> L</span>ecci</span>
+                            </p>    
+                            
+                        </p>
+                    </div>
+
+                </footer>
             </div>
         </div>
 

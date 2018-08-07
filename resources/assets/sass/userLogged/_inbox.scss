@@ -11,6 +11,10 @@ div#inbox_title{
     }
 }
 
+div.msg_section {
+    min-height: 70vh;
+
+}
 .message_cnt {
     border: 1px solid #002CF9 !important;
     margin: 5px 0;
@@ -43,6 +47,7 @@ div#inbox_title{
 
 div.notFound_cnt{
     font-size: 30px;
+    height: 70vh;
 }
 
 .spinner{

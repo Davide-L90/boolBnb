@@ -8388,13 +8388,11 @@ div.section_cnt div.apartments-list-cnt div.card {
   margin: 10px;
   height: 250px;
   width: 325px;
-  /* float: left; */
 }
 
 div.section_cnt div.apartments-list-cnt div.card.disabled-card {
   background-color: lightgrey !important;
   border-radius: 8px;
-  z-index: 50;
 }
 
 div.section_cnt div.apartments-list-cnt div.card.disabled-card img {
@@ -8594,15 +8592,20 @@ div.apartments-add-form div.row div.inner_cnt div.form_title {
   margin: 8px 0;
 }
 
-div.apartments-add-form div.row div.inner_cnt div.form-group label {
+div.apartments-add-form div.row div.inner_cnt form {
+  margin-bottom: 0;
+  z-index: 500;
+}
+
+div.apartments-add-form div.row div.inner_cnt form div.form-group label {
   color: #fff;
 }
 
-div.apartments-add-form div.row div.inner_cnt div.form-group div input {
+div.apartments-add-form div.row div.inner_cnt form div.form-group div input {
   outline: none;
 }
 
-div.apartments-add-form div.row div.inner_cnt div.form-group div.features_cnt div.feature {
+div.apartments-add-form div.row div.inner_cnt form div.form-group div.features_cnt div.feature {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -8612,36 +8615,36 @@ div.apartments-add-form div.row div.inner_cnt div.form-group div.features_cnt di
           justify-content: start;
 }
 
-div.apartments-add-form div.row div.inner_cnt div.btn_cnt {
+div.apartments-add-form div.row div.inner_cnt form div.btn_cnt {
   margin-bottom: 0;
 }
 
-div.apartments-add-form div.row div.inner_cnt div.btn_cnt div {
+div.apartments-add-form div.row div.inner_cnt form div.btn_cnt div {
   padding: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-div.apartments-add-form div.row div.inner_cnt div.btn_cnt div button {
+div.apartments-add-form div.row div.inner_cnt form div.btn_cnt div button {
   width: 70%;
   border-radius: 0;
   border-bottom-left-radius: 10px;
 }
 
-div.apartments-add-form div.row div.inner_cnt div.btn_cnt div button.cancel {
+div.apartments-add-form div.row div.inner_cnt form div.btn_cnt div button.cancel {
   border-radius: 0;
   width: 30%;
   border-left: none;
   border-bottom-right-radius: 10px;
 }
 
-div.apartments-add-form div.row div.inner_cnt div.btn_cnt div button.cancel:hover {
+div.apartments-add-form div.row div.inner_cnt form div.btn_cnt div button.cancel:hover {
   /* border: 1px solid $color_secondary; */
   border-left: none;
 }
 
-div.apartments-add-form div.row div.inner_cnt div.btn_cnt div button:hover {
+div.apartments-add-form div.row div.inner_cnt form div.btn_cnt div button:hover {
   border: 1px solid #244a61;
 }
 
@@ -8809,6 +8812,10 @@ div#inbox_title select.selected_apartment_id {
   outline: none;
 }
 
+div.msg_section {
+  min-height: 70vh;
+}
+
 .message_cnt {
   border: 1px solid #002CF9 !important;
   margin: 5px 0;
@@ -8852,6 +8859,7 @@ div#inbox_title select.selected_apartment_id {
 
 div.notFound_cnt {
   font-size: 30px;
+  height: 70vh;
 }
 
 .spinner {
@@ -9379,7 +9387,7 @@ div.wrapper div.map_wrapper div.row .map_cnt #map {
 }
 
 div.top_cnt div.image_background {
-  height: 78vh;
+  height: 90vh;
   background-image: url("/images/home_background.jpg");
   background-size: cover;
   background-position: 50%;
@@ -9647,6 +9655,7 @@ div.bottom_cnt div.alert_message {
   font-size: 25px;
   color: limegreen;
   margin-top: 20px;
+  margin-bottom: 20px;
   border: 1px solid limegreen;
   font-weight: 600;
   text-align: center;
@@ -9655,7 +9664,7 @@ div.bottom_cnt div.alert_message {
 
 @media (min-width: 576px) {
   div.top_cnt div.image_background {
-    height: 68vh;
+    height: 70vh;
   }
 
   div.top_cnt div.image_background div.form_cnt {
@@ -9739,7 +9748,7 @@ div.bottom_cnt div.alert_message {
 
 @media (min-width: 768px) {
   div.top_cnt div.image_background {
-    height: 93vh;
+    height: 80vh;
   }
 
   div.top_cnt div.image_background div.form_cnt form#apartment_search_form {
@@ -9786,7 +9795,7 @@ div.bottom_cnt div.alert_message {
 
 @media (min-width: 992px) {
   div.top_cnt div.image_background {
-    height: 93vh;
+    /* height: $top_cnt_height + 15vh; */
   }
 
   div.top_cnt div.image_background div.form_cnt form#apartment_search_form {
@@ -10171,13 +10180,13 @@ div.slide_menu a {
   line-height: 25px;
   color: #fff !important;
   /* padding: 5px 0; */
-  float: left;
+  float: right;
   width: 33.3%;
   margin: 0 auto;
 }
 
 div.slide_menu a:not(:last-of-type) {
-  border-right: 1px solid #fff;
+  border-left: 1px solid #fff;
 }
 
 .d_none {
@@ -10301,6 +10310,113 @@ nav a:active {
     font-weight: 300;
     margin-left: 30px;
   }
+}
+
+footer {
+  width: 100%;
+  height: 100px;
+  background-color: rgba(36, 74, 97, 0.75);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 20px;
+}
+
+footer div.content_cnt div.content_heading {
+  color: #fff;
+  text-align: center;
+  width: 90px;
+  padding: 2px 0;
+  font-size: 18px;
+  margin: 0 auto;
+  border-bottom: 1px solid #fff;
+  margin-bottom: 10px;
+}
+
+footer div.content_cnt div.content_authors {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+footer div.content_cnt div.content_authors p.author {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-bottom: 0;
+  height: 40px;
+  width: 90px;
+}
+
+footer div.content_cnt div.content_authors p.author span.name {
+  display: block;
+  width: 90px;
+  color: #fff;
+  height: 20px;
+  font-size: 15px;
+  font-weight: 200;
+}
+
+footer div.content_cnt div.content_authors p.author span.name.a_right {
+  text-align: right;
+}
+
+footer div.content_cnt div.content_authors p.author span.name.a_left {
+  text-align: left;
+}
+
+footer div.content_cnt div.content_authors p.bind {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-bottom: 0;
+  height: 40px;
+}
+
+footer div.content_cnt div.content_authors p.bind span {
+  height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px 10px 0 10px;
+  font-size: 40px;
+  font-weight: 200;
+  color: #fff;
+}
+
+span.initial {
+  font-weight: 300;
 }
 
 div.flash_success {
