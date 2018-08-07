@@ -13,7 +13,7 @@ a.thumbnail.apartment_card {
     width: 80%;
     margin: 0 10px 15px 0; 
     font-family: 'Josefin Sans', sans-serif;
-    background-color: #fff;
+    background-color: #fff;   
     
     div.img_cnt {        
         img {
@@ -25,7 +25,7 @@ a.thumbnail.apartment_card {
 
     div.caption.info_section {
         padding: 0;
-        margin-top: 8px;       
+        margin-top: 8px;          
 
         p.apartment_title {
             margin: 5px 0 7px;
@@ -46,12 +46,17 @@ a.thumbnail.apartment_card {
         }
 
         p.apartment_distance {
-            margin: 0 0 7px;
+            margin: 0 0 4px;
             font-size: $apartment_title - 5px;
             line-height: $apartment_title - 5px;
             height: $apartment_title - 5px;
             color: rgb(50, 205, 50);
             font-weight: 400;
+        }
+
+        small {
+            font-weight: 400;
+            color: rgb(182, 148, 11);
         }
     }
 }

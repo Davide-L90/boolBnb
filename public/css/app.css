@@ -10044,12 +10044,17 @@ a.thumbnail.apartment_card div.caption.info_section p.apartment_price {
 }
 
 a.thumbnail.apartment_card div.caption.info_section p.apartment_distance {
-  margin: 0 0 7px;
+  margin: 0 0 4px;
   font-size: 13px;
   line-height: 13px;
   height: 13px;
   color: limegreen;
   font-weight: 400;
+}
+
+a.thumbnail.apartment_card div.caption.info_section small {
+  font-weight: 400;
+  color: #b6940b;
 }
 
 @media (min-width: 576px) {

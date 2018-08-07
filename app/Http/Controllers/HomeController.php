@@ -45,14 +45,16 @@ class HomeController extends Controller
                 $apartmentsToShow[] = [
                     'apartment' => $apartment,
                     'distance' => -1,
-                    'thumbnail' => $thumbnail
+                    'thumbnail' => $thumbnail,
+                    'is_advertised' => false
                 ];
             }
         } else {
             $apartmentsToShow[] = [
                 'apartment' => [],
                 'distance' => 0,
-                'thumbnail' => []
+                'thumbnail' => [],
+                'is_advertised' => false
             ];
         }        
 
