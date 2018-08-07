@@ -145,7 +145,7 @@
                                     
                                         <div class="form-group flex_input{{ $errors->has('bathrooms_number') ? 'has-error' : '' }}">                                    
                                             <div class="">
-                                                <input id="bathrooms_number" type="text" class="" name="bathrooms_text" value="" placeholder="Quanti bagni">   
+                                                <input id="bathrooms_number" type="text" class="" name="bathrooms_number" value="" placeholder="Quanti bagni">   
                                             </div>
                                         </div>
     
@@ -195,6 +195,7 @@
             <div class="row bottom_cnt">
                 
                 @if( !empty($apartmentsToShow[0]['apartment']) )
+                    <h1 class="evidence">In evidenza: </h1>
                     <div id="apartments_advertised_cnt" class="results-cnt">
                         @include('components.apartments_cards')                        
                     </div>

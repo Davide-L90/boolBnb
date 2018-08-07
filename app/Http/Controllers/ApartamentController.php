@@ -20,13 +20,12 @@ class ApartamentController extends Controller
      */
     public function index(Request $request)
     {         
-        
+        /* dd($request); */
         $request->validate([
             'address' => 'required|string|max:255'
         ]);
             
         $featuresDB = Feature::all();
-    
         //This variable will show on the result page the address searched
         $address_searched = $request->address;
         
@@ -36,6 +35,9 @@ class ApartamentController extends Controller
         $apartments_advertised = $apartments_advertised->whereHas('advertisements', function($query){
             $query->where('valid_until', '>', Carbon::now());
         })->get();
+
+        
+
         
         $distanceToSearch = 20; //Distance search default value
         
@@ -61,11 +63,13 @@ class ApartamentController extends Controller
                     $apartmentsToShow[] = [
                         'apartment' => $apartment,
                         'distance' => $distance,
-                        'thumbnail' => $thumbnail
+                        'thumbnail' => $thumbnail,
+                        'is_advertised' => true
                     ];
                 }
             }
         }
+
 
         $apartments = new Apartament();
 
@@ -129,6 +133,8 @@ class ApartamentController extends Controller
         
         $apartments = $apartments->get();       
 
+        $not_advertised_apartment = [];
+
         foreach ($apartments as $apartment) {
 
             $distance = $this->distance($request->lat, $request->lng, $apartment->latitude, $apartment->longitude);
@@ -151,26 +157,32 @@ class ApartamentController extends Controller
                     } while ( !($itemIsFound) && ($i < count($apartmentsToShow)) );
 
                     if (!($itemIsFound)) {
-                        $apartmentsToShow[] = [
+                        $not_advertised_apartment[] = [
                             'apartment' => $apartment,
                             'distance' => $distance,
-                            'thumbnail' => $thumbnail
+                            'thumbnail' => $thumbnail,
+                            'is_advertised' => false
                         ];
                     }
                 } else {
-                    $apartmentsToShow[] = [
+                    $not_advertised_apartment[] = [
                         'apartment' => $apartment,
                         'distance' => $distance,
-                        'thumbnail' => $thumbnail
+                        'thumbnail' => $thumbnail,
+                        'is_advertised' => false
                     ];
                 }                 
             }
         }
 
         //Sort result by distance
-        usort($apartmentsToShow, function($a, $b) {
+        usort($not_advertised_apartment, function($a, $b) {
             return $a['distance'] <=> $b['distance'];
         });
+
+        foreach ($not_advertised_apartment as $n_a_a) {
+            $apartmentsToShow[] = $n_a_a;
+        }
 
         //Check of the request is an ajax request
         if($request->ajax()){ 

@@ -427,11 +427,17 @@ div.bottom_cnt {
     }
 
     div.bottom_cnt {
+
+        h1.evidence {
+            margin: 20px 10px;
+        }
     
         div#apartments_advertised_cnt {
             
             width: 100%; 
             margin-top: 25px;
+            margin-left: 10px;
+            margin-right: 10px;
         
             a.thumbnail.apartment_card {
                     
