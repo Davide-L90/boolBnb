@@ -1,5 +1,9 @@
 # BoolBnb
 
+### Guidelines
+
+https://docs.google.com/document/d/1rTGRQXWqYZAj2SqY8iQ5vgDgqYtVYMhtrqCcfLcFWTE/edit
+
 ### Installation
 
 ```sh
