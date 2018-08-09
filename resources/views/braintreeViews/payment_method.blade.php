@@ -27,9 +27,6 @@
         var amount =  "{{ $advertisement_price }}";
         var advertisement_id = "{{ $advertisement_id }}";
 
-        
-        
-
         braintree.dropin.create({
             authorization: "{{ $token }}",
             container: '#dropin-container'

@@ -1,6 +1,8 @@
 $(document).ready(function() {
 
     /*
+        Validation Register form
+        
         if the view has a children with validation class, the following
         if-statement will executed
     */
@@ -55,7 +57,12 @@ $(document).ready(function() {
         });
     }
 
-    
+    /*
+        Validation of search form in home page
+        
+        if the view has an element with search_form_validation class, the following
+        if-statement will executed
+    */    
     var hasApartmentSearchForm = $('body').find('.search_form_validation');
     
     if ( hasApartmentSearchForm.length != 0 ) {
@@ -127,9 +134,6 @@ $(document).ready(function() {
         
     }
     
-    
-    console.log(hasApartmentSearchForm.length == 0);
-    
     /*
         if the view has a children with apartments-add-form class, the following
         if-statement will executed
@@ -174,7 +178,6 @@ $(document).ready(function() {
 
                 canSubmit = false;
             }
-
 
             
             /* If statment for check the number of apartment rooms */
@@ -222,11 +225,8 @@ $(document).ready(function() {
             } 
 
             if (address_value.length == 0) {
-
                 showError(address_field, 'Inserisci l\'indirizzo');
-
                 canSubmit = false;
-
             } 
             
            
@@ -248,6 +248,9 @@ $(document).ready(function() {
         });
     });
 
+    /* 
+        when user click on "Annulla" button a form will appear
+    */
     $('#hide_form').click( function() {
         $('.apartments-add-form').hide();
         
@@ -259,15 +262,13 @@ $(document).ready(function() {
     */
     $('.delete-id').click(function() {
         var route = $(this).data("route-delete");
-        $('.delete-popup').removeClass('hidden');
-        
+        $('.delete-popup').removeClass('hidden');        
         
         $('#delete_form').attr('action', route); 
 
         $('#no').click(function () {
             $(this).parents('.delete-popup').addClass('hidden');
-        });
-        
+        });        
     });
 
     /* 
@@ -310,15 +311,15 @@ $(document).ready(function() {
             alert('inserire un indirizzo mail corretto');
             canSubmit = false;
         }
-        // if(message == ""){
-        //     alert('Scrivere un messaggio');
-        //     canSubmit = false;
-        // }
+
         return canSubmit;
     });
 
+    //Delete flash messages after 1 second
     $('.flash_success').delay(1000).slideUp(300);
+    $('.flash_error').delay(1000).slideUp(300);
 
+    //This function highlight the wrong input field and show the error message 
     function showError(field_obj, message) {
         field_obj.parents('.form-group').addClass('has-error');
         field_obj.parent().append(
@@ -327,7 +328,8 @@ $(document).ready(function() {
             '</span>'
         );        
     }
-
+    
+    //This function reset the error css of input fields
     function errorReset() {
         $('.help-block').remove();
         $('.form-group').removeClass('has-error');

@@ -8959,7 +8959,6 @@ div.wrapper div.gallery-wrapper {
   padding: 0;
   height: 240px;
   width: 100%;
-  /* margin-top: -22px; */
 }
 
 div.wrapper div.gallery-wrapper div.row {
@@ -9537,64 +9536,6 @@ div.top_cnt div.image_background div.form_cnt form#apartment_search_form div.fil
   color: #fff;
 }
 
-div.top_cnt div.image_background div.form_cnt form#apartment_search_form div.filter_cnt div.checkbox_list_cnt ul.checkbox_list li.checkbox_item_cnt label.checkbox_item {
-  display: block;
-  position: relative;
-  padding-left: 35px;
-  cursor: pointer;
-  font-size: 18px;
-  color: #fff;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  /* Style the checkmark/indicator */
-}
-
-div.top_cnt div.image_background div.form_cnt form#apartment_search_form div.filter_cnt div.checkbox_list_cnt ul.checkbox_list li.checkbox_item_cnt label.checkbox_item input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-}
-
-div.top_cnt div.image_background div.form_cnt form#apartment_search_form div.filter_cnt div.checkbox_list_cnt ul.checkbox_list li.checkbox_item_cnt label.checkbox_item span.checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 20px;
-  width: 20px;
-  background-color: #eee;
-}
-
-div.top_cnt div.image_background div.form_cnt form#apartment_search_form div.filter_cnt div.checkbox_list_cnt ul.checkbox_list li.checkbox_item_cnt label.checkbox_item:hover input ~ span.checkmark {
-  background-color: #ccc;
-}
-
-div.top_cnt div.image_background div.form_cnt form#apartment_search_form div.filter_cnt div.checkbox_list_cnt ul.checkbox_list li.checkbox_item_cnt label.checkbox_item input:checked ~ span.checkmark {
-  background-color: #2196F3;
-}
-
-div.top_cnt div.image_background div.form_cnt form#apartment_search_form div.filter_cnt div.checkbox_list_cnt ul.checkbox_list li.checkbox_item_cnt label.checkbox_item span.checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
-}
-
-div.top_cnt div.image_background div.form_cnt form#apartment_search_form div.filter_cnt div.checkbox_list_cnt ul.checkbox_list li.checkbox_item_cnt label.checkbox_item input:checked ~ span.checkmark:after {
-  display: block;
-}
-
-div.top_cnt div.image_background div.form_cnt form#apartment_search_form div.filter_cnt div.checkbox_list_cnt ul.checkbox_list li.checkbox_item_cnt label.checkbox_item span.checkmark:after {
-  top: 1px;
-  left: 6px;
-  width: 8px;
-  height: 15px;
-  border: solid white;
-  border-width: 0 3px 3px 0;
-  -webkit-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
-
 div.top_cnt div.image_background div.form_cnt form#apartment_search_form div.buttons_cnt {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -9805,10 +9746,6 @@ div.bottom_cnt div.alert_message {
 }
 
 @media (min-width: 992px) {
-  div.top_cnt div.image_background {
-    /* height: $top_cnt_height + 15vh; */
-  }
-
   div.top_cnt div.image_background div.form_cnt form#apartment_search_form {
     max-width: 75%;
     margin: 0 auto;

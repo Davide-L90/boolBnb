@@ -13,8 +13,9 @@ let mix = require('laravel-mix');
 
 mix.js([       
         'resources/assets/js/main.js',
-        'resources/assets/js/userLogged/apartmentDetail.js',
         'resources/assets/js/publicViews/welcome.js',
+        'resources/assets/js/publicViews/apartmentFinder.js',
+        'resources/assets/js/userLogged/apartmentDetail.js',
         'resources/assets/js/userLogged/sponsorship.js'    
     ], 'public/js/app.js')
    .sass('resources/assets/sass/app.scss', 'public/css')

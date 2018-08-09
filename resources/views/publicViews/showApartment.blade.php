@@ -1,3 +1,4 @@
+{{-- A flash message will appear when a user send a message.  --}}
 @if(Session::has('status'))
     @include('components.flash_success')
 @elseif(Session::has('error'))    
